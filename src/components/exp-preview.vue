@@ -1,7 +1,7 @@
 <template>
   <section class="exp-preview">
     <li>
-        <router-link :to="'/experience/details/' + exp._id">
+        <router-link :to="'/exp/details/' + exp._id">
         <div class="preview-img">
             <img :src="exp.imgUrls[0]" height="200px"/>
         </div>
@@ -14,7 +14,7 @@
         <span class="exp-price"></span>
         <span class="exp-rate">{{averageRate}}</span>
         </router-link>
-        <router-link v-if="seller" :to="'/experience/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
+        <router-link v-if="seller" :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
     </li>
         
 
@@ -38,13 +38,13 @@ export default {
     },
     methods:{
         // not belong to here - go to store maybe
-            // averageRate(){
-            //     var sum;
-            //     this.exp.reviews.forEach(review =>{
-            //         sum += review.rate
-            //     })
-            //     return sum / this.exp.reviews.length
-            // }
+            averageRate(){
+                var sum;
+                this.exp.reviews.forEach(review =>{
+                    sum += review.rate
+                })
+                return sum / this.exp.reviews.length
+            }
 
         
     },

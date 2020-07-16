@@ -4,15 +4,15 @@
     <div class="hero-img">
     <img src="" alt="Loading...">
     </div>
-    <!-- <experience-filter @filter="setFilter" /> -->
-    <experience-list v-if="!isLoading" :exps="exps"/>
+    <!-- <exp-filter @filter="setFilter" /> -->
+    <exp-list v-if="!isLoading" :exps="exps"/>
   </section>
 </template>
 
 <script>
 
-import expList from '../components/experience-list.vue';
-// import toyFilter from '@/components/experience-filter.vue';
+import expList from '../components/exp-list.vue';
+// import toyFilter from '@/components/exp-filter.vue';
 
 const _ = require('lodash');
 
