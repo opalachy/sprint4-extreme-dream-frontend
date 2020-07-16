@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import headerApp from "./components/header-app.cmp.vue";
+import headerApp from "./components/header-app.vue";
 export default {
   components: {
     headerApp

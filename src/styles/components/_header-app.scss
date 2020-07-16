@@ -1,0 +1,11 @@
+.main-header {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        max-width: 240px;
+    }
+}

@@ -1,7 +1,7 @@
-const gExperience = [
+const gExps = [
     {
         _id: '5c09',
-        title: 'free style ski',
+        title: 'Free style ski',
         createdAt: 1541652422,
         createdBy:
         {
@@ -27,7 +27,7 @@ const gExperience = [
                     fullName: 'Moshe Potz',
                     imgUrl: 'http://core-img'
                 },
-                txt: 'was great experience!!',
+                txt: 'Was great experience!!',
                 rate: 5
             }
         ],
@@ -35,7 +35,7 @@ const gExperience = [
     },
     {
         _id: '5c06',
-        title: 'free style diving',
+        title: 'Free style diving',
         createdAt: 1541652455,
         createdBy:
         {
@@ -61,7 +61,7 @@ const gExperience = [
                     fullName: 'Rani Rahav',
                     imgUrl: 'http://core-img'
                 },
-                txt: 'the location was not a nice place',
+                txt: 'The location was not a nice place',
                 rate: 2
             }
         ],
