@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const experienceService = {
+export const expService = {
     getExps
 }
 

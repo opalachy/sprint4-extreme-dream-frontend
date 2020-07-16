@@ -4,11 +4,9 @@ import home from '../views/home.vue'
 import about from '../views/about.vue'
 import appLogin from '../views/app-login.vue'
 import userDetails from '../views/user-details.vue'
-import experienceTypes from '../views/experience-types.vue'
-import experienceDestinations from '../views/experience-destinations.vue'
-import experienceEdit from '../views/experience-edit.vue'
-import experienceDetails from '../views/experience-details.vue'
-import experienceApp from '../views/experience-app.vue'
+import expEdit from '../views/exp-edit.vue'
+import expDetails from '../views/exp-details.vue'
+import expApp from '../views/exp-app.vue'
 
 Vue.use(VueRouter)
 
@@ -24,29 +22,19 @@ const routes = [
     component: about
   },
   {
-    path: '/experience',
-    name: 'experience-app',
-    component: experienceApp
+    path: '/exp',
+    name: 'exp-app',
+    component: expApp
   },
   {
-    path: '/experience/type',
-    name: 'experience-types',
-    component: experienceTypes
+    path: '/exp/:id',
+    name: 'exp-details',
+    component: expDetails
   },
   {
-    path: '/experience/destination',
-    name: 'experience-destinations',
-    component: experienceDestinations
-  },
-  {
-    path: '/experience/:id',
-    name: 'experience-details',
-    component: experienceDetails
-  },
-  {
-    path: '/experience/edit/:id?',
-    name: 'experience-edit',
-    component: experienceEdit
+    path: '/exp/edit/:id?',
+    name: 'exp-edit',
+    component: expEdit
   },
   {
     path: '/user/:id',
