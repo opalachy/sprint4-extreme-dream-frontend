@@ -8,6 +8,7 @@ import tripTypes from '../views/trip-types.vue'
 import tripDestinations from '../views/trip-destinations.vue'
 import tripEdit from '../views/trip-edit.vue'
 import tripDetails from '../views/trip-details.vue'
+import tripApp from '../views/trip-app.vue'
 
 Vue.use(VueRouter)
 
