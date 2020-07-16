@@ -1,4 +1,4 @@
-import experienceService from '../services/experience.service.js'
+import {experienceService} from '../services/experience.service.js'
 
 export const experienceStore = {
     state: {
@@ -9,7 +9,7 @@ export const experienceStore = {
     mutations: {
     },
     actions: {
-     async loadExperience({state}){
+     async loadExps({state}){
       const exps = await experienceService.getExps()
          console.log(exps)
       }    
