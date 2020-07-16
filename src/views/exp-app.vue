@@ -1,11 +1,11 @@
 <template>
   <section class="exp-app exp-main">
     <h2> Our Experiences </h2>
-    <div class="hero-img">
+    <!-- <div class="hero-img">
     <img src="" alt="Loading...">
-    </div>
+    </div> -->
     <!-- <exp-filter @filter="setFilter" /> -->
-    <exp-list v-if="!isLoading" :exps="exps"/>
+    <exp-list :exps="exps"/>
   </section>
 </template>
 
@@ -21,10 +21,7 @@ export default {
   computed: {
     exps() {
       return this.$store.getters.exps
-    },
-    // isLoading() {
-    //   return this.$store.getters.isLoading
-    // }
+    }
   },
   methods: {
     async remove(id) {
@@ -55,7 +52,7 @@ export default {
   },
   components: {
     expList,
-    expFilter
+    // expFilter
   }
 }
 

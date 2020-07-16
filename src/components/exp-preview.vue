@@ -1,25 +1,19 @@
 <template>
-  <section class="exp-preview">
-    <li>
-        <router-link :to="'/exp/details/' + exp._id">
+    <li @click="details"  class="exp-preview">
         <div class="preview-img">
-            <img :src="exp.imgUrls[0]" height="200px"/>
+            <img  :src="exp.imgUrls[0]" style="width: 400;" />
         </div>
         <p class="exp-title">{{exp.title}} </p>
         <p class="exp-creator">{{exp.createdBy.fullName}}</p>
-        <div class="seller-img">
-            <img :src="exp.createdBy.imgUrl" height="40px"/>    
-        <div>
+            <img class="seller-img" :src="exp.createdBy.imgUrl" style="width: 50px; height: 50px; border-radius: 50%" />    
         <p class="exp-desc">{{exp.shortDesc}}</p> 
-        <span class="exp-price"></span>
-        <span class="exp-rate">{{averageRate}}</span>
-        </router-link>
+        <div class="">
+            <p class="exp-price"></p>
+            <p class="exp-rate">{{averageRate}}</p>
+        </div>
         <!-- <router-link v-if="seller" :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link> -->
         <router-link  :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
     </li>
-        
-
-  </section>
 </template>
 
 <script>
@@ -45,7 +39,11 @@ export default {
                     sum += review.rate
                 })
                 return sum / this.exp.reviews.length
+            },
+            details(){
+                this.$router.push('/exp/'+ this.exp._id)
             }
+
 
         
     },
