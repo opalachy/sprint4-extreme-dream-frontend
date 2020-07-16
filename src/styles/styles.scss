@@ -12,13 +12,10 @@
 // COMPONENTS
 @import 'components/header-app';
 @import 'components/main-footer';
-@import 'components/destination-list';
-@import 'components/destination-preview';
-@import 'components/experience-book';
-@import 'components/experience-filter';
-@import 'components/experience-list';
-@import 'components/experience-preview';
-@import 'components/type-list';
+@import 'components/exp-book';
+@import 'components/exp-filter';
+@import 'components/exp-list';
+@import 'components/exp-preview';
 @import 'components/user-list';
 @import 'components/user-preview';
 
@@ -27,10 +24,10 @@
 @import 'views/about';
 @import 'views/app-login';
 @import 'views/App';
-@import 'views/experience-app';
-@import 'views/experience-destination';
-@import 'views/experience-details';
-@import 'views/experience-edit';
-@import 'views/experience-types';
+@import 'views/exp-app';
+@import 'views/exp-destination';
+@import 'views/exp-details';
+@import 'views/exp-edit';
+@import 'views/exp-types';
 @import 'views/home';
 @import 'views/user-details';
