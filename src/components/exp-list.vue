@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import expPreview from '../components/exp-preview.cmp';
+import expPreview from '../components/exp-preview.vue';
 
 export default {
     props:['exps'],

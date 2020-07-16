@@ -9,7 +9,7 @@
         <p class="exp-creator">{{exp.createdBy.fullName}}</p>
         <div class="seller-img">
             <img :src="exp.createdBy.imgUrl" height="40px"/>    
-        <div>
+        </div>
         <p class="exp-desc">{{exp.shortDesc}}</p> 
         <span class="exp-price"></span>
         <span class="exp-rate">{{averageRate}}</span>

@@ -12,7 +12,7 @@
 <script>
 
 import expList from '../components/exp-list.vue';
-// import toyFilter from '@/components/exp-filter.vue';
+import expFilter from '../components/exp-filter.vue';
 
 const _ = require('lodash');
 
