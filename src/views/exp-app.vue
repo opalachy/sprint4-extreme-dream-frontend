@@ -8,7 +8,7 @@
     <exp-list :exps="exps"/>
   </section>
 </template>
-
+ 
 <script>
 
 import expList from '../components/exp-list.vue';
