@@ -3,7 +3,7 @@
     <h1>experience List</h1>
     <router-link to="/experience/edit/"><span>Add Activity</span></router-link>
     <ul>
-      <experience-preview v-for="experience in experiences" :key="experience._id" :experience="experience"></experience-preview> 
+      <experience-preview v-for="exp in exps" :key="exp._id" :exp="exp"></experience-preview> 
     </ul>
   </div>
 </template>
@@ -12,7 +12,7 @@
 import experiencePreview from '../components/experience-preview.cmp';
 
 export default {
-    props:['experiences'],
+    props:['exps'],
     data(){
         return {
 

@@ -1,28 +1,52 @@
 <template>
-  <div class="experience-preview">
+  <section class="exp-preview">
     <li>
-      <router-link :to="'/experience/details/' + experience._id">
-        <p>{{experience.name}} </p>
+        <router-link :to="'/experience/details/' + exp._id">
+        <div class="preview-img">
+            <img :src="exp.imgUrls[0]" height="200px"/>
+        </div>
+        <p class="exp-title">{{exp.title}} </p>
+        <p class="exp-creator">{{exp.createdBy.fullName}}</p>
+        <div class="seller-img">
+            <img :src="exp.createdBy.imgUrl" height="40px"/>    
+        <div>
+        <p class="exp-desc">{{exp.shortDesc}}</p> 
+        <span class="exp-price"></span>
+        <span class="exp-rate">{{averageRate}}</span>
         </router-link>
-        <br/>
-        <span> ${{experience.price}}</span>
-        <br/>
-        <img v-if="experience.imgUrl" :src="experience.imgUrl" height="200px" />
-        <router-link :to="'/experience/edit/' + experience._id"><span class="edit"> Edit</span></router-link>
+        <router-link v-if="seller" :to="'/experience/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
     </li>
+        
 
-  </div>
+  </section>
 </template>
 
 <script>
 
 
 export default {
-  props:['experience'],
+  props:['exp','user'],
     data(){
         return {
 
         }
+    },
+    computed:{
+        seller(){
+            this.user._id === this.exp.createdBy._id
+        }
+    },
+    methods:{
+        // not belong to here - go to store maybe
+            // averageRate(){
+            //     var sum;
+            //     this.exp.reviews.forEach(review =>{
+            //         sum += review.rate
+            //     })
+            //     return sum / this.exp.reviews.length
+            // }
+
+        
     },
     components: {
 

@@ -1,4 +1,4 @@
-const gExperience = [
+const gExps = [
     {
         _id: '5c09',
         title: 'free style ski',
