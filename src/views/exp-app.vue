@@ -14,8 +14,6 @@
 import expList from '../components/exp-list.vue';
 // import toyFilter from '@/components/exp-filter.vue';
 
-const _ = require('lodash');
-
 export default {
   name: 'exp-app',
   computed: {
@@ -42,13 +40,6 @@ export default {
   },
   created() {
       this.$store.dispatch({ type: 'loadExps' })
-    //   this.setFilter = _.debounce(this.setFilter, 500);
-  },
-  destroyed() {
-      this.setFilter({
-        type: "",
-        location: "",
-      })
   },
   components: {
     expList,
