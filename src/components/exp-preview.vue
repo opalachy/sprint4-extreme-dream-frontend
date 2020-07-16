@@ -14,7 +14,8 @@
         <span class="exp-price"></span>
         <span class="exp-rate">{{averageRate}}</span>
         </router-link>
-        <router-link v-if="seller" :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
+        <!-- <router-link v-if="seller" :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link> -->
+        <router-link  :to="'/exp/edit/' + exp._id"><span class="edit"> Edit</span></router-link>
     </li>
         
 
