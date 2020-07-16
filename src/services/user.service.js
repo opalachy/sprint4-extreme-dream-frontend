@@ -6,19 +6,19 @@ const gUsers = [
         password: 'tinkerbell',
         isSeller: true,
         imgUrl: 'http://some-img',
-        reviews: [
-            {
-                id: 'r101',
-                from: {
-                    _id: 'u102',
-                    fullName: 'Orly Azaz',
-                    imgUrl: 'http://core-img'
-                },
-                txt: '',
-                rate: 2
-            }
-        ],
-        info: 'txt'
+        // reviews: [
+        //     {
+        //         id: 'r101',
+        //         from: {
+        //             _id: 'u102',
+        //             fullName: 'Orly Azaz',
+        //             imgUrl: 'http://core-img'
+        //         },
+        //         txt: '',
+        //         rate: 2
+        //     }
+        // ],
+        info: 'Dive master, with 12 years experience. I have 1200 hours of diving. I\'m certefied cave master as well.'
     },
     {
         _id: 'u102',
@@ -27,8 +27,8 @@ const gUsers = [
         password: '1234',
         isSeller: false,
         imgUrl: 'http://core-img',
-        reviews: [],
-        info: 'txt'
+        // reviews: [],
+        info: 'I\'m new to diving and I would like to dive in an exsotic place'
     }
 ]
 
