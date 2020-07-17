@@ -30,16 +30,16 @@ export default {
         let sum = this.exp.reviews.reduce((acc, review) => {
             return acc + review.rate;
         }, 0);
-        return (sum / this.exp.reviews.length).toFixed(1);
-        
+      return (sum / this.exp.reviews.length).toFixed(1);      
     }
   },
   methods: {
-    // not belong to here - go to store maybe
     details() {
       this.$router.push("/exp/" + this.exp._id);
     }
   },
-  components: {}
-};
+  components: {
+
+  }
+}
 </script>

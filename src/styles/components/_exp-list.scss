@@ -1,1 +1,12 @@
-//temp
+.exp-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin: 24px;
+    justify-content: space-between;
+    .exp-preview {
+        width: 32%;
+        height: 260px;
+        border: 1px solid black;
+    }
+}

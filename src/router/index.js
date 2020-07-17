@@ -5,7 +5,7 @@ import about from '../views/about.vue'
 import appLogin from '../views/app-login.vue'
 import userDetails from '../views/user-details.vue'
 import expEdit from '../views/exp-edit.vue'
-// import expDetails from '../views/exp-details.vue'
+import expDetails from '../views/exp-details.vue'
 import expApp from '../views/exp-app.vue'
 
 Vue.use(VueRouter)
@@ -26,11 +26,11 @@ const routes = [
     name: 'exp-app',
     component: expApp
   },
-  // {
-  //   path: '/exp/:id',
-  //   name: 'exp-details',
-  //   component: expDetails
-  // },
+  {
+    path: '/exp/:id',
+    name: 'exp-details',
+    component: expDetails
+  },
   {
     path: '/exp/edit/:id?',
     name: 'exp-edit',
