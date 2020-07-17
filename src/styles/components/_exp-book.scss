@@ -1,1 +1,27 @@
-//temp
+.el-date-table {
+    td {
+        &.current:not(.disabled) {
+            span {
+                background-color: red;
+            }
+        }
+        &.today {
+            span {
+                color: blue($color: #000000);
+                font-weight: 700;
+            }
+        }
+        &.available:hover {
+            color: red;
+        }
+        &.next-month{
+           display: none;
+        }
+        &.prev-month {
+           visibility: hidden;
+        }
+        
+    }
+}
+
+

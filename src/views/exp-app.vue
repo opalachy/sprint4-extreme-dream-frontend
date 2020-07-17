@@ -3,12 +3,13 @@
     <h2>Our Experiences</h2>
     <!-- <div class="hero-img">
     <img src="" alt="Loading...">
-    </div>-->
+    </div> -->  
     <!-- <exp-filter @filter="setFilter" /> -->
     <exp-list :exps="exps" />
   </section>
 </template>
  
+
 <script>
 import expList from "../components/exp-list.vue";
 import expFilter from "../components/exp-filter.vue";

@@ -1,0 +1,15 @@
+button {
+    border: none;
+    // padding: 1rem 2rem;
+    // margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+button:hover, button:focus {
+    border: none;
+}
+button:focus {
+    outline: none;
+    outline-offset: -4px;
+}
