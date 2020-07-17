@@ -47,12 +47,12 @@ export default {
     }
   },
   methods: {
-    // not belong to here - go to store maybe
     details() {
       this.$router.push("/exp/" + this.exp._id);
     }
   },
-  components: {}
+  components: {
+
+  }
 }
 </script>
-
