@@ -1,7 +1,7 @@
 <template>
     <li @click="details"  class="exp-preview">
         <div class="preview-img">
-            <img  :src="exp.imgUrls[0]" style="width: 400;" />
+            <img  :src="exp.imgUrls[0]" style="width: 400px;" />
         </div>
         <p class="exp-title">{{exp.title}} </p>
         <p class="exp-creator">{{exp.createdBy.fullName}}</p>
