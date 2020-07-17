@@ -1,13 +1,13 @@
 <template>
-  <section class="header-app">
+  <section class="app-header">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/exp">Experiences</router-link>
   </section>
 </template>
 
 <script>
 export default{
-    name: 'header-app',
+    name: 'app-header',
     data(){
         return {
 

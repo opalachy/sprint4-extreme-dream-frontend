@@ -1,22 +1,26 @@
-import {expService} from '../services/exp.service.js'
+import { expService } from '../services/exp.service.js'
 
 export const expStore = {
-    state: {
-      exps: []
-    },
-    getters:{
-      exps(state){
-        return  state.exps
-      }
-    },
-    mutations: {
-    },
-    actions: {
-     async loadExps({state}){
+  state: {
+    exps: [],
+    filterBy: {
+      type: 'all'
+    }
+  },
+  getters: {
+    exps(state) {
+      return state.exps
+    }
+  },
+  mutations: {
+  },
+  actions: {
+    async loadExps({ state }) {
       const exps = await expService.getExps()
-          state.exps = exps
+      state.exps = exps
+      return exps
 
-      }
-    },
+    }
+  },
 
-  }
+}
