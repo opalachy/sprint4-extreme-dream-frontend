@@ -1,7 +1,8 @@
 <template>
     <section class="home-page">
         <div class="hero-img">
-            <label class="home-data-list">
+          <div class="search-container">
+            
                 <input list="exp-list" placeholder="What Is Your Favor Experience"/>
                 <datalist id="exp-list">
                     <option value="Ski" />
@@ -10,7 +11,10 @@
                     <option value="Diving" />
                     <option value="Surffing" />
                 </datalist>
-            </label>
+          
+            <button class="search-btn" @click="searchExp()">Search</button>
+          </div>
+            
         </div>
         <div class="cards-container">
             <div class="type-container">
