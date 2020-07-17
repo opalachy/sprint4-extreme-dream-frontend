@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
-    <app-header />
-=======
     <header-app />
     <h1>Hello</h1>
     <div class="block">
@@ -18,7 +15,6 @@
         :picker-options="pickerOptions"
       ></el-date-picker>
     </div>
->>>>>>> 28d71c49d6e16b28e56f640bb9cc1993193afb64
     <router-view />
     <footer-app />
   </div>
