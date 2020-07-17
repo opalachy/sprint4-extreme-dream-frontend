@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <header-app />
+    <app-header />
     <router-view />
+    <footer-app />
   </div>
 </template>
 
 <script>
-import headerApp from "./components/header-app.vue";
+import appHeader from "./components/app-header.vue";
+import footerApp from "./components/footer-app.vue";
 export default {
   components: {
-    headerApp
+    appHeader,
+    footerApp
   }
 };
+
 </script>
 
-<style>
+
+<style lang="stylus" scoped>
+  
 </style>
+

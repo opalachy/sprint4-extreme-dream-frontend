@@ -1,9 +1,16 @@
-.main-header {
-    min-height: 92vh;
+.app-header {
+    height: 90px;
+    background-color: #0c0d0d;
+    color: white;
+    padding: 0 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    a {
+        color: white;
+        font-size: 22px;
+        letter-spacing: 0.5px;
+    }
 
     .logo {
         max-width: 240px;
