@@ -44,13 +44,15 @@
             display: flex;
             justify-content: space-between;
         }
+        .type-container{
+            margin-top: 1rem;
+        }
         .exp-list {
             display: flex;
             justify-content: space-between;
             .exp-preview {
                 width: 30%;
-                height: 260px;
-                border: 1px solid black;
+                height: 380px;
             }
         }
     }

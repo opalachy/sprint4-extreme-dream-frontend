@@ -1,1 +1,61 @@
-//temp
+.exp-preview{
+    .exp-preview-img{
+        height: 22vh; /* You must set a specified height */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        // @include img-background-cover-center;
+        border-radius: 0.5rem;
+    }
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.exp-preview-title-seller{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0.5rem 0;   
+}
+
+.exp-preview-type-ticket{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0.5rem 0;   
+}
+
+.preview-seller{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .preview-creator{
+        padding-right: 1rem;
+    }
+}
+
+.exp-preview-desc{
+    margin: 0.5rem 0.5rem 0;   
+}
+
+.exp-preview-price-stars-rate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0.5rem 0;
+}
+
+i{
+    color: yellow;
+    font-size: 1.5rem;
+
+}
+
+p{
+    line-height: 1.2rem;
+}
