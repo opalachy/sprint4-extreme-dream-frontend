@@ -1,20 +1,6 @@
 <template>
   <div id="app">
-    <header-app />
-    <h1>Hello</h1>
-    <div class="block">
-      <span class="demonstration">Default</span>
-      <el-date-picker v-model="value1" type="date" placeholder="Pick a day"></el-date-picker>
-    </div>
-    <div class="block">
-      <span class="demonstration">Picker with quick options</span>
-      <el-date-picker
-        v-model="value2"
-        type="date"
-        placeholder="Pick a day"
-        :picker-options="pickerOptions"
-      ></el-date-picker>
-    </div>
+    <app-header />
     <router-view />
     <footer-app />
   </div>
