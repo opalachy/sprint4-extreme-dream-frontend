@@ -4,12 +4,22 @@ button {
     // margin: 0;
     text-decoration: none;
     cursor: pointer;
+    &:hover, button:focus {
+        border: none;
+    }
+    &:focus {
+        outline: none;
+        outline-offset: -4px;
+    }
+    
 
 }
-button:hover, button:focus {
-    border: none;
-}
-button:focus {
-    outline: none;
-    outline-offset: -4px;
-}
+
+// button:hover, button:focus {
+//     border: none;
+//     box-shadow: grey;
+// }
+// button:focus {
+//     outline: none;
+//     outline-offset: -4px;
+// }

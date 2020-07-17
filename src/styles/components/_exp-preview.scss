@@ -1,6 +1,6 @@
 .exp-preview{
     .exp-preview-img{
-        height: 22vh; /* You must set a specified height */
+        height: 26vh; /* You must set a specified height */
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover; /* Resize the background image to cover the entire container */
@@ -9,18 +9,24 @@
     }
 }
 
-li{
+li.exp-preview{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
+    div{
+        margin-top: 0;
+    }
+    p{
+        line-height: 1.2rem;
+    }
 }
 
 .exp-preview-title-seller{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.5rem 0.5rem 0;   
+    margin: 0 0.5rem 0;   
 }
 
 .exp-preview-type-ticket{
@@ -40,7 +46,7 @@ li{
 }
 
 .exp-preview-desc{
-    margin: 0.5rem 0.5rem 0;   
+    margin: 0 0.5rem 0;   
 }
 
 .exp-preview-price-stars-rate{
@@ -56,6 +62,3 @@ i{
 
 }
 
-p{
-    line-height: 1.2rem;
-}

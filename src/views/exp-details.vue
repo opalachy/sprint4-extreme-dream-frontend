@@ -1,8 +1,43 @@
 <template>
   <section v-if="exp" class="exp-details">
-    <div class="img-container">
-        <img v-for="img in exp.imgUrls" :src="img" alt="">
-        
+    <div class="exp-details-container">
+    <div class="exp-details-header">
+          <h4 class="exp-details-title">{{exp.title}}</h4>
+          <img
+                  class="seller-img"
+                  :src="exp.createdBy.imgUrl"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                />
+    </div>  
+          <div class="img-container">
+              <img v-for="img in exp.imgUrls" :src="img" alt="">
+          </div>
+    <div class="exp-details-main">
+          <p class="exp-details-desc">{{exp.desc}}</p>
+          <exp-book/>
+    </div>
+    <div class="exp-details-review">
+          <ul>
+              <li v-for="review in exp.reviews" :key="review.id">
+                   <p>{{new Date(review.at).getDate()}}/{{new Date(review.at).getMonth()+1}}/{{new Date(review.at).getFullYear()}}</p>
+                   <!-- <p>{{review.by.fullName}}</p>    need to add an img --> 
+                   <p>{{review.by.fullName}}</p>
+                   <p>{{review.txt}}</p>
+                   <p>{{review.rate}}</p>
+
+              </li>
+
+          </ul>
+    </div>
+
+    <div class="exp-details-guide-container">
+           <img
+                  class="seller-img"
+                  :src="exp.createdBy.imgUrl"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                />
+           <h4 class="exp-details-guide-info">{{exp.createdBy.info}}</h4>     
+    </div>
     </div>
   </section>
 </template>
@@ -10,6 +45,7 @@
 <script>
 
 import { expService } from '../services/exp.service.js';
+import expBook from '../components/exp-book.vue';
 
 export default {
   name: "exp-details",
@@ -19,6 +55,7 @@ export default {
       }
   },
   computed: {
+    
   },
   methods: {
   
@@ -28,6 +65,9 @@ export default {
     const exp = await expService.getById(expId)
     this.exp = exp
   },
+  components:{
+    expBook
+  }
 
 }
 </script>
