@@ -1,10 +1,11 @@
 <template>
   <section class="exp-app exp-main">
     <h2>Our Experiences</h2>
+
     <!-- <div class="hero-img">
     <img src="" alt="Loading...">
     </div> -->  
-    <!-- <exp-filter @filter="setFilter" /> -->
+    <exp-filter @filter="setFilter" />
     <exp-list :exps="exps" />
   </section>
 </template>
@@ -14,7 +15,7 @@
 import expList from "../components/exp-list.vue";
 import expFilter from "../components/exp-filter.vue";
 
-const _ = require("lodash");
+// const _ = require("lodash");
 
 export default {
   name: "exp-app",
@@ -34,12 +35,13 @@ export default {
       //           .then(() => {
       //               eventBus.$emit(SHOW_MSG, { txt: 'Toy removed successfully!', type: 'danger' });
       //           })
-    }
-    // setFilter(filterBy) {
-    //     this.$store.commit({ type: 'setFilter', filterBy: _.cloneDeep(filterBy) })
-    //     this.$store.dispatch({ type: 'loadToys' })
-    // },
-  },
+    },
+    setFilter(filterBy) {
+      console.log(filterBy)
+        // this.$store.commit({ type: 'setFilter', filterBy: _.cloneDeep(filterBy) })
+        // this.$store.dispatch({ type: 'loadToys' })
+    },
+  }, 
   created() {
     this.$store.dispatch({ type: "loadExps" });
     //   this.setFilter = _.debounce(this.setFilter, 500);
@@ -51,11 +53,9 @@ export default {
   //     })
   // },
   components: {
-    expList
-    // expFilter
+    expList,
+    expFilter
   }
-};
-
-
+}
 </script>
 
