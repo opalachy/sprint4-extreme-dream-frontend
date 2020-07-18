@@ -1,0 +1,36 @@
+.el-date-table {
+    border-radius: 30px;
+    td {
+        &.current:not(.disabled) {
+            span {
+                background-color: red;
+            }
+        }
+        &.today {
+            span {
+                color: blue($color: #000000);
+                font-weight: 700;
+            }
+        }
+        &.available:hover {
+            color: red;
+        }
+        &.next-month{
+           display: none;
+        }
+        &.prev-month {
+           visibility: hidden;
+
+        }
+        
+    }
+}
+
+
+
+.el-icon-d-arrow-right:before {
+    content: "";
+}
+.el-icon-d-arrow-left:before {
+    content: "";
+}
