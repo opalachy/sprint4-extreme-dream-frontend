@@ -50,15 +50,7 @@ async function addOrder(booked, exp, user) {
     console.log(order)
     return await add(order) 
 }
-// function getGeustUser (booked){
-//     const user = {
-//       _id : 'userId',
-//       fullName :  'guest' ,
-//       imgUrl : "https://icon-library.com/images/male-avatar-icon/male-avatar-icon-29.jpg" ,
-//       numOfTickets : booked.numOfTickets
-//     }
-//     return user
-// }
+
 
 
 

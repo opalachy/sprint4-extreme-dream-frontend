@@ -1,6 +1,6 @@
 import HttpService from './http.service.js'
 
-export const userService = {
+export const userService ={
     login,
     logout,
     signup,
