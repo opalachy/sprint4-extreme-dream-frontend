@@ -1,5 +1,5 @@
 .el-date-table {
-    border-radius: 30px;
+    // border-radius: 30px;
     td {
         &.current:not(.disabled) {
             span {
@@ -13,7 +13,8 @@
             }
         }
         &.available:hover {
-            color: red;
+            border-radius: 50%;
+            border: 2px solid black;
         }
         &.next-month{
            display: none;
@@ -25,6 +26,9 @@
         
     }
 }
+
+
+
 
 
 
