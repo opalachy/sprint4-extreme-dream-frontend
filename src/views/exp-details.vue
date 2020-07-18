@@ -20,6 +20,11 @@
           <ul>
               <li v-for="review in exp.reviews" :key="review.id">
                    <p>{{ review.at | moment("MMMM YYYY") }}</p>
+                   <img
+                      class="reviewer-img"
+                      :src="review.by.imgUrl"
+                      style="width: 50px; height: 50px; border-radius: 50%"
+                    />
                    <!-- <p>{{review.by.fullName}}</p>    need to add an img --> 
                    <p>{{review.by.fullName}}</p>
                    <p>{{review.txt}}</p>
