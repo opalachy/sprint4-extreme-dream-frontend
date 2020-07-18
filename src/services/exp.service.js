@@ -1,31 +1,13 @@
 import HttpService from './http.service.js'
 
-import axios from 'axios';
-
 
 export const expService = {
     getExps,
     getById,
     remove,
     add,
-    remove
+    update
 }
-
-// async function getExps (){
-//   const exps = await axios.get('http://localhost:3000/exp') 
-//    return exps.data
-// }
-
-// async function getById (expId){
-//   const exps = await axios.get(`http://localhost:3000/exp/${expId}`) 
-//    return exps.data
-// }
-
-// async function remove(expId) {
-//   return await axios.delete(`http://localhost:3000/exp/${expId}`)
-// }
-
-
 
 async function getExps() {
   return await HttpService.get('exp')
