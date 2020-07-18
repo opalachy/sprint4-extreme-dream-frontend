@@ -34,7 +34,7 @@ async function getById(expId) {
 }
 
 async function addParticipant (booked, exp ,user){
-  if(!user) user = userService.getGeustUser(booked)
+  if(!user) user = userService.getGuestUser(booked)
      exp.participants.push(user);
     try{
       const updatedExp = await update(exp)
@@ -44,7 +44,7 @@ async function addParticipant (booked, exp ,user){
     } 
 }
 
-// function getGeustUser (booked){
+// function getGuestUser (booked){
 //     const user = {
 //       _id : 'userId',
 //       fullName :  'guest' ,

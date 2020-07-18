@@ -1,6 +1,6 @@
 import HttpService from './http.service.js'
 
-export default {
+export const userService = {
     login,
     logout,
     signup,
@@ -8,11 +8,11 @@ export default {
     getById,
     remove,
     update,
-    getGeustUser
+    getGuestUser
 }
 
 
-function getGeustUser(booked) {
+function getGuestUser(booked) {
     const user = {
         _id: 'userId',
         fullName: 'guest',

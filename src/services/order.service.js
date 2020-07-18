@@ -33,7 +33,7 @@ async function getById(orderId) {
     return await HttpService.get(`order/${orderId}`)
 }
 async function addOrder(booked, exp, user) {
-    if(!user) user = userService.getGeustUser(booked)
+    if(!user) user = userService.getGuestUser(booked)
     const order = {
         createdAt : Date.now(),
         by: {
