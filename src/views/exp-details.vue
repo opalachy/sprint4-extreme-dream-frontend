@@ -14,7 +14,7 @@
             </div>
             <div class="exp-details-main">
                 <p class="exp-details-desc">{{exp.desc}}</p>
-               <exp-book :exp="exp"/>
+               <exp-book @booking="booking" :exp="exp"/>
             </div>
             <div class="exp-details-review-list">
                 <ul class="review-list">
@@ -54,7 +54,13 @@ export default {
         };
     },
     computed: {},
-    methods: {},
+    methods: {
+       booking(booked){
+           const user = this.$store.getters.loggedinUser     
+           this.$store.dispatch({type : 'booking', booked , exp: this.exp , user})
+
+        }
+    },
     async created() {
         const expId = this.$route.params.id;
         const exp = await expService.getById(expId);
