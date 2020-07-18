@@ -22,7 +22,7 @@
 
     <div class="exp-preview-price-stars-rate">
       <p class="exp-price">${{exp.currPrice}}</p>
-      <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}}</p>
+      <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
     </div>
   </li>
 </template>
@@ -44,6 +44,9 @@ export default {
     },
     book(){
       this.remain = this.exp.capacity - this.exp.participants.length
+    },
+    ratesCounter() {
+      return this.exp.reviews.length
     }
   },
   methods: {
