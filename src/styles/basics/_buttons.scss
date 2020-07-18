@@ -5,7 +5,6 @@ button {
     text-decoration: none;
     cursor: pointer;
     &:hover, button:focus {
-        border: none;
         opacity: 0.8;
         transition: opacity .3S ease-in-out;
     }
@@ -13,7 +12,6 @@ button {
         outline: none;
         outline-offset: -4px;
     }
-    
 
 }
 
