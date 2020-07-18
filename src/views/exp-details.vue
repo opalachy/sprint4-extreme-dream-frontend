@@ -19,7 +19,7 @@
     <div class="exp-details-review">
           <ul>
               <li v-for="review in exp.reviews" :key="review.id">
-                   <p>{{new Date(review.at).getDate()}}/{{new Date(review.at).getMonth()+1}}/{{new Date(review.at).getFullYear()}}</p>
+                   <p>{{ review.at | moment("MMMM YYYY") }}</p>
                    <!-- <p>{{review.by.fullName}}</p>    need to add an img --> 
                    <p>{{review.by.fullName}}</p>
                    <p>{{review.txt}}</p>

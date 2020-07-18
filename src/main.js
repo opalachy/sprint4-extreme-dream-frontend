@@ -9,8 +9,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 // Styles
 import './styles/styles.scss'
 
+Vue.use(require('vue-moment'));
 Vue.use(ElementUI);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
