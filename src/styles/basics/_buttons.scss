@@ -6,6 +6,8 @@ button {
     cursor: pointer;
     &:hover, button:focus {
         border: none;
+        opacity: 0.8;
+        transition: opacity .3S ease-in-out;
     }
     &:focus {
         outline: none;
