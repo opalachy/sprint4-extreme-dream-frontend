@@ -41,7 +41,7 @@
     },
     created(){
       const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
-          return acc + participant.numOfTicket
+          return acc + participant.numOfTickets
       }, 0);
       const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
       this.options = this.options.map((option) => {

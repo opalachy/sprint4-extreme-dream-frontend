@@ -1,12 +1,11 @@
 
 <template>
   <div class="exp-book">
-    <!-- <h2>Choose</h2> -->
-    <date-picker @setDay="setDay" />
-     <h2>Number Of Tickets</h2>
-    <select-capacity :participants="exp.participants"  :capacity="exp.capacity" @setTicket="setTicket"/>
-    <p>{{bookPrice}}</p>
-    <button @click="book">Really your dream</button>
+      <date-picker @setDay="setDay" />
+      <h2>Number Of Tickets</h2>
+      <select-capacity :participants="exp.participants"  :capacity="exp.capacity" @setTicket="setTicket"/>
+      <p>{{bookPrice}}</p>
+      <button @click="book">Really your dream</button>
   </div>
 </template>
 

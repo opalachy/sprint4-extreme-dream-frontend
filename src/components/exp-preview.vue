@@ -15,9 +15,9 @@
 
     <div class="exp-preview-type-ticket"> 
         <h4 class="exp-type">{{exp.type}}</h4>
-        <h4 class="preview-creator" @book="book">{{remain}} tickets left out of {{exp.capacity}}</h4> <!-- //Todo: Book -->
+        <h4 class="preview-creator"  >{{left}} tickets left out of {{exp.capacity}}</h4> 
     </div>  
-
+    <!-- @book="book" -->
     <p class="exp-preview-desc">{{exp.shortDesc}}</p>
 
     <div class="exp-preview-price-stars-rate">
@@ -32,7 +32,6 @@ export default {
   props: ["exp"],
   data() {
     return {
-      remain: this.exp.capacity
     }
   },
   computed: {
@@ -42,8 +41,11 @@ export default {
         }, 0);
         return (sum / this.exp.reviews.length).toFixed(1);   
     },
-    book(){
-      this.remain = this.exp.capacity - this.exp.participants.length
+    left(){
+      const totalSoldTickets = this.exp.participants.reduce((acc , participant) => {
+          return acc + participant.numOfTickets
+      }, 0);
+      return this.exp.capacity - totalSoldTickets
     },
     ratesCounter() {
       return this.exp.reviews.length
