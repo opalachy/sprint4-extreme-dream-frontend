@@ -1,23 +1,62 @@
-const gUsers = [
-    {
-        _id: 'u101',
-        fullName: 'Orly Amdadi',
-        userName: 'orly@amdadi.com',
-        password: 'tinkerbell',
-        isSeller: true,
-        imgUrl: 'http://some-img',
-        info: 'Dive master, with 12 years experience. I have 1200 hours of diving. I\'m certefied cave master as well.'
-    },
-    {
-        _id: 'u102',
-        fullName: 'Orly Azaz',
-        userName: 'orly@azaz.com',
-        password: '1234',
-        isSeller: false,
-        imgUrl: 'http://core-img',
-        info: 'I\'m new to diving and I would like to dive in an exsotic place'
-    }
-]
+import HttpService from './http.service.js'
+
+export default {
+    // login,
+    // logout,
+    signup,
+    getUsers,
+    getById,
+    remove,
+    update
+}
+
+async function getById(userId) { 
+    return await HttpService.get(`user/${userId}`)
+}
+
+async function remove(userId) {
+    return await HttpService.delete(`user/${userId}`)
+}
+
+// const user = {
+//     fullName: "adss",
+//     imgUrl: "https://glimakra.com/wp-content/uploads/2017/08/Johan-Kauppi-Designer-Portrait-2017.jpg",
+//     info: "36 years old. Spot is important part in my life, especially scuba diving.",
+//     isSeller: false,
+//     password: "12d34",
+//     userName: "yaird@lapid.com",
+//     _id: "oWe-S6G"
+// }
+
+async function update(user) {
+    // console.log(await HttpService.put(`user/${user._id}`, user))
+    return await HttpService.put(`user/${user._id}`, user)
+}
+
+// async function login(userCred) {
+//     const user = await HttpService.post('auth/login', userCred)
+//     return _handleLogin(user)
+// }
+
+async function signup(userCred) {
+    return await HttpService.post('user', userCred)
+ 
+    // return _handleLogin(user)
+}
+// async function logout() {
+//     await HttpService.post('auth/logout');
+//     sessionStorage.clear();
+// }
+
+async function getUsers() {
+//    console.log(HttpService.get('user'))
+  return await HttpService.get('user')
+}
+
+// function _handleLogin(user) {
+//     sessionStorage.setItem('user', JSON.stringify(user))
+//     return user;
+// }
 
 
 
