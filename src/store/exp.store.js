@@ -19,8 +19,11 @@ export const expStore = {
       const exps = await expService.getExps()
       state.exps = exps
       return exps
-
+    },
+    async booking({ state }, { booked, exp, user }) {
+       
+      const updatedExp =  await expService.addParticipant(booked, exp, user)
+      console.log(updatedExp)
     }
   },
-
 }

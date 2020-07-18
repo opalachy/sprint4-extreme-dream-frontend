@@ -16,27 +16,26 @@ export default {
   props: ['exp'],
    data() {
       return {
-        dayPicker: null,
-        numOfTicket: 1
+        booking: {
+          dayPicker: null,
+          numOfTickets: 1
+        }
       }
     },
     methods:{
       book(){
-        if(!this.dayPicker) return
-        console.log('numOfTicket: ' , this.numOfTicket ,'DAYPICKER: ' ,this.dayPicker)
+        this.$emit('booking' , this.booking)
       },
       setDay(day){
-        this.dayPicker = day
-        // this.dayPicker = day.getTime();
-        console.log(this.dayPicker)
+        this.booking.dayPicker = day.getTime()
       },
-      setTicket(numOfTicket){
-        this.numOfTicket = numOfTicket;
+      setTicket(numOfTickets){
+        this.booking.numOfTickets = numOfTickets;
       }
     },
     computed: {
       bookPrice(){
-         return '$' + this.exp.currPrice * this.numOfTicket 
+         return '$' + this.exp.currPrice * this.booking.numOfTickets 
       }
     },
     components: {
