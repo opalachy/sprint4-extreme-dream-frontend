@@ -14,7 +14,7 @@
             </div>
             <div class="exp-details-main">
                 <p class="exp-details-desc">{{exp.desc}}</p>
-                <exp-book />
+               <exp-book :exp="exp"/>
             </div>
             <div class="exp-details-review-list">
                 <ul class="review-list">
