@@ -34,7 +34,7 @@ async function getById(expId) {
 }
 
 async function addParticipant (booked, exp ,user){
-  if(!user) user = userService.getGeustUser(booked)
+  if(!user) user = userService.getGuestUser(booked)
      exp.participants.push(user);
     try{
       const updatedExp = await update(exp)
@@ -44,12 +44,4 @@ async function addParticipant (booked, exp ,user){
     } 
 }
 
-// function getGeustUser (booked){
-//     const user = {
-//       _id : 'userId',
-//       fullName :  'guest' ,
-//       imgUrl : "https://icon-library.com/images/male-avatar-icon/male-avatar-icon-29.jpg" ,
-//       numOfTickets : booked.numOfTickets
-//     }
-//     return user
-// }
+
