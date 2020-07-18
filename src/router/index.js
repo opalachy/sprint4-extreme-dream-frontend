@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home.vue'
 import about from '../views/about.vue'
-import appLogin from '../views/app-login.vue'
+import userLogin from '../views/user-login.vue'
+import userSignup from '../views/user-signup.vue'
 import userDetails from '../views/user-details.vue'
 import expEdit from '../views/exp-edit.vue'
 import expDetails from '../views/exp-details.vue'
@@ -43,8 +44,13 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'app-login',
-    component: appLogin
+    name: 'user-login',
+    component: userLogin
+  },
+  {
+    path: '/signup',
+    name: 'user-signup',
+    component: userSignup
   },
 
 ]
