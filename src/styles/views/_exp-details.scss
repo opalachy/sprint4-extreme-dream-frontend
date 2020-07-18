@@ -55,6 +55,7 @@
     .exp-details-main {
         margin: 0 auto;
         max-width: 95%;
+        display: flex;
     }
     .exp-details-review-list {
         display: flex;
@@ -80,6 +81,9 @@
                 line-height: 16px;
                 font-family: cursive;
             }
+        }
+        .el-icon-star-on:before {
+            color: #4f94d6;
         }
     }
 }

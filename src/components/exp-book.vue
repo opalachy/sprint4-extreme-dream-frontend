@@ -2,16 +2,17 @@
 <template>
   <div class="exp-book">
       <date-picker @setDay="setDay" />
-      <h2>Number Of Tickets</h2>
       <select-capacity :participants="exp.participants"  :capacity="exp.capacity" @setTicket="setTicket"/>
       <p>{{bookPrice}}</p>
-      <button @click="book">Really your dream</button>
+      <el-button class="book-btn" @click.native="book">Really your dream</el-button>
+      <!-- <button @click="book">Really your dream</button> -->
   </div>
 </template>
 
 <script>
 import datePicker from './date-picker.vue';
 import selectCapacity from './select-capacity.vue';
+// import elButton from 
 export default {
   props: ['exp'],
    data() {

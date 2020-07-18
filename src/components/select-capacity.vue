@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="value" placeholder="1">
+  <el-select v-model="value" placeholder="1 Ticket">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -17,23 +17,23 @@
       return {
         options: [{
           value: 1,
-          label: '1',
+          label: '1 Ticket',
           disabled: false
         }, {
           value: 2,
-          label: '2',
+          label: '2 Tickets',
           disabled: false
         }, {
           value: 3,
-          label: '3',
+          label: '3 Tickets',
            disabled: false
         }, {
           value: 4,
-          label: '4',
+          label: '4 Tickets',
           disabled: false
         }, {
           value: 5,
-          label: '5',
+          label: '5 Tickets',
           disabled: false
         }],
         value: 1,

@@ -1,12 +1,15 @@
-.exp-preview{
-    &:hover{
+.exp-preview {
+    .el-icon-star-on:before {
+        color: #4f94d6;
+    }
+    &:hover {
         cursor: pointer;
         opacity: 0.8;
-        transition: opacity .3S ease-in-out;
+        transition: opacity 0.3s ease-in-out;
     }
     border: 0.5px solid lightgray;
     border-radius: 8px;
-    .exp-preview-img{
+    .exp-preview-img {
         height: 205px; /* You must set a specified height */
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
@@ -15,57 +18,53 @@
         border-radius: 0.5rem;
     }
 }
-
-li.exp-preview{
+li.exp-preview {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
-    div{
+    div {
         margin-top: 0;
     }
-    p{
+    p {
         line-height: 1.2rem;
     }
 }
 
-.exp-preview-title-seller{
+.exp-preview-title-seller {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0.5rem 0;   
+    margin: 0 0.5rem 0;
 }
 
-.exp-preview-type-ticket{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0.5rem 0.5rem 0;   
-}
-
-.preview-seller{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    .preview-creator{
-        padding-right: 1rem;
-    }
-}
-
-.exp-preview-desc{
-    margin: 0 0.5rem 0;   
-}
-
-.exp-preview-price-stars-rate{
+.exp-preview-type-ticket {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem 0.5rem 0;
 }
 
-i{
-    color: yellow;
-    font-size: 1.5rem;
-
+.preview-seller {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .preview-creator {
+        padding-right: 1rem;
+    }
 }
 
+.exp-preview-desc {
+    margin: 0 0.5rem 0;
+}
+
+.exp-preview-price-stars-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0.5rem 0.3rem 0.5rem;
+}
+
+i {
+    font-size: 1.5rem;
+}

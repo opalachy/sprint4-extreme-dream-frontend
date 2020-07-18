@@ -1,5 +1,8 @@
 .home-page {
     font-family: cursive;
+    .el-icon-star-on:before {
+        color: #4f94d6;
+    }
     .hero-img {
         background-image: url("https://images.unsplash.com/photo-1520568474090-4908017861eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1185&q=80");
         height: 70vh; /* You must set a specified height */
@@ -21,7 +24,6 @@
                 width: 320px;
                 padding: 1rem 0rem 1rem 1rem;
             }
-
             .search-btn {
                 font-family: cursive;
                 height: 100%;
