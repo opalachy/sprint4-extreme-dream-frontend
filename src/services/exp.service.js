@@ -3,12 +3,12 @@ import { userService } from './user.service.js'
 
 
 export const expService = {
-    getExps,
-    getById,
-    remove,
-    add,
-    update,
-    addParticipant
+  getExps,
+  getById,
+  remove,
+  add,
+  update,
+  addParticipant
 }
 
 async function getExps() {
@@ -17,6 +17,7 @@ async function getExps() {
 }
 
 async function remove(expId) {
+  // await console.log('deleted: ', expId);
   return await HttpService.delete(`exp/${expId}`)
 }
 
@@ -33,14 +34,14 @@ async function getById(expId) {
   return await HttpService.get(`exp/${expId}`)
 }
 
-async function addParticipant (booked, exp ,user){
-  if(!user) user = userService.getGuestUser(booked)
-     exp.participants.push(user);
-    try{
-      const updatedExp = await update(exp)
-       return updatedExp
-    } catch (err) {
-      return (err)
-    } 
+async function addParticipant(booked, exp, user) {
+  if (!user) user = userService.getGuestUser(booked)
+  exp.participants.push(user);
+  try {
+    const updatedExp = await update(exp)
+    return updatedExp
+  } catch (err) {
+    return (err)
+  }
 }
 

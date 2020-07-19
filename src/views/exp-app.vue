@@ -4,7 +4,7 @@
 
     <!-- <div class="hero-img">
     <img src="" alt="Loading...">
-    </div> -->  
+    </div> --> 
     <exp-filter @filter="setFilter" />
     <exp-list :exps="exps" />
   </section>
