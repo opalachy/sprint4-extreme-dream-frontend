@@ -28,14 +28,14 @@ const routes = [
     component: expApp
   },
   {
-    path: '/exp/:id',
-    name: 'exp-details',
-    component: expDetails
-  },
-  {
     path: '/exp/edit/:id?',
     name: 'exp-edit',
     component: expEdit
+  },
+  {
+    path: '/exp/:id',
+    name: 'exp-details',
+    component: expDetails
   },
   {
     path: '/user/:id',

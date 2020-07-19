@@ -8,8 +8,12 @@ export const expService = {
   remove,
   add,
   update,
-  addParticipant
+  addParticipant,
+  getEmptyExp,
+  saveExp
 }
+
+
 
 async function getExps() {
   return await HttpService.get('exp')
@@ -33,6 +37,31 @@ async function getById(expId) {
   return await HttpService.get(`exp/${expId}`)
 }
 
+function getEmptyExp() {
+  const emptyExp = 
+        {
+          title: "",
+          shortDesc: "",
+          desc: "",
+          createdBy: {
+            _id: "",
+            fullName: "",
+            info: "",
+            imgUrl: ""
+          },
+          type: "",
+          currPrice: "",
+          origPrice: "",
+          tags: [],
+          participants: [],
+          location: "",
+          date: "",
+          capacity: "",
+          imgUrls: []
+        }
+  return emptyExp
+}
+
 async function addParticipant(booked, exp, user) {
   if (!user) user = userService.getGuestUser(booked)
   exp.participants.push(user);
@@ -44,3 +73,6 @@ async function addParticipant(booked, exp, user) {
   }
 }
 
+function saveExp(exp) {
+  return exp._id ? update(exp) : add(exp);
+}
