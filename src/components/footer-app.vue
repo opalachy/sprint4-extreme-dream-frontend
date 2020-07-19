@@ -1,7 +1,9 @@
 <template>
   <section class="footer-app">
-        <hr/>
-        <router-link to="/about">About Us</router-link>
+        <div class="footer-container">
+          <p> © 2020 Exdreme, Inc. All rights reserved </p>
+          <router-link to="/about">About Us</router-link>
+        </div>
   </section>
 </template>
 

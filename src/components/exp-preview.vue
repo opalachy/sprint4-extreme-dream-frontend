@@ -4,11 +4,10 @@
     <div class="exp-preview-title-seller"> 
         <h4 class="exp-title">{{exp.title}}</h4>
         <div class="preview-seller">
-            <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
+            <!-- s<h4 class="preview-creator">{{exp.createdBy.fullName}}</h4> -->
             <img
               class="seller-img"
               :src="exp.createdBy.imgUrl"
-              style="width: 50px; height: 50px; border-radius: 50%"
             />
         </div>
     </div>    

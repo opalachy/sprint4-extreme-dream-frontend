@@ -5,7 +5,7 @@
                 class="reviewer-img"
                 :src="review.by.imgUrl"
                 style="width: 50px; height: 50px; border-radius: 50%"
-            />
+                 />
             <div class="reviewer-container">
                 <p>{{review.by.fullName}}</p>
                 <p class="review-date">{{date}}</p>

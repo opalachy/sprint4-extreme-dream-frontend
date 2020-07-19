@@ -1,5 +1,5 @@
 .home-page {
-    font-family: cursive;
+    // font-family: cursive;
     .el-icon-star-on:before {
         color: #4f94d6;
     }
@@ -10,13 +10,14 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        margin-bottom: 60px;
         .search-container {
             height: 30px;
             margin-top: 10%;
             display: flex;
 
             input {
-                font-family: cursive;
+                // font-family: cursive;
                 outline: none;
                 border: 0;
                 border-radius: 5px;
@@ -25,7 +26,7 @@
                 padding: 1rem 0rem 1rem 1rem;
             }
             .search-btn {
-                font-family: cursive;
+                // font-family: cursive;
                 height: 100%;
                 border: 0;
                 border-radius: 5px;
@@ -34,24 +35,28 @@
                 margin: 0;
             }
         }
-
     }
     .cards-container {
         display: flex;
         flex-direction: column;
         max-width: 980px;
-        // background-color: aquamarine;
         margin: 0 auto;
+        padding: 0 15px;
         .type-container {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 30px;
         }
-        .type-container{
-            margin-top: 1rem;
+        button {
+            background-color: #202727;
+            color: white;
+            border-radius: 7px;
+            padding: 9px 12px;
         }
         .exp-list {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 50px;
             .exp-preview {
                 width: 30%;
                 height: 360px;
