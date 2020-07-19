@@ -1,7 +1,7 @@
 
 <template>
   <div class="exp-book">
-      <date-picker @setDay="setDay" />
+      <!-- <date-picker @setDay="setDay" /> -->
       <select-capacity :participants="exp.participants"  :capacity="exp.capacity" @setTicket="setTicket"/>
       <p>{{bookPrice}}</p>
       <el-button class="book-btn" @click.native="book">book</el-button>
