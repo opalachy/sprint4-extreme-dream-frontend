@@ -10,8 +10,12 @@
         color: white;
         font-size: 22px;
         letter-spacing: 0.5px;
+        cursor: pointer;
     }
     .logo {
         max-width: 240px;
+    }
+    .router-header > * {
+        margin-inline-start: 20px;
     }
 }
