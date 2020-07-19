@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import userService from '../services/user.service.js'
 
-var localLoggedinUser = null;
+// var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 Vue.use(Vuex)
@@ -10,12 +10,12 @@ Vue.use(Vuex)
 export const userStore = {
     strict: true,
     state: {
-        userPrefs:{
-            gender: null,
-            color: null,
-            time: null
+        loggedinUser: {
+            "_id": "u101",
+            "fullName": "Orly Snowboard",
+            "info": "Ski and snowboard instructor for more than 20 years. Gurn camp resort was founded in 2010. In 2015 Gurn camp was awarded the best freestle resort in France.",
+            "imgUrl": "https://i0.wp.com/zsuttonphoto.com/wp-content/uploads/2019/11/Los-Angeles-Beauty-Photography-19.jpg?fit=3000%2C3750&ssl=1"
         },
-        loggedinUser : localLoggedinUser,
         users: []
     },
     getters: {
@@ -33,48 +33,47 @@ export const userStore = {
         setUserPrefs(state, { userPrefs }) {
             state.userPrefs = userPrefs;
         },
-        setUser(state, {userCred}) {
+        setUser(state, { userCred }) {
             state.loggedinUser = userCred;
         },
-        setUsers(state, {users}) {
+        setUsers(state, { users }) {
             state.users = users;
         },
-        removeUser(state, {userId}) {
+        removeUser(state, { userId }) {
             state.users = state.users.filter(user => user._id !== userId)
         },
-       
+
     },
     actions: {
-        async login(context, {userCred}) {
-            const user = await userService.login(userCred);
-            console.log(userCred)
-            context.commit({type: 'setUser', user})
+        async login({ commit }, { userCred }) {
+            // const user = await userService.login(userCred);
+            // console.log(userCred)
+            commit({ type: 'setUser', user })
             return user;
         },
-        async signup(context, {userCred}) {
+        async signup({ commit }, { userCred }) {
             const user = await userService.signup(userCred)
             console.log('1');
-            
-            context.commit({type: 'setUser', user})
+            commit({ type: 'setUser', user })
             return user;
-            
+
         },
-        async logout(context) {
+        async logout({ commit }) {
             await userService.logout()
-            context.commit({type: 'setUsers', users: []})
-            context.commit({type: 'setUser', user: null})
+            commit({ type: 'setUsers', users: [] })
+            commit({ type: 'setUser', user: null })
         },
-        async loadUsers(context) {
+        async loadUsers({ commit }) {
             const users = await userService.getUsers();
-            context.commit({type: 'setUsers', users})
+            commit({ type: 'setUsers', users })
         },
-        async removeUser(context, {userId}) {
+        async removeUser({ commit }, { userId }) {
             await userService.remove(userId);
-            context.commit({type: 'removeUser', userId})
+            commit({ type: 'removeUser', userId })
         },
-        async updateUser(context, {user}) {
+        async updateUser({ commit }, { user }) {
             user = await userService.update(user);
-            context.commit({type: 'setUser', user})
+            commit({ type: 'setUser', user })
         }
     },
 }

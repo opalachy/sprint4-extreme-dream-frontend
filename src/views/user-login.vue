@@ -6,7 +6,6 @@
           <button @click="logout">Logout</button>
       </div>
       <form v-else @submit.prevent="login">
-        <input placeholder="Please input Email" v-model="credentials.email"/>
         <input placeholder="Please input user name" v-model="credentials.username"/>
         <input placeholder="Please input password" v-model="credentials.password" show-password/>
         <button>Login</button>
@@ -21,36 +20,35 @@ import {userService} from '../services/user.service.js'
 export default {
   data(){
     return {
-      loggedinUser: '',
+      loggedinUser: null,
       credentials: {
         username: '',
         password: '',
-        email: '',
       },
     }
   },
   methods: {
      login() {
-      this.$store.commit({type: 'setUser', userCred: this.credentials})
-      this.loadLoggedinUser()
-      console.log('loggedin user:', this.loggedinUser)
+      this.$store.dispatch({type: 'login', userCred: this.credentials})
+      // console.log('loggedin user:', this.loggedinUser)
+      // this.loadLoggedinUser()
       this.$router.push('/')
     },
     async logout(){
       let user = await this.$store.dispatch({type: 'logout'})
       console.log('loggedout user:', user);
-      this.loadLoggedinUser()
+      // this.loadLoggedinUser()
       this.$router.push('/')
     },
     signup(){
         this.$router.push('/signup')
     },
-    loadLoggedinUser(){
-      this.loggedinUser = this.$store.getters.loggedinUser
-    }
+    // loadLoggedinUser(){
+    //   this.loggedinUser = this.$store.getters.loggedinUser
+    // }
   },
   created() {
-    this.loadLoggedinUser()
+    // this.loadLoggedinUser()
   },
 
 }

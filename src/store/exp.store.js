@@ -4,7 +4,8 @@ export const expStore = {
   state: {
     exps: [],
     filterBy: {
-      type: 'all'
+      type: 'all',
+      loggedinUser: null
     }
   },
   getters: {

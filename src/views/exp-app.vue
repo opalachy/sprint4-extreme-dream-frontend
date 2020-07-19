@@ -25,13 +25,6 @@ export default {
     }
   },
   methods: {
-    async remove(id) {
-      try {
-        await this.$store.dispatch({ type: "removeExp", id });
-      } catch (err) {
-        console.log("error:", err);
-      }
-    },
     setFilter(filterBy) {
       console.log(filterBy)
         // this.$store.commit({ type: 'setFilter', filterBy: _.cloneDeep(filterBy) })

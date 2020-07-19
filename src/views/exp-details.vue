@@ -14,23 +14,20 @@
             </div>
             <div class="exp-details-main">
                 <p class="exp-details-desc">{{exp.desc}}</p>
-               <exp-book @booking="booking" :exp="exp"/>
+                <exp-book @booking="booking" :exp="exp" />
             </div>
             <div class="exp-details-review-list">
                 <ul class="review-list">
                     <exp-review v-for="review in exp.reviews" :key="review.id" :review="review" />
                 </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="exp-details-guide-container">
                 <div class="guide-details">
-                    <img
-                        class="seller-img"
-                        :src="exp.createdBy.imgUrl"
-                    />
+                    <img class="seller-img" :src="exp.createdBy.imgUrl" />
                     <h4>{{exp.createdBy.fullName}}</h4>
                 </div>
-                    <h4 class="exp-details-guide-info">{{exp.createdBy.info}}</h4>
+                <h4 class="exp-details-guide-info">{{exp.createdBy.info}}</h4>
                 <h4 class="reviews-num">
                     <i class="el-icon-star-on"></i>
                     {{exp.reviews.length}} reviews
@@ -54,10 +51,14 @@ export default {
     },
     computed: {},
     methods: {
-       booking(booked){
-           const user = this.$store.getters.loggedinUser     
-           this.$store.dispatch({type : 'booking', booked , exp: this.exp , user})
-
+        booking(booked) {
+            const user = this.$store.getters.loggedinUser;
+            this.$store.dispatch({
+                type: "booking",
+                booked,
+                exp: this.exp,
+                user
+            });
         }
     },
     async created() {

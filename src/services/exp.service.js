@@ -8,15 +8,21 @@ export const expService = {
   remove,
   add,
   update,
-  addParticipant
+  addParticipant,
+  getMyExps
 }
 
 async function getExps() {
   return await HttpService.get('exp')
 }
 
+async function getMyExps(userId) {
+  const exps = await HttpService.get('exp')
+  const myExps = exps.filter(exp => exp.createdBy._id === userId)
+  return myExps
+}
+
 async function remove(expId) {
-  // await console.log('deleted: ', expId);
   return await HttpService.delete(`exp/${expId}`)
 }
 
