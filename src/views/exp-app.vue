@@ -31,10 +31,6 @@ export default {
       } catch (err) {
         console.log("error:", err);
       }
-      //  this.$store.dispatch({ type: 'removeToy', id })
-      //           .then(() => {
-      //               eventBus.$emit(SHOW_MSG, { txt: 'Toy removed successfully!', type: 'danger' });
-      //           })
     },
     setFilter(filterBy) {
       console.log(filterBy)

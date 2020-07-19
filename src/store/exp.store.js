@@ -16,11 +16,17 @@ export const expStore = {
   },
   actions: {
     async loadExps({ state }) {
-      const exps = await expService.getExps()
-      state.exps = exps
-      return exps
+      try {
+        const exps = await expService.getExps()
+        console.log('try');
+        state.exps = exps
+        return exps
+
+      } catch (err) {
+        console.log('ERR: ',err)
+      }
     },
-    
+
     async removeExp({ commit }, { id }) {
       await expService.remove(id)
       // commit({ type: 'removeExp', id })
@@ -35,13 +41,13 @@ export const expStore = {
 
 
 
-// saveToy({ commit }, { toy }) {
-//   const type = (toy._id) ? 'updateToy' : 'addToy';
-//   if (!toy._id) toy.createdAt = Date.now();
-//   return toyService.save(toy)
-//     .then((savedToy) => {
-//       commit({ type, savedToy })
-//       return savedToy;
+// async saveExp({ commit }, { exp }) {
+//   const type = (exp._id) ? 'updateExp' : 'addExp';
+//   if (!exp._id) exp.createdAt = Date.now();
+//   const exp = await expService.save(exp)
+//     .then((savedExp) => {
+//       commit({ type, savedExp })
+//       return savedExp;
 //     })
 // }
 

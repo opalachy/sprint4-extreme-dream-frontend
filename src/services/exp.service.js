@@ -13,7 +13,6 @@ export const expService = {
 
 async function getExps() {
   return await HttpService.get('exp')
-  // console.log(await HttpService.get('exp'))
 }
 
 async function remove(expId) {
