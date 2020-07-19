@@ -17,7 +17,14 @@ export const expService = {
 
 
 async function getExps() {
-  return await HttpService.get('exp')
+     var filterBy = {
+       type: 'all',
+       location: 'all',
+       tags: [],
+       sortBy: 'currPrice' 
+     }
+  const {type ,location ,tags ,sortBy} = filterBy;
+  return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}`)
 }
 
 async function getMyExps(userId) {
