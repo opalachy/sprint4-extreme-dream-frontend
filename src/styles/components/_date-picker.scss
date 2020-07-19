@@ -3,19 +3,19 @@
     td {
         &.current:not(.disabled) {
             span {
-                background-color: red;
+                background-color: #4f94d6;
             }
         }
         &.today {
             span {
-                color: blue($color: #000000);
+                color: #4f94d6;
                 font-weight: 700;
             }
         }
-        &.available:hover {
-            border-radius: 50%;
-            border: 2px solid black;
-        }
+        // &.available:hover {
+        //     border-radius: 50%;
+        //     border: 2px solid black;
+        // }
         &.next-month{
            display: none;
         }
@@ -26,6 +26,8 @@
     }
 
 }
+
+
 
 .el-input__icon {
     color: lightgray;

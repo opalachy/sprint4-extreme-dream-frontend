@@ -27,14 +27,13 @@
                     <img
                         class="seller-img"
                         :src="exp.createdBy.imgUrl"
-                        style="width: 50px; height: 50px; border-radius: 50%"
                     />
                     <h4>{{exp.createdBy.fullName}}</h4>
                 </div>
                     <h4 class="exp-details-guide-info">{{exp.createdBy.info}}</h4>
                 <h4 class="reviews-num">
                     <i class="el-icon-star-on"></i>
-                    ({{exp.reviews.length}})
+                    {{exp.reviews.length}} reviews
                 </h4>
             </div>
         </div>

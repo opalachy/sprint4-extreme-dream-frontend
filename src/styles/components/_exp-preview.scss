@@ -1,6 +1,7 @@
 .exp-preview {
     .el-icon-star-on:before {
         color: #4f94d6;
+        font-size: 1.5rem;
     }
     &:hover {
         cursor: pointer;
@@ -16,6 +17,10 @@
         background-size: cover; /* Resize the background image to cover the entire container */
         // @include img-background-cover-center;
         border-radius: 0.5rem;
+    }
+    .exp-type{
+        font-weight: bold;
+        text-decoration: underline;     
     }
 }
 li.exp-preview {
@@ -36,6 +41,19 @@ li.exp-preview {
     justify-content: space-between;
     align-items: center;
     margin: 0 0.5rem 0;
+    .preview-seller {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .seller-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .preview-creator {
+            padding-right: 1rem;
+        }
+    }
 }
 
 .exp-preview-type-ticket {
@@ -43,15 +61,6 @@ li.exp-preview {
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem 0.5rem 0;
-}
-
-.preview-seller {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    .preview-creator {
-        padding-right: 1rem;
-    }
 }
 
 .exp-preview-desc {
@@ -65,6 +74,3 @@ li.exp-preview {
     margin: 0 0.5rem 0.3rem 0.5rem;
 }
 
-i {
-    font-size: 1.5rem;
-}

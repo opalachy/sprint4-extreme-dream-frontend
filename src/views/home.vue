@@ -2,7 +2,7 @@
     <section class="home-page">
         <div class="hero-img">
           <div class="search-container">
-            
+            <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
                 <input list="exp-list" placeholder="What Is Your Favor Experience"/>
                 <datalist id="exp-list">
                     <option value="Ski" />

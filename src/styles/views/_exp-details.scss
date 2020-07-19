@@ -70,20 +70,34 @@
     .exp-details-guide-container {
         margin: 0 auto;
         max-width: 95%;
+        margin-bottom: 30px;
+        .exp-details-guide-info{
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
         .guide-details {
+            .seller-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-inline-end: 20px;
+            }
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            width: 150px;
             margin-bottom: 10px;
             h4 {
-                font-size: 12px;
+                font-size: 16px;
                 line-height: 16px;
-                font-family: cursive;
+                font-weight: bold;
+                // font-family: cursive;
             }
         }
         .el-icon-star-on:before {
             color: #4f94d6;
+            font-size: 1.5rem;
+            position: relative;
+            top: 2.5px;
         }
     }
 }
