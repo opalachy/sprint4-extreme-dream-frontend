@@ -4,23 +4,25 @@
     <div class="exp-preview-title-seller"> 
         <h4 class="exp-title">{{exp.title}}</h4>
         <div class="preview-seller">
-            <!-- s<h4 class="preview-creator">{{exp.createdBy.fullName}}</h4> -->
             <img
               class="seller-img"
               :src="exp.createdBy.imgUrl"
             />
+            <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
         </div>
     </div>    
 
     <div class="exp-preview-type-ticket"> 
         <h4 class="exp-type">{{exp.type}}</h4>
-        <h4 class="preview-creator"  >{{left}} tickets left out of {{exp.capacity}}</h4> 
+        <button class="edit" @click.stop="edit">Edit</button>
+        <h4 class="preview-creator"  >{{left}}/{{exp.capacity}} left</h4> 
     </div>  
     <!-- @book="book" -->
     <p class="exp-preview-desc">{{exp.shortDesc}}</p>
 
     <div class="exp-preview-price-stars-rate">
       <p class="exp-price">${{exp.currPrice}}</p>
+
       <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
     </div>
   </li>
@@ -53,6 +55,9 @@ export default {
   methods: {
     details() {
       this.$router.push("/exp/" + this.exp._id);
+    },
+    edit(){
+      this.$router.push("/exp/edit/" + this.exp._id)
     }
   },
   components: {

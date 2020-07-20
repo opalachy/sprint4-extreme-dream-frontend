@@ -4,42 +4,44 @@
     <form @submit.prevent="saveExp">
       <label>
         Date:
-        <date-picker @setDay="setDay" />
+        <date-picker @setDay="setDay" :date="expToEdit.startsAt" />
       </label>
       <label>
         Location:
-        <el-input required placeholder="Experience location" v-model="expToEdit.location"></el-input>
-      </label>
+        <el-input class="el-input" required placeholder="Experience location" v-model="expToEdit.location"></el-input>
+      </label><br/>
       <label>
         Title:
-        <el-input required placeholder="Experience title" v-model="expToEdit.title"></el-input>
-      </label>
+        <el-input class="el-input" required placeholder="Experience title" v-model="expToEdit.title"></el-input>
+      </label><br/>
       <label>
         Type:
-        <el-input required placeholder="Experience type" v-model="expToEdit.type"></el-input>
-      </label>
+        <el-input class="el-input" required placeholder="Experience type" v-model="expToEdit.type"></el-input>
+      </label><br/>
       <label>
         Upload at least 5 images: {{loaded}}
         <input required type="file" placeholder="Experience image" @change="onUploadImg"/>
       </label><br/>
       <el-input
+        class="el-input"
         required
         type="textarea"
         :rows="2"
         placeholder="Please input short description"
         v-model="expToEdit.shortDesc"
-      ></el-input>
+      ></el-input><br/><br/>
       <el-input
+        class="el-input"
         required
         type="textarea"
         :rows="2"
         placeholder="Please input long description"
         v-model="expToEdit.desc"
-      ></el-input>
+      ></el-input><br/>
       <label>
         Capacity:
-        <el-input required type="number" placeholder="Max participants" v-model="expToEdit.capacity"></el-input>
-      </label>
+        <el-input class="el-input" required type="number" placeholder="Max participants" v-model="expToEdit.capacity"></el-input>
+      </label><br/><br/>
       <label>
         Category:
         <el-select v-model="expToEdit.tags" placeholder="Choose Category">
@@ -49,7 +51,7 @@
           <el-option value="adventure">Adventure</el-option>
           <el-option value="sports">Sports</el-option>
         </el-select>
-      </label>
+      </label><br/><br/>
       <label>
         Price:
         <el-input-number
@@ -58,7 +60,7 @@
           :min="0"
           placeholder="origPrice"
         ></el-input-number>
-      </label>
+      </label><br/><br/>
       <label>
         Price with discount:
         <el-input-number
@@ -67,10 +69,10 @@
           :min="0"
           placeholder="currPrice"
         ></el-input-number>
-      </label>
+      </label><br/>
 
       <button :disabled="disabled" >Save</button>
-      <pre>{{expToEdit}}</pre>
+      <!-- <pre>{{expToEdit}}</pre> -->
     </form>
     <button v-if="expToEdit._id" @click="removeExp">Delete Experience</button>
   </section>
@@ -150,7 +152,7 @@ export default {
         });
     },
     async onUploadImg(ev) {
-        if (this.expToEdit.imgUrls.length >= 5) return 
+        if (this.expToEdit.imgUrls.length >= 30) return 
       var res = await uploadImg(ev);
       this.expToEdit.imgUrls.push(res.url);
       if (this.loadCount === 0){

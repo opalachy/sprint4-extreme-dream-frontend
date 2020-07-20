@@ -44,8 +44,10 @@ li.exp-preview {
     margin: 0 0.5rem 0;
     .preview-seller {
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        padding-right: 10px;
         .seller-img {
             width: 40px;
             height: 40px;
@@ -53,6 +55,8 @@ li.exp-preview {
         }
         .preview-creator {
             padding-right: 1rem;
+            font-size: 10px;
+            padding: 0;
         }
     }
 }

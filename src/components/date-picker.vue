@@ -11,9 +11,10 @@
 
 <script>
   export default {
+    props: ['date'],
     data() {
       return {
-        value: '',
+        value: this.date,
       }
     },
   watch: {
