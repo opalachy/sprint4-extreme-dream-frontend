@@ -4,24 +4,49 @@
     <form @submit.prevent="saveExp">
       <label>
         Date:
-        <date-picker @setDay="setDay" :date="expToEdit.startsAt" />
+        <date-picker @setDay="setDay" :date="expToEdit.date" />
       </label>
       <label>
         Location:
-        <el-input class="el-input" required placeholder="Experience location" v-model="expToEdit.location"></el-input>
-      </label><br/>
+        <el-input
+          class="el-input"
+          required
+          placeholder="Experience location"
+          v-model="expToEdit.location"
+        ></el-input>
+      </label>
+      <br />
       <label>
         Title:
-        <el-input class="el-input" required placeholder="Experience title" v-model="expToEdit.title"></el-input>
-      </label><br/>
+        <el-input
+          class="el-input"
+          required
+          placeholder="Experience title"
+          v-model="expToEdit.title"
+        ></el-input>
+      </label>
+      <br />
       <label>
         Type:
         <el-input class="el-input" required placeholder="Experience type" v-model="expToEdit.type"></el-input>
-      </label><br/>
+      </label>
+      <br />
       <label>
-        Upload at least 5 images: {{loaded}}
-        <input required type="file" placeholder="Experience image" @change="onUploadImg"/>
-      </label><br/>
+        Upload/Have at least 5 images: {{loaded}}
+        <input
+          :required="isNotEnoughImg"
+          type="file"
+          placeholder="Experience image"
+          @change="onUploadImg"
+        />
+      </label>
+      <br />
+      <div class="exp-edit-imgs-container">
+        <div class="exp-edit-imgs" v-for="(img, idx ) in expToEdit.imgUrls">
+          <img :src="img" style="height: 50px; width: 50px;" />
+          <button @click.prevent="deleteImg(idx)">x</button>
+        </div>
+      </div>
       <el-input
         class="el-input"
         required
@@ -29,7 +54,9 @@
         :rows="2"
         placeholder="Please input short description"
         v-model="expToEdit.shortDesc"
-      ></el-input><br/><br/>
+      ></el-input>
+      <br />
+      <br />
       <el-input
         class="el-input"
         required
@@ -37,11 +64,20 @@
         :rows="2"
         placeholder="Please input long description"
         v-model="expToEdit.desc"
-      ></el-input><br/>
+      ></el-input>
+      <br />
       <label>
         Capacity:
-        <el-input class="el-input" required type="number" placeholder="Max participants" v-model="expToEdit.capacity"></el-input>
-      </label><br/><br/>
+        <el-input
+          class="el-input"
+          required
+          type="number"
+          placeholder="Max participants"
+          v-model="expToEdit.capacity"
+        ></el-input>
+      </label>
+      <br />
+      <br />
       <label>
         Category:
         <el-select v-model="expToEdit.tags" placeholder="Choose Category">
@@ -51,7 +87,9 @@
           <el-option value="adventure">Adventure</el-option>
           <el-option value="sports">Sports</el-option>
         </el-select>
-      </label><br/><br/>
+      </label>
+      <br />
+      <br />
       <label>
         Price:
         <el-input-number
@@ -60,7 +98,9 @@
           :min="0"
           placeholder="origPrice"
         ></el-input-number>
-      </label><br/><br/>
+      </label>
+      <br />
+      <br />
       <label>
         Price with discount:
         <el-input-number
@@ -69,10 +109,10 @@
           :min="0"
           placeholder="currPrice"
         ></el-input-number>
-      </label><br/>
+      </label>
+      <br />
 
-      <button :disabled="disabled" >Save</button>
-      <!-- <pre>{{expToEdit}}</pre> -->
+      <button :disabled="disabled">Save</button>
     </form>
     <button v-if="expToEdit._id" @click="removeExp">Delete Experience</button>
   </section>
@@ -86,82 +126,62 @@ import datePicker from "../components/date-picker";
 export default {
   data() {
     return {
-        disabled: true,
-        loaded: '',
-        loadCount: 0,
-      expToEdit: null,
-      exp: 
-        {
-          title: "",
-          shortDesc: "",
-          desc: "",
-          createdBy: {
-            _id: "",
-            fullName: "",
-            info: "",
-            imgUrl: ""
-          },
-          type: "",
-          currPrice: "",
-          origPrice: "",
-          tags: [],
-          participants: [],
-          location: "",
-          date: "",
-          capacity: "",
-          imgUrls: [],
-          reviews: []
-        }
+      disabled: true,
+      loaded: "",
+      loadCount: 0,
+      expToEdit: null
     };
   },
-
   components: {
     datePicker
   },
+  computed: {
+    isNotEnoughImg() {
+      return this.expToEdit.imgUrls < 5;
+    }
+  },
   methods: {
-    loadExp() {
+    async loadExp() {
       let expId = this.$route.params.id;
       if (expId) {
-        expService.getById(expId).then(exp => {
+        const exp = await expService.getById(expId)
           this.expToEdit = JSON.parse(JSON.stringify(exp));
-        });
       } else {
         this.expToEdit = expService.getEmptyExp();
       }
     },
     setDay(day) {
-      this.expToEdit.date = day.getTime();
-      if (day !== null) this.disabled = !this.disabled
-      console.log(this.expToEdit.date)
+      if (day !== null || this.expToEdit.date !== null) this.disabled = false;
     },
-    saveExp() {
+    async saveExp() {
       if (!this.expToEdit.title) return;
-      this.$store
-        .dispatch({ type: "saveExp", exp: this.expToEdit })
-        .then(savedexp => {
+      await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit })
           this.$router.push("/");
           this.loadExp();
-        });
     },
-    removeExp() {
-      this.$store
-        .dispatch({ type: "removeExp", id: this.expToEdit._id })
-        .then(savedexp => {
-          this.$router.push("/");
-          this.loadExp();
-        });
+    async removeExp() {
+      const savedExp = await this.$store.dispatch({
+        type: "removeExp",
+        id: this.expToEdit._id
+      });
+      this.$router.push("/");
+      this.loadExp();
+    },
+    deleteImg(idx) {
+      this.expToEdit.imgUrls.splice(idx, 1);
     },
     async onUploadImg(ev) {
-        if (this.expToEdit.imgUrls.length >= 30) return 
+      if (this.expToEdit.imgUrls.length >= 30) return;
       var res = await uploadImg(ev);
       this.expToEdit.imgUrls.push(res.url);
-      if (this.loadCount === 0){
-          this.loaded = '1 image was loaded'
-          this.loadCount++;
-      }else {
-          this.loadCount++;
-          this.loaded = this.loadCount + ' images were loaded'
+      if (this.loadCount === 0) {
+        this.loaded = "1 image was loaded";
+        this.loadCount++;
+      } else {
+        this.loadCount++;
+        this.loaded = this.loadCount + " images were loaded";
       }
+      return this.expToEdit.imgUrls;
     }
   },
   created() {

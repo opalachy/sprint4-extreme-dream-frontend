@@ -35,7 +35,6 @@ async function add(exp) {
 }
 
 async function update(exp) {
-  console.log(exp)
   return await HttpService.put(`exp/${exp._id}`, exp)
 }
 
@@ -44,27 +43,28 @@ async function getById(expId) {
 }
 
 function getEmptyExp() {
-  const emptyExp =
-  {
-    title: "",
-    shortDesc: "",
-    desc: "",
-    createdBy: {
-      _id: "",
-      fullName: "",
-      info: "",
-      imgUrl: ""
-    },
-    type: "",
-    currPrice: "",
-    origPrice: "",
-    tags: [],
-    participants: [],
-    location: "",
-    date: "",
-    capacity: "",
-    imgUrls: []
-  }
+  const emptyExp = 
+        {
+          title: "",
+          shortDesc: "",
+          desc: "",
+          createdBy: {
+            _id: "",
+            fullName: "",
+            info: "",
+            imgUrl: ""
+          },
+          type: "",
+          currPrice: "",
+          origPrice: "",
+          tags: [],
+          participants: [],
+          location: "",
+          date: "",
+          capacity: "",
+          imgUrls: [],
+          reviews: []
+        }
   return emptyExp
 }
 
