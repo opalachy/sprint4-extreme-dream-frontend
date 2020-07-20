@@ -16,7 +16,8 @@
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover; /* Resize the background image to cover the entire container */
         // @include img-background-cover-center;
-        border-radius: 0.5rem;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;;
     }
     .exp-type{
         font-weight: bold;
