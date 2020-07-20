@@ -17,13 +17,13 @@ export const expService = {
 
 
 async function getExps() {
-     var filterBy = {
-       type: 'all',
-       location: 'all',
-       tags: [],
-       sortBy: 'currPrice' 
-     }
-  const {type ,location ,tags ,sortBy} = filterBy;
+  var filterBy = {
+    type: 'all',
+    location: 'all',
+    tags: [],
+    sortBy: 'currPrice'
+  }
+  const { type, location, tags, sortBy } = filterBy;
   return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}`)
 }
 
@@ -51,27 +51,27 @@ async function getById(expId) {
 }
 
 function getEmptyExp() {
-  const emptyExp = 
-        {
-          title: "",
-          shortDesc: "",
-          desc: "",
-          createdBy: {
-            _id: "",
-            fullName: "",
-            info: "",
-            imgUrl: ""
-          },
-          type: "",
-          currPrice: "",
-          origPrice: "",
-          tags: [],
-          participants: [],
-          location: "",
-          date: "",
-          capacity: "",
-          imgUrls: []
-        }
+  const emptyExp =
+  {
+    title: "",
+    shortDesc: "",
+    desc: "",
+    createdBy: {
+      _id: "",
+      fullName: "",
+      info: "",
+      imgUrl: ""
+    },
+    type: "",
+    currPrice: "",
+    origPrice: "",
+    tags: [],
+    participants: [],
+    location: "",
+    date: "",
+    capacity: "",
+    imgUrls: []
+  }
   return emptyExp
 }
 
