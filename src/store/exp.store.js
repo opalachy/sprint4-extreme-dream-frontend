@@ -3,9 +3,10 @@ import { expService } from '../services/exp.service.js'
 export const expStore = {
   state: {
     exps: [],
-    filterBy: {
-      type: 'all',
-      loggedinUser: null
+      filterBy: {
+        type: 'all',
+        location: 'all',
+        tags: []
     }
   },
   getters: {
@@ -20,6 +21,9 @@ export const expStore = {
     },
     addExp(state, { exp }) {
       state.exps.push(exp);
+    },
+    setFilter(state, { filterBy }){
+      state.filterBy = filterBy;
     }
   },
   actions: {

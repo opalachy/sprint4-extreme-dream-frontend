@@ -5,7 +5,7 @@
     <!-- <div class="hero-img">
     <img src="" alt="Loading...">
     </div> --> 
-    <exp-filter @filter="setFilter" />
+    <exp-filter @setFilter="setFilter" />
     <exp-list :exps="exps" />
   </section>
 </template>
@@ -26,14 +26,12 @@ export default {
   },
   methods: {
     setFilter(filterBy) {
-      console.log(filterBy)
-        // this.$store.commit({ type: 'setFilter', filterBy: _.cloneDeep(filterBy) })
-        // this.$store.dispatch({ type: 'loadToys' })
+        this.$store.commit({ type: 'setFilter', filterBy });
+        this.$store.dispatch({ type: 'loadExps' });
     },
   }, 
   created() {
     this.$store.dispatch({ type: "loadExps" });
-    //   this.setFilter = _.debounce(this.setFilter, 500);
   },
   // destroyed() {
   //     this.setFilter({
