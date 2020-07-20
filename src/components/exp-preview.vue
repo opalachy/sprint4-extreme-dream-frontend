@@ -22,7 +22,7 @@
 
     <div class="exp-preview-price-stars-rate">
       <p class="exp-price">${{exp.currPrice}}</p>
-
+      <button class="edit" @click.stop="removeExp">Delete</button>
       <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
     </div>
   </li>
@@ -55,6 +55,11 @@ export default {
   methods: {
     details() {
       this.$router.push("/exp/" + this.exp._id);
+    },
+    async removeExp() {
+       console.log(this.exp._id)
+       await this.$store.dispatch({ type: "removeExp", id: this.exp._id })
+          this.$router.push("/");
     },
     edit(){
       this.$router.push("/exp/edit/" + this.exp._id)

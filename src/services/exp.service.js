@@ -35,7 +35,6 @@ async function add(exp) {
 }
 
 async function update(exp) {
-  console.log(exp)
   return await HttpService.put(`exp/${exp._id}`, exp)
 }
 
@@ -63,7 +62,8 @@ function getEmptyExp() {
           location: "",
           date: "",
           capacity: "",
-          imgUrls: []
+          imgUrls: [],
+          reviews: []
         }
   return emptyExp
 }

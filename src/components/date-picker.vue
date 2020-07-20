@@ -17,9 +17,19 @@
         value: this.date,
       }
     },
+    created(){
+      this.checkDate()
+    },
+    methods:{
+      checkDate(){
+        if (this.date !== null) {
+          this.$emit('setDay' , this.value)
+        }
+      }
+    },
   watch: {
      value(){
-        this.$emit('setDay' , this.value)
+        this.$emit('setDay' , this.value.getTime())
      }
   },
 }
