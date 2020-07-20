@@ -6,7 +6,7 @@
     <img src="" alt="Loading...">
     </div> --> 
     <exp-filter @setFilter="setFilter" />
-    <exp-list :exps="exps" />
+    <exp-list :exps="exps" :loggedinUser="loggedinUser"/>
   </section>
 </template>
  
@@ -22,6 +22,7 @@ export default {
   computed: {
     exps() {
       return this.$store.getters.exps;
+      return this.$store.getters.loggedinUser
     }
   },
   methods: {

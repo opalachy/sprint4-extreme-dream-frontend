@@ -14,12 +14,9 @@ export const expService = {
   saveExp
 }
 
-
-
 async function getExps({type = 'all' ,location= 'all',tags = [] ,sortBy = 'all' , sellerId ='all'}) {
   return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&sellerId=${sellerId}`)
 }
-
 
 async function getSellerExps(filterBy) {
   const expSeller = await  getExps(filterBy)

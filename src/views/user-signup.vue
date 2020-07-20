@@ -2,13 +2,13 @@
     <section class="user-signup">
       <h1>Signup:</h1>
       <div v-if="loggedinUser">
-          <h3>Currently logged as: {{loggedinUser.username}}</h3>
+          <h3>Currently logged as: {{loggedinUser.userName}}</h3>
           <p>If you want to add another user, please logout first</p>
           <button @click="logout">Logout</button>
       </div>
       <form v-else @submit.prevent="signup">
         <el-input placeholder="Please input Email" v-model="credentials.email"></el-input>
-        <el-input placeholder="Please input user name" v-model="credentials.username"></el-input>
+        <el-input placeholder="Please input user name" v-model="credentials.userName"></el-input>
         <el-input placeholder="Please input password" v-model="credentials.password" show-password></el-input>
         <button>Signup</button>
       </form>
@@ -21,7 +21,7 @@ export default {
     return {
       loggedinUser: '',
       credentials: {
-        username: '',
+        userName: '',
         password: '',
         email: '',
       },

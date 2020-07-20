@@ -14,7 +14,7 @@
 
     <div class="exp-preview-type-ticket"> 
         <h4 class="exp-type">{{exp.type}}</h4>
-        <button class="edit" @click.stop="edit">Edit</button>
+        <button v-if="seller" class="edit" @click.stop="edit">Edit</button>
         <h4 class="preview-creator"  >{{left}}/{{exp.capacity}} left</h4> 
     </div>  
     <!-- @book="book" -->
@@ -22,7 +22,7 @@
 
     <div class="exp-preview-price-stars-rate">
       <p class="exp-price">${{exp.currPrice}}</p>
-      <button class="edit" @click.stop="removeExp">Delete</button>
+      <button v-if="seller" class="edit" @click.stop="removeExp">Delete</button>
       <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
     </div>
   </li>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ["exp"],
+  props: ["exp",'loggedinUser'],
   data() {
     return {
     }
@@ -50,6 +50,9 @@ export default {
     },
     ratesCounter() {
       return this.exp.reviews.length
+    },
+    seller(){
+      // this.loggedinUser.fullName === this.exp.createdBy.fullName
     }
   },
   methods: {

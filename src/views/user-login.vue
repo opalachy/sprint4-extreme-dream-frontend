@@ -2,11 +2,11 @@
     <section class="user-login">
       <h1>Login:</h1>
       <div v-if="loggedinUser">
-          <h3>Currently logged as: {{loggedinUser.username}}</h3>
+          <h3>Currently logged as: {{loggedinUser.userName}}</h3>
           <button @click="logout">Logout</button>
       </div>
       <form v-else @submit.prevent="login">
-        <input placeholder="Please input user name" v-model="credentials.username"/>
+        <input placeholder="Please input user name" v-model="credentials.userName"/>
         <input placeholder="Please input password" v-model="credentials.password" show-password/>
         <button>Login</button>
       </form>
@@ -22,16 +22,17 @@ export default {
     return {
       loggedinUser: null,
       credentials: {
-        username: '',
+        userName: '',
         password: '',
       },
     }
   },
   methods: {
-     login() {
-      this.$store.dispatch({type: 'login', userCred: this.credentials})
+     async login() {
+      const user = await this.$store.dispatch({type: 'login', userCred: this.credentials})
       // console.log('loggedin user:', this.loggedinUser)
-      // this.loadLoggedinUser()
+      this.loadLoggedinUser()
+      console.log('user-login: ',this.loggedinUser);
       this.$router.push('/')
     },
     async logout(){
@@ -43,9 +44,9 @@ export default {
     signup(){
         this.$router.push('/signup')
     },
-    // loadLoggedinUser(){
-    //   this.loggedinUser = this.$store.getters.loggedinUser
-    // }
+    loadLoggedinUser(){
+      this.loggedinUser = this.$store.getters.loggedinUser
+    }
   },
   created() {
     // this.loadLoggedinUser()

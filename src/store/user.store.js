@@ -35,8 +35,9 @@ export const userStore = {
         setUserPrefs(state, { userPrefs }) {
             state.userPrefs = userPrefs;
         },
-        setUser(state, { userCred }) {
-            state.loggedinUser = userCred;
+        setUser(state, { user}) {
+            console.log('store: ', user);
+            state.loggedinUser = user;
         },
         setUsers(state, { users }) {
             state.users = users;
@@ -50,6 +51,7 @@ export const userStore = {
         async login({ commit }, { userCred }) {
             console.log(userCred)
             const user = await userService.login(userCred);
+            console.log('userStore: ', user);
             commit({ type: 'setUser', user })
             return user;
         },

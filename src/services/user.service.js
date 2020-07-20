@@ -37,7 +37,8 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    const user = await HttpService.post('login', userCred)
+    console.log(userCred);
+    const user = await HttpService.post('auth/login', userCred)
     // const user = await HttpService.post('auth/login', userCred)
     return _handleLogin(user)
 }
@@ -48,7 +49,7 @@ async function signup(userCred) {
     // return _handleLogin(user)
 }
 async function logout() {
-    await HttpService.post('logout');
+    await HttpService.post('auth/logout');
     // await HttpService.post('auth/logout');
     sessionStorage.clear();
 }
@@ -59,9 +60,9 @@ async function getUsers(id) {
     //   return await HttpService.get('user')
 }
 
-// function _handleLogin(user) {
-//     sessionStorage.setItem('user', JSON.stringify(user))
-//     return user;
-// }
+function _handleLogin(user) {
+    sessionStorage.setItem('user', JSON.stringify(user))
+    return user;
+}
 
 

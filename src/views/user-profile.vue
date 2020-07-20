@@ -57,7 +57,8 @@ export default {
     async created() {
         const userId = this.$route.params.id;
         this.user = await userService.getById(userId);
-        console.log("user: ", this.user._id);
+        console.log("user: ", this.user);
+        console.log("userId: ", this.user._id);
         this.loggedinUser = this.$store.getters.loggedinUser;
         console.log("loggedinUser: ", this.loggedinUser._id);
         const sellerExps = await expService.getSellerExps({sellerId :userId });

@@ -26,7 +26,6 @@ export default {
     }
 }
 
-
 async function ajax(endpoint, method='get', data=null) {
     try {
         const res = await axios({
