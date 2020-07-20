@@ -5,6 +5,7 @@
     <!-- <div class="hero-img">
     <img src="" alt="Loading...">
     </div> --> 
+    
     <exp-filter @setFilter="setFilter" />
     <exp-list :exps="exps" />
   </section>
@@ -15,14 +16,19 @@
 import expList from "../components/exp-list.vue";
 import expFilter from "../components/exp-filter.vue";
 
-// const _ = require("lodash");
+
 
 export default {
   name: "exp-app",
+  // date(){
+  //   return {
+  //     loggedinUser: null
+  //   }
+  // }
   computed: {
-    exps() {
-      return this.$store.getters.exps;
-    }
+      exps() {
+        return this.$store.getters.exps;
+      }
   },
   methods: {
     setFilter(filterBy) {
@@ -33,12 +39,6 @@ export default {
   created() {
     this.$store.dispatch({ type: "loadExps" });
   },
-  // destroyed() {
-  //     this.setFilter({
-  //       type: "",
-  //       location: "",
-  //     })
-  // },
   components: {
     expList,
     expFilter

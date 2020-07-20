@@ -5,10 +5,9 @@
     <button @click="setOption('tags')">More filter</button>
     <!-- <button @click="sort">Sort by</button> -->
   
-   
     <!-- <div v-show="filterOption" @click="close" class="screen"></div> -->
 
-    <div v-if="(filterOption === 'tags')"  class="more-filter">
+    <div v-show="(filterOption === 'tags')"  class="more-filter">
           
          <input ref="input" id="Family" type="checkbox" @change="choose" hidden>
        <label for="Family" >Family</label>
@@ -54,7 +53,7 @@
    </div>
 
 
-   <div v-if="(filterOption === 'location')" class="location-filter">
+   <div v-show="(filterOption === 'location')" class="location-filter">
         
        <input id="All-location" type="radio"  v-model="filterBy.location" value="all"  hidden>
      <label for="All-location" >All</label>
@@ -90,6 +89,7 @@ export default {
   name: "exp-filter",
   data(){
     return {
+      // lastChange: 'all'
       filterOption: '',
       filterBy: {
         type: 'all',
