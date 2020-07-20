@@ -36,7 +36,6 @@ export const expStore = {
         console.log('ERR: ', err)
       }
     },
-
     async removeExp({ commit }, { id }) {
       await expService.remove(id)
       // commit({ type: 'removeExp', id })

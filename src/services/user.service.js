@@ -37,16 +37,15 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    console.log(userCred);
     const user = await HttpService.post('auth/login', userCred)
-    // const user = await HttpService.post('auth/login', userCred)
-    return _handleLogin(user)
+    return _handleLogin(user) 
 }
 
 async function signup(userCred) {
-    return await HttpService.post('user', userCred)
 
-    // return _handleLogin(user)
+    const user = await HttpService.post('auth/signup', userCred)
+    console.log(user)
+    return _handleLogin(user)
 }
 async function logout() {
     await HttpService.post('auth/logout');

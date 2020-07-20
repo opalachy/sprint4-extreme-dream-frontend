@@ -1,12 +1,16 @@
 <template>
     <section class="user-signup">
       <h1>Signup:</h1>
+<<<<<<< HEAD
       <div v-if="loggedinUser">
           <h3>Currently logged as: {{loggedinUser.userName}}</h3>
           <p>If you want to add another user, please logout first</p>
           <button @click="logout">Logout</button>
       </div>
       <form v-else @submit.prevent="signup">
+=======
+      <form  @submit.prevent="signup">
+>>>>>>> 36764a113861bcc1494b73662c3cf111bc803c6a
         <el-input placeholder="Please input Email" v-model="credentials.email"></el-input>
         <el-input placeholder="Please input user name" v-model="credentials.userName"></el-input>
         <el-input placeholder="Please input password" v-model="credentials.password" show-password></el-input>
@@ -15,34 +19,29 @@
     </section>
 </template>
 <script>
-import {userStore} from '../store/user.store.js'
+
 export default {
   data(){
     return {
-      loggedinUser: '',
       credentials: {
+<<<<<<< HEAD
         userName: '',
         password: '',
         email: '',
+=======
+        userName: 'rani',
+        password: 'rani',
+        email: 'rani@rr.com'
+>>>>>>> 36764a113861bcc1494b73662c3cf111bc803c6a
       },
     }
   },
   methods: {
     async signup(){
         let user = await this.$store.dispatch({type: 'signup', userCred: this.credentials})
-        this.$router.push('/login')
-    },
-    async logout(){
-      let user = await this.$store.dispatch({type: 'logout'})
-      console.log('loggedout user:', user);
-      this.loggedinUser = this.$store.getters.loggedinUser
-    },
-  },
-  created() {
-    let user = this.$store.getters.loggedinUser
-    if (user) this.loggedinUser = user
-  },
-
+        this.$router.push('/exp')
+    }
+  }
 }
 </script>
 
