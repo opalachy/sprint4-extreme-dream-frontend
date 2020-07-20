@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import userService from '../services/user.service.js'
+import {userService} from '../services/user.service.js'
 
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
@@ -10,12 +10,14 @@ Vue.use(Vuex)
 export const userStore = {
     strict: true,
     state: {
-        loggedinUser: {
-            "_id": "u101",
-            "fullName": "Orly Snowboard",
-            "info": "Ski and snowboard instructor for more than 20 years. Gurn camp resort was founded in 2010. In 2015 Gurn camp was awarded the best freestle resort in France.",
-            "imgUrl": "https://i0.wp.com/zsuttonphoto.com/wp-content/uploads/2019/11/Los-Angeles-Beauty-Photography-19.jpg?fit=3000%2C3750&ssl=1"
-        },
+        loggedinUser: null 
+        // {
+        //     "_id": "u101",
+        //     "fullName": "Orly Snowboard",
+        //     "info": "Ski and snowboard instructor for more than 20 years. Gurn camp resort was founded in 2010. In 2015 Gurn camp was awarded the best freestle resort in France.",
+        //     "imgUrl": "https://i0.wp.com/zsuttonphoto.com/wp-content/uploads/2019/11/Los-Angeles-Beauty-Photography-19.jpg?fit=3000%2C3750&ssl=1"
+        // }
+        ,
         users: []
     },
     getters: {
@@ -46,8 +48,8 @@ export const userStore = {
     },
     actions: {
         async login({ commit }, { userCred }) {
-            // const user = await userService.login(userCred);
-            // console.log(userCred)
+            console.log(userCred)
+            const user = await userService.login(userCred);
             commit({ type: 'setUser', user })
             return user;
         },

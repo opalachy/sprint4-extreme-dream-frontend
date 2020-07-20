@@ -25,11 +25,9 @@ export const expStore = {
   actions: {
     async loadExps({ state }) {
       try {
-        const exps = await expService.getExps()
-        console.log('try');
+        const exps = await expService.getExps(state.filterBy)
         state.exps = exps
         return exps
-
       } catch (err) {
         console.log('ERR: ', err)
       }

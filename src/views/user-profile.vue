@@ -60,10 +60,10 @@ export default {
         console.log("user: ", this.user._id);
         this.loggedinUser = this.$store.getters.loggedinUser;
         console.log("loggedinUser: ", this.loggedinUser._id);
-
-        const myExps = await expService.getMyExps(userId);
-        console.log("exp id: ", myExps[0]._id);
-        this.exps = myExps;
+        const sellerExps = await expService.getSellerExps({sellerId :userId });
+        // console.log("exp id: ", myExps[0]._id);
+        console.log("sellerExps", sellerExps);
+        this.exps = sellerExps;
     }
 };
 </script>

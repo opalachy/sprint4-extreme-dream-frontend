@@ -9,28 +9,21 @@ export const expService = {
   add,
   update,
   addParticipant,
-  getMyExps,
+  getSellerExps,
   getEmptyExp,
   saveExp
 }
 
 
 
-async function getExps() {
-     var filterBy = {
-       type: 'all',
-       location: 'all',
-       tags: [],
-       sortBy: 'currPrice' 
-     }
-  const {type ,location ,tags ,sortBy} = filterBy;
-  return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}`)
+async function getExps({type = 'all' ,location= 'all',tags = [] ,sortBy = 'all' , sellerId ='all'}) {
+  return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&sellerId=${sellerId}`)
 }
 
-async function getMyExps(userId) {
-  const exps = await HttpService.get('exp')
-  const myExps = exps.filter(exp => exp.createdBy._id === userId)
-  return myExps
+
+async function getSellerExps(filterBy) {
+  const expSeller = await  getExps(filterBy)
+  return expSeller
 }
 
 async function remove(expId) {
