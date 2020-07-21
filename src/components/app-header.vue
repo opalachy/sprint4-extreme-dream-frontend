@@ -2,7 +2,7 @@
   <section class="app-header">
     <router-link to="/">Home</router-link>
     <div class="router-header">
-      <router-link to="/exp">Experiences</router-link>
+      <button @click="goToExperiences">Experiences</button>
       <router-link  v-if="loggedinUser"  :to="`/user/profile/${loggedinUser._id}`">My Profile</router-link>
       <router-link v-if="!loggedinUser" to="/login">Login</router-link>
       <!-- <router-link to="/login">logout</router-link> -->
@@ -25,6 +25,10 @@ export default {
   methods: {
       async logout(){
       let user = await this.$store.dispatch({type: 'logout'})
+    },
+    goToExperiences(){
+      this.$store.commit({type: "setFilter" , filterBy: {}});
+      this.$router.push('/exp');
     },
   },
 };
