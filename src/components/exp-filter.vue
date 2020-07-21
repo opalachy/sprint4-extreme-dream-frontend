@@ -6,10 +6,14 @@
     <button @click="setOption('sortBy')">sort</button>
     <!-- <button @click="sort">Sort by</button> -->
   
-    <!-- <div v-show="filterOption" @click="close" class="screen"></div> -->
+    <div v-show="filterOption" @click="close" class="screen"></div>
 
-    <div v-show="(filterOption === 'tags')"  class="more-filter">
+    <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
           
+          <h2>Choose your favorite tags</h2> 
+    
+           <div class="label-container">
+ 
          <input  id="Family" type="checkbox" @change="choose" hidden>
        <label for="Family" >Family</label>
           
@@ -24,6 +28,7 @@
           
          <input id="All-level" type="checkbox" @change="choose" hidden>
        <label for="All-level" >All level</label>
+       </div>
   
          <button @click="save">save</button>
    </div>
@@ -31,10 +36,12 @@
 
 
 
+   <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
 
-
-   <div v-show="(filterOption === 'type')"  class="type-filter">
-
+      <h2>Choose type of experience</h2>
+      
+             
+           <div class="label-container">
        <input id="all-type" type="radio" v-model="filterBy.type" value="all"  hidden>
      <label for="all-type" >All</label>
      
@@ -49,14 +56,18 @@
      
        <input id="Motorcycle" type="radio"  v-model="filterBy.type" value="Motorcycle"  hidden>
      <label for="Motorcycle" >Motorcycle</label>
-     
+     </div>
      <button @click="save">save</button>
 
    </div>
 
 
-   <div v-show="(filterOption === 'location')" class="location-filter">
+   <div v-show="(filterOption === 'location')" class="location-filter filter-modal">
+          
+      <h2>Choose locatin</h2>
+
         
+        <div class="label-container">
        <input id="All-location" type="radio"  v-model="filterBy.location" value="all"  hidden>
      <label for="All-location" >All</label>
      
@@ -71,25 +82,25 @@
      
        <input id="USA" type="radio"  v-model="filterBy.location" value="USA"  hidden>
      <label for="USA" >USA</label>
+     </div>
 
      <button @click="save">save</button>
      
    </div>
-   <div v-show="(filterOption === 'sortBy')" class="sortBy-filter">
-        
+   <div v-show="(filterOption === 'sortBy')" class="sortBy-filter  filter-modal">
+         
+        <h2>Sort by</h2>
+        <div class="label-container">
        <input id="newest" type="radio"  v-model="filterBy.sortBy" value="Newest"  hidden>
-     <label for="newest" >All</label>
+     <label for="newest" >Newest</label>
      
        <input id="best-deal" type="radio"  v-model="filterBy.sortBy" value="currPrice"  hidden>
      <label for="best-deal" >Best Deal</label>
-    
+     </div>
      <button @click="save">save</button>
      
    </div>
    
-   <!-- <div class="sort-filter">
-
-   </div> -->
 
   </section>
 </template>
@@ -107,7 +118,7 @@ export default {
         type: 'all',
         location: 'all',
         tags: [],
-        sortBy: '',
+        sortBy: 'newest',
       }
     }
   },
@@ -155,44 +166,5 @@ export default {
 </script>
 
 
-<style  scoped>
-  label{
-     padding: 3px 7px;
-  }
- .type-filter{
-   padding: 10px;
-   border: 1px solid black;
-   z-index: 5;
- }
- .location-filter{
-   padding: 10px;
-   border: 1px solid black;
-   z-index: 5;
- }
- .more-filter{
-   padding: 10px;
-   border: 1px solid black;
-   z-index: 5;
- }
- .sortBy-filter{
-   padding: 10px;
-   border: 1px solid black;
-   z-index: 5;
- }
-  button{
-    padding: 5px 10px; 
-    background-color: aqua; 
-    margin: 10px;
-  }
-/* .screen{
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
-    height: 100vh;
-    width: 100vw;
-    background-color: #00000047;
-} */
-  input[type="radio"]:checked + label{ background-color: antiquewhite; } 
-  input[type="checkbox"]:checked + label{ background-color: rgb(198, 223, 183); } 
-</style>
+
+
