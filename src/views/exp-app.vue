@@ -39,6 +39,6 @@ export default {
         expList,
         expFilter
     }
-};
+}
 </script>
 

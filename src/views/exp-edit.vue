@@ -114,6 +114,13 @@
 
       <button :disabled="disabled">Save</button>
     </form>
+    <button 
+  type="button"    
+  @click="hasHistory() 
+    ? $router.go(-1) 
+    : $router.push('/')" class="my-5 btn btn-outline-success">&laquo; 
+  Back
+</button><br />
     <button v-if="expToEdit._id" @click="removeExp">Delete Experience</button>
   </section>
 </template>
@@ -141,11 +148,14 @@ export default {
     }
   },
   methods: {
+    hasHistory() {
+      return window.history.length > 2;
+    },
     async loadExp() {
       let expId = this.$route.params.id;
       if (expId) {
-        const exp = await expService.getById(expId)
-          this.expToEdit = JSON.parse(JSON.stringify(exp));
+        const exp = await expService.getById(expId);
+        this.expToEdit = JSON.parse(JSON.stringify(exp));
       } else {
         this.expToEdit = expService.getEmptyExp();
       }
@@ -155,9 +165,9 @@ export default {
     },
     async saveExp() {
       if (!this.expToEdit.title) return;
-      await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit })
-          this.$router.push("/");
-          this.loadExp();
+      await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit });
+      this.$router.push("/");
+      this.loadExp();
     },
     async removeExp() {
       const savedExp = await this.$store.dispatch({
