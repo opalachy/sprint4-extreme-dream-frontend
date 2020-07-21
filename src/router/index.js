@@ -8,7 +8,7 @@ import userDetails from '../views/user-details.vue'
 import expEdit from '../views/exp-edit.vue'
 import expDetails from '../views/exp-details.vue'
 import expApp from '../views/exp-app.vue'
-import userProfile from '../views/user-profile.vue'
+// import userProfile from '../views/user-profile.vue'
 
 Vue.use(VueRouter)
 
@@ -53,11 +53,11 @@ const routes = [
     name: 'user-signup',
     component: userSignup
   },
-  {
-    path: '/user/profile/:id',
-    name: 'user-profile',
-    component: userProfile
-  },
+  // {
+  //   path: '/user/profile/:id',
+  //   name: 'user-profile',
+  //   component: userProfile
+  // },
 
 ]
 

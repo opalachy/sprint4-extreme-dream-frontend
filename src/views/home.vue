@@ -77,7 +77,7 @@ export default {
     async created() {
         this.$store.commit({ type : "setFilter" , filterBy: {}})
         const exps = await this.$store.dispatch({ type: "loadExps" });
-        const currExps = exps.slice(0, 3);
+        const currExps = exps.slice(0, 4);
         this.bestExps = currExps;
         this.popSki = currExps;
         this.popFrance = currExps;
