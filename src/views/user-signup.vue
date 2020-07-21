@@ -16,9 +16,9 @@ export default {
   data(){
     return {
       credentials: {
-        userName: 'rani',
-        password: 'rani',
-        email: 'rani@rr.com',
+        userName: '',
+        password: '',
+        email: '',
         fullName: ''
       },
     }
