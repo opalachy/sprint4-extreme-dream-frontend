@@ -1,14 +1,14 @@
 <template>
-  <section class="exp-app exp-main">
-    <h2>Our Experiences</h2>
+    <section class="exp-app exp-main">
+        <h2>Our Experiences</h2>
 
-    <!-- <div class="hero-img">
+        <!-- <div class="hero-img">
     <img src="" alt="Loading...">
-    </div> --> 
-    
-    <exp-filter @setFilter="setFilter" />
-    <exp-list :exps="exps" :loggedinUser="loggedinUser"/>
-  </section>
+        </div>-->
+
+        <exp-filter @setFilter="setFilter" />
+        <exp-list :exps="exps" :loggedinUser="loggedinUser" />
+    </section>
 </template>
  
 
@@ -16,33 +16,29 @@
 import expList from "../components/exp-list.vue";
 import expFilter from "../components/exp-filter.vue";
 
-
-
 export default {
-  name: "exp-app",
-  data(){
-    return {
-      loggedinUser: null
-    }
-  },
-  computed: {
-      exps() {
-        return this.$store.getters.exps;
-      }
-  },
-  methods: {
-    setFilter(filterBy) {
-        this.$store.commit({ type: 'setFilter', filterBy });
-        this.$store.dispatch({ type: 'loadExps' });
+    name: "exp-app",
+    computed: {
+        exps() {
+            return this.$store.getters.exps;
+        },
+        loggedinUser() {
+            return this.$store.getters.loggedinUser;
+        }
     },
-  }, 
-  created() {
-    this.$store.dispatch({ type: "loadExps" });
-  },
-  components: {
-    expList,
-    expFilter
-  }
+    methods: {
+        setFilter(filterBy) {
+            this.$store.commit({ type: "setFilter", filterBy });
+            this.$store.dispatch({ type: "loadExps" });
+        }
+    },
+    created() {
+        this.$store.dispatch({ type: "loadExps" });
+    },
+    components: {
+        expList,
+        expFilter
+    }
 }
 </script>
 

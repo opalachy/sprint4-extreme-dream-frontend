@@ -20,7 +20,8 @@
                 // font-family: cursive;
                 outline: none;
                 border: 0;
-                border-radius: 5px;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
                 height: 100%;
                 width: 320px;
                 padding: 1rem 0rem 1rem 1rem;
@@ -29,7 +30,8 @@
                 // font-family: cursive;
                 height: 100%;
                 border: 0;
-                border-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
                 background-color: rgb(247, 113, 113);
                 color: #fff;
                 margin: 0;
@@ -48,7 +50,7 @@
             margin-bottom: 30px;
         }
         button {
-            background-color: #202727;
+            background-color: #4f94d6;
             color: white;
             border-radius: 7px;
             padding: 9px 12px;
