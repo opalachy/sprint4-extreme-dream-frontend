@@ -2,7 +2,7 @@
     <section class="user-login">
       <form @submit.prevent="login">
         <input placeholder="Please input user name" v-model="credentials.userName"/>
-        <input placeholder="Please input password" v-model="credentials.password" show-password/>
+        <input type="password" placeholder="Please input password" v-model="credentials.password" show-password/>
         <button>Login</button>
       </form>
       <p>Not registered yet?</p>

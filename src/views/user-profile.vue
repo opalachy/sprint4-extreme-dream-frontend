@@ -6,7 +6,7 @@
             <li>Full Name: {{user.fullName}}</li>
             <li>About You: {{user.info}}</li>
             <label>Password: <input type="password" v-model="value" /></label>
-            <li>Profile Photo: <img style="height: 50px; width: 50px; borderRadius: 50%;" src="https://glimakra.com/wp-content/uploads/2017/08/Johan-Kauppi-Designer-Portrait-2017.jpg" alt=""><i v-if="!user.imgUrl" class="el-icon-user"></i></li>
+            <li>Profile Photo: <img v-if="user.imgUrl" style="height: 30px; width: 30px; borderRadius: 50%;" :src="user.imgUrl" alt=""><i v-else class="el-icon-user"></i></li>
           </ul>
         <h4>Your orders</h4>
         <button v-if="creator" class="add-exp-btn" @click="add">
@@ -76,11 +76,12 @@ export default {
     this.loggedinUser = this.$store.getters.loggedinUser;
     console.log("loggedinUser: ", this.loggedinUser._id);
     const sellerExps = await expService.getSellerExps({ sellerId: userId });
-    const userOrds = await oredrService.getOrdersById(userId);
+    // const userOrds = await oredrService.getOrdersById(userId);
     // console.log("exp id: ", myExps[0]._id);
     console.log("sellerExps", sellerExps);
     this.exps = sellerExps;
     this.value = this.user.password 
+    console.log(this.creator);
   }
 
 }
