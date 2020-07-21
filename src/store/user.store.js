@@ -13,9 +13,6 @@ export const userStore = {
         loggedinUser: localLoggedinUser, 
     },
     getters: {
-        // users(state) {
-        //     return state.users;
-        // },
         loggedinUser(state) {
             return state.loggedinUser
         }
@@ -24,9 +21,6 @@ export const userStore = {
         setUser(state, { user }) {
             state.loggedinUser = user;
         },
-        // setUsers(state, { users }) {
-        //     state.users = users;
-        // },
         removeUser(state, { userId }) {
             state.users = state.users.filter(user => user._id !== userId)
         },
@@ -49,10 +43,6 @@ export const userStore = {
             await userService.logout()
             commit({ type: 'setUser', user: null })
         },
-        // async loadUsers({ commit }) {
-        //     const users = await userService.getUsers();
-        //     commit({ type: 'setUsers', users })
-        // },
         async removeUser({ commit }, { userId }) {
             await userService.remove(userId);
             commit({ type: 'removeUser', userId })
