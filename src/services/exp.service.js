@@ -9,16 +9,16 @@ export const expService = {
   add,
   update,
   addParticipant,
-  getSellerExps,
+  getUserExps,
   getEmptyExp,
   saveExp
 }
 
-async function getExps({type = 'all' ,location= 'all',tags = [] ,sortBy = 'all' , sellerId ='all'}) {
-  return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&sellerId=${sellerId}`)
+async function getExps({type = 'all' ,location= 'all',tags = [] ,sortBy = 'all' , userId ='all'}) {
+  return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&userId=${userId}`)
 }
 
-async function getSellerExps(filterBy) {
+async function getUserExps(filterBy) {
   const expSeller = await  getExps(filterBy)
   return expSeller
 }

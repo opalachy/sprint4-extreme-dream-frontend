@@ -7,15 +7,17 @@ export const orderService = {
     remove,
     add,
     update,
-    addOrder
+    addOrder 
 
 }
 
-async function getOrders() {
-    console.log('ddddd')
-    return await HttpService.get('order')
+async function getOrders(userId) {
+    console.log(userId)
+    return await HttpService.get(`order?userId=${userId}`)
     //   console.log(await HttpService.get('order'))
 }
+
+
 
 async function remove(orderId) {
     return await HttpService.delete(`order/${orderId}`)
