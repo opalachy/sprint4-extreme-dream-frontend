@@ -9,7 +9,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 // Styles
 import 'element-ui/lib/theme-chalk/index.css';
-import './styles/styles.scss'
+import './assets/styles/styles.scss'
 Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false;
 

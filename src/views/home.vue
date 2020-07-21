@@ -3,8 +3,8 @@
         <div class="hero-img">
           <div class="search-container">
             <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
-                <input list="exp-list" placeholder="What Is Your Favor Experience"/>
-                <datalist id="exp-list">
+                <input v-model="choosedType" list="exp-list" placeholder="What Is Your Favor Experience"/>
+                <datalist  id="exp-list">
                     <option value="Ski" />
                     <option value="Sky Diving" />
                     <option value="Bunjee" />
@@ -44,6 +44,7 @@ export default {
     name: "Home-page",
     data() {
         return {
+            choosedType: null,
             bestExps: null,
             popSki: null,
             popFrance: null
@@ -51,17 +52,30 @@ export default {
     },
     methods:{
         goToSki(){
-          this.$router.push('/exp')
+          const filterBy = {
+              type: 'Ski'
+          };
+          this.$store.commit({type: 'setFilter' , filterBy});
+          this.$router.push('/exp');
         },    
         goToFrance(){
+          this.$store.commit({type: 'setFilter' , filterBy:  {location: 'France'}});
           this.$router.push('/exp')
         },    
         goToPopular(){
+          this.$store.commit({type: 'setFilter' , filterBy: {sortBy: 'currPrice'}});
           this.$router.push('/exp')
-        },    
+        }, 
+        searchExp(){
+            if(!this.choosedType) return 
+            console.log(this.choosedType);
+            this.$store.commit({type: 'setFilter' , filterBy : {type: this.choosedType}});
+            this.$router.push('/exp');
+        }   
            
     },
     async created() {
+        this.$store.commit({ type : "setFilter" , filterBy: {}})
         const exps = await this.$store.dispatch({ type: "loadExps" });
         const currExps = exps.slice(0, 3);
         this.bestExps = currExps;

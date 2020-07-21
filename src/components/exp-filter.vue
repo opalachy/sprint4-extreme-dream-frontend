@@ -3,6 +3,7 @@
     <button @click="setOption('type')">Type</button>
     <button @click="setOption('location')">Location</button>
     <button @click="setOption('tags')">More filter</button>
+    <button @click="setOption('sortBy')">sort</button>
     <!-- <button @click="sort">Sort by</button> -->
   
     <!-- <div v-show="filterOption" @click="close" class="screen"></div> -->
@@ -74,6 +75,17 @@
      <button @click="save">save</button>
      
    </div>
+   <div v-show="(filterOption === 'sortBy')" class="sortBy-filter">
+        
+       <input id="newest" type="radio"  v-model="filterBy.sortBy" value="Newest"  hidden>
+     <label for="newest" >All</label>
+     
+       <input id="best-deal" type="radio"  v-model="filterBy.sortBy" value="currPrice"  hidden>
+     <label for="best-deal" >Best Deal</label>
+    
+     <button @click="save">save</button>
+     
+   </div>
    
    <!-- <div class="sort-filter">
 
@@ -89,12 +101,13 @@ export default {
   name: "exp-filter",
   data(){
     return {
-      lastFilterBy: null,
+      // lastFilterBy: null,
       filterOption: '',
       filterBy: {
         type: 'all',
         location: 'all',
-        tags: []
+        tags: [],
+        sortBy: '',
       }
     }
   },
@@ -107,12 +120,14 @@ export default {
          if (option === 'type') this.filterOption = 'type';
          if (option === 'location') this.filterOption = 'location';
          if (option === 'tags') this.filterOption = 'tags';
+         if (option === 'sortBy') this.filterOption = 'sortBy';
     },
     close(){
          this.filterOption = ''
     },
     save(){
-     this.lastFilterBy =  this.filterBy ;
+      console.log(this.filterBy)
+    //  this.lastFilterBy =  this.filterBy ;
      this.filterOption = '';
      this.$emit('setFilter' , this.filterBy)
     },
@@ -155,6 +170,11 @@ export default {
    z-index: 5;
  }
  .more-filter{
+   padding: 10px;
+   border: 1px solid black;
+   z-index: 5;
+ }
+ .sortBy-filter{
    padding: 10px;
    border: 1px solid black;
    z-index: 5;
