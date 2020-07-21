@@ -107,7 +107,7 @@ export default {
         type: 'all',
         location: 'all',
         tags: [],
-        sortBy: '',
+        sortBy: 'newest',
       }
     }
   },
@@ -126,7 +126,6 @@ export default {
          this.filterOption = ''
     },
     save(){
-      console.log(this.filterBy)
     //  this.lastFilterBy =  this.filterBy ;
      this.filterOption = '';
      this.$emit('setFilter' , this.filterBy)
