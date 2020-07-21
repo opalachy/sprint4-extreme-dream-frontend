@@ -54,6 +54,7 @@
             class="my-5 btn btn-outline-success"
         >&laquo; Back</button>
         <!-- <chart v-if="creator" :dataExp="dataExp" :expTitle="expTitle" /> -->
+    </section>
 </template>
 
 <script>

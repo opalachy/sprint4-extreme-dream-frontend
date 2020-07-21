@@ -158,7 +158,7 @@ export default {
   //           handler(){
   //             console.log(this.filterBy.tags)
   //           }
-  //       }
+  //   /    }
 // }
 }
 
