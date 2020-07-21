@@ -20,11 +20,11 @@ import expFilter from "../components/exp-filter.vue";
 
 export default {
   name: "exp-app",
-  // date(){
-  //   return {
-  //     loggedinUser: null
-  //   }
-  // }
+  data(){
+    return {
+      loggedinUser: null
+    }
+  },
   computed: {
       exps() {
         return this.$store.getters.exps;

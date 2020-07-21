@@ -9,7 +9,7 @@
 
     <div v-show="(filterOption === 'tags')"  class="more-filter">
           
-         <input ref="input" id="Family" type="checkbox" @change="choose" hidden>
+         <input  id="Family" type="checkbox" @change="choose" hidden>
        <label for="Family" >Family</label>
           
          <input id="Children" type="checkbox" @change="choose" hidden>
@@ -31,9 +31,10 @@
 
 
 
+
    <div v-show="(filterOption === 'type')"  class="type-filter">
 
-       <input id="all-type" type="radio"  v-model="filterBy.type" value="all"  hidden>
+       <input id="all-type" type="radio" v-model="filterBy.type" value="all"  hidden>
      <label for="all-type" >All</label>
      
        <input id="Ski" type="radio"  v-model="filterBy.type" value="Ski"  hidden>
@@ -81,7 +82,6 @@
   </section>
 </template>
  
-
 <script>
 
 
@@ -89,7 +89,7 @@ export default {
   name: "exp-filter",
   data(){
     return {
-      // lastChange: 'all'
+      lastFilterBy: null,
       filterOption: '',
       filterBy: {
         type: 'all',
@@ -100,7 +100,10 @@ export default {
   },
   methods: {
     setOption(option){
-      if(this.filterOption === option) return this.filterOption = ''
+      if(this.filterOption === option) {
+        // this.filterBy.type = this.lastFilterBy.type
+        return this.filterOption = '' 
+      }
          if (option === 'type') this.filterOption = 'type';
          if (option === 'location') this.filterOption = 'location';
          if (option === 'tags') this.filterOption = 'tags';
@@ -109,6 +112,7 @@ export default {
          this.filterOption = ''
     },
     save(){
+     this.lastFilterBy =  this.filterBy ;
      this.filterOption = '';
      this.$emit('setFilter' , this.filterBy)
     },
@@ -122,7 +126,6 @@ export default {
     }
   },
   created() {
-
   },
   //  watch: {
   //       filterBy: {
