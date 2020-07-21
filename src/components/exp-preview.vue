@@ -8,6 +8,7 @@
             <h4 class="exp-title">{{exp.title}}</h4>
             <div class="preview-seller">
                 <img class="seller-img" :src="exp.createdBy.imgUrl" />
+    
                 <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
             </div>
         </div>

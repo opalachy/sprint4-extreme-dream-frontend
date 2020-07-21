@@ -3,11 +3,7 @@ import { expService } from '../services/exp.service.js'
 export const expStore = {
   state: {
     exps: [],
-      filterBy: {
-        type: 'all',
-        location: 'all',
-        tags: []
-    }
+      filterBy: {}
   },
   getters: {
     exps(state) {

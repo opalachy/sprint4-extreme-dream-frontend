@@ -10,11 +10,8 @@ export const orderService = {
     addOrder 
 
 }
-
 async function getOrders(userId) {
-    console.log(userId)
     return await HttpService.get(`order?userId=${userId}`)
-    //   console.log(await HttpService.get('order'))
 }
 
 
