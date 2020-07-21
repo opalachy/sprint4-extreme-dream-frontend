@@ -2,7 +2,8 @@
   <section class="footer-app">
         <div class="footer-container">
           <p> © 2020 Exdreme, Inc. All rights reserved </p>
-          <router-link to="/about">About Us</router-link>
+          <!-- <router-link to="/about">About Us</router-link> -->
+          About Us
         </div>
   </section>
 </template>

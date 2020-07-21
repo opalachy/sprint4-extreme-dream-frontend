@@ -8,8 +8,6 @@
         <ul class="activities-list">
             <li v-if="exps" class="activity" v-for="exp in exps" :key="exp._id" :exp="exp">
                 {{exp.title}}
-                <!-- <router-link v-if="creator" to="/exp/edit/:id"> -->
-
                 <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
                     <h4>Edit</h4>
                 </button>
@@ -61,7 +59,7 @@ export default {
         console.log("userId: ", this.user._id);
         this.loggedinUser = this.$store.getters.loggedinUser;
         console.log("loggedinUser: ", this.loggedinUser._id);
-        const sellerExps = await expService.getSellerExps({sellerId :userId });
+        const sellerExps = await expService.getSellerExps({ sellerId: userId });
         // console.log("exp id: ", myExps[0]._id);
         console.log("sellerExps", sellerExps);
         this.exps = sellerExps;
