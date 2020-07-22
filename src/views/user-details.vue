@@ -53,7 +53,7 @@
             @click="hasHistory() ? $router.go(-1) : $router.push('/')"
             class="my-5 btn btn-outline-success"
         >&laquo; Back</button>
-        <chart v-if="creator" :dataExp="dataExp" :expTitle="expTitle" />
+        <chart v-if="creator" :dataExp="chartDataExp" :expTitle="chartTitleExp" />
     </section>
 </template>
 
@@ -72,27 +72,39 @@ export default {
       loggedinUser: null,
       user: null,
       ords: [],
-      dataExp: [],
-      expTitle:[]
     };
+      // dataExp: [],
+      // expTitle:[]
   },
   computed: {
     creator() {
       return  this.user._id === this.loggedinUser._id ? true: false 
+    },
+    chartDataExp() {
+      const dataExp = this.exps.map(exp => {
+         return exp.participants.length
+      })
+      console.log(dataExp);
+      return dataExp
+    },
+    chartTitleExp() {
+      return this.exps.map(exp => {
+        return exp.title
+      })
     }
     
   },
   methods: {
-    chartData(){
-      this.dataExp = this.exps.map(exp => {
-         return exp.participants.length
-      })
-      console.log(this.dataExp)
-      this.expTitle = this.exps.map(exp => {
-        return exp.title
-      })
-      console.log(this.expTitle)
-    },
+    // chartData(){
+    //   this.dataExp = this.exps.map(exp => {
+    //      return exp.participants.length
+    //   })
+    //   console.log(this.dataExp)
+    //   this.expTitle = this.exps.map(exp => {
+    //     return exp.title
+    //   })
+    //   console.log(this.expTitle)
+    // },
     hasHistory() {
       return window.history.length > 2;
     },
@@ -122,7 +134,7 @@ export default {
     const userOrds = await orderService.getOrders(userId);
     this.exps = userExps;
     this.ords = userOrds;
-    this.chartData();
+    // this.chartData();
   },
   components: {
     reviewDetails,

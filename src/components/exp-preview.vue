@@ -25,10 +25,6 @@
         <div class="exp-preview-price-stars-rate">
             <p class="exp-price">${{exp.currPrice}}</p>
             <button v-if="seller" class="edit" @click.stop="removeExp">Delete</button>
-            <!-- <p class="exp-rate">
-                <i class="el-icon-star-on"></i>
-                {{averageRate}} ({{ratesCounter}})
-            </p> -->
         </div>
     </li>
 </template>
