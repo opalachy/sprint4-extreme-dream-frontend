@@ -1,5 +1,6 @@
 import HttpService from './http.service.js'
 import { userService } from './user.service.js'
+// import { match } from 'core-js/fn/symbol'
 
 
 export const expService = {
@@ -57,7 +58,7 @@ function getEmptyExp() {
           tags: [],
           participants: [],
           location: "",
-          date: "",
+          date: Date.now()+60*60*1000*24* (Math.floor(Math.random() * (60 - 1 + 1))),
           capacity: "",
           imgUrls: [],
           reviews: []
