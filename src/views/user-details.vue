@@ -1,5 +1,5 @@
 <template>
-    <section class="user-details" v-if="user">
+    <section class="user-details" v-if="user" >
         <div class="user-details-container">
             <ul class="user-profile-info">
                 <router-link to="/">
@@ -27,8 +27,8 @@
                     class="order"
                     v-for="ord in ords"
                     :key="ord._id"
-                    :ord="ord"
-                >{{ord.exp.title}}</li>
+                >{{ord.exp.title}} <button @click="writeReview(ord.exp._id)"><i class="el-icon-edit-outline">Write a review</i></button></li>
+                
             </ul>
             <button class="add-exp-btn" @click="add">
                 <h4>Add Activity</h4>
@@ -37,7 +37,7 @@
         <div v-if="exps" class="activities-list-container">
             <h4 class="activities-list-header">Your Activities:</h4>
             <ul class="activities-list">
-                <li class="activity" v-for="exp in exps" :key="exp._id" :exp="exp">
+                <li class="activity" v-for="exp in exps" :key="exp._id" >
                     {{exp.title}}
                     <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
                         <h4>Edit</h4>
@@ -53,15 +53,17 @@
             @click="hasHistory() ? $router.go(-1) : $router.push('/')"
             class="my-5 btn btn-outline-success"
         >&laquo; Back</button>
-        <!-- <chart v-if="creator" :dataExp="dataExp" :expTitle="expTitle" /> -->
+        <chart v-if="creator" :dataExp="dataExp" :expTitle="expTitle" />
     </section>
 </template>
 
 <script>
 import { expService } from "../services/exp.service.js";
 import { userService } from "../services/user.service.js";
+import reviewDetails from "./review-details.vue";
 import { orderService } from "../services/order.service.js";
-// import chart from "../components/chart.vue";
+
+import chart from "../components/chart.vue";
 export default {
   name: "user-details",
   data() {
@@ -70,27 +72,27 @@ export default {
       loggedinUser: null,
       user: null,
       ords: [],
-      // dataExp: [],
-      // expTitle:[]
+      dataExp: [],
+      expTitle:[]
     };
   },
   computed: {
     creator() {
-      console.log(this.user._id)
-      console.log(this.loggedinUser._id)
       return  this.user._id === this.loggedinUser._id ? true: false 
-    },
-    // chartData(){
-    //   this.exps.forEach(exp => {
-    //      this.dataExp.push(exp.participants.length)
-    //   })
-    //   console.log(this.dataExp)
-    //   this.exps.forEach(exp => {
-    //      this.expTitle.push(this.expTitle)
-    //   })
-    // }
+    }
+    
   },
   methods: {
+    chartData(){
+      this.dataExp = this.exps.map(exp => {
+         return exp.participants.length
+      })
+      console.log(this.dataExp)
+      this.expTitle = this.exps.map(exp => {
+        return exp.title
+      })
+      console.log(this.expTitle)
+    },
     hasHistory() {
       return window.history.length > 2;
     },
@@ -99,6 +101,10 @@ export default {
     },
     edit(id) {
       this.$router.push(`/exp/edit/${id}`);
+    },
+    writeReview(id){
+      console.log(id)
+      this.$router.push(`/order/${id}`)
     },
     async remove(id) {
       try {
@@ -116,14 +122,14 @@ export default {
     const userOrds = await orderService.getOrders(userId);
     this.exps = userExps;
     this.ords = userOrds;
-    // this.chartData();
+    this.chartData();
   },
   components: {
-    // chart
+    reviewDetails,
+    chart
   }
 }
-// Things  that are for everyone to see: "sellerExps" = UserExps
-// Things that are for loggedinUser.id === params.id: orderExps
+
 // Things that are only for guides / sellers and loggedinUser.id === params.id: edit button on UserExps, navigation to Dashboard
 </script>
     

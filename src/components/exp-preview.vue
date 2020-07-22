@@ -37,6 +37,7 @@ export default {
     props: ["exp", "loggedinUser"],
     computed: {
         averageRate() {
+            if (this.exp.reviews.length === 0) return 
             let sum = this.exp.reviews.reduce((acc, review) => {
                 return acc + review.rate;
             }, 0);

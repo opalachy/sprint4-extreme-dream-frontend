@@ -26,10 +26,19 @@
         ></el-input>
       </label>
       <br />
+      <br />
       <label>
         Type:
-        <el-input class="el-input" required placeholder="Experience type" v-model="expToEdit.type"></el-input>
+        <el-select required v-model="expToEdit.type" placeholder="Choose Experience type">
+          <el-option value="Ski">Ski</el-option>
+          <el-option value="Diving">Diving</el-option>
+          <el-option value="Rock Climb">Rock Climb</el-option>
+          <el-option value="Surffing">Surffing</el-option>
+          <el-option value="Bunjee Jump">Bunjee Jump</el-option>
+          <el-option value="Sky Diving">Sky Diving</el-option>
+        </el-select>
       </label>
+      <br />
       <br />
       <label>
         Upload/Have at least 5 images: {{loaded}}
@@ -40,6 +49,7 @@
           @change="onUploadImg"
         />
       </label>
+      <br />
       <br />
       <div class="exp-edit-imgs-container">
         <div class="exp-edit-imgs" v-for="(img, idx ) in expToEdit.imgUrls">
@@ -133,6 +143,7 @@ import datePicker from "../components/date-picker";
 export default {
   data() {
     return {
+      loggedinUser: null,
       disabled: true,
       loaded: "",
       loadCount: 0,
@@ -165,6 +176,10 @@ export default {
     },
     async saveExp() {
       if (!this.expToEdit.title) return;
+      this.expToEdit.createdBy._id = this.loggedinUser._id;
+      this.expToEdit.createdBy.fullName = this.loggedinUser.fullName;
+      this.expToEdit.createdBy.imgUrl = this.loggedinUser.imgUrl;
+      this.expToEdit.createdBy.info = this.loggedinUser.info;
       await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit });
       this.$router.push("/");
       this.loadExp();
@@ -196,6 +211,7 @@ export default {
   },
   created() {
     this.loadExp();
+    this.loggedinUser = this.$store.getters.loggedinUser;
   },
   watch: {
     "$route.params.expId"() {

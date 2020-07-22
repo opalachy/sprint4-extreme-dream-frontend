@@ -8,12 +8,12 @@ export default {
   extends: Bar,
   data: () => ({
     chartdata: {
-      labels: ['jan', 'feb', 'mar'],
+      labels: '',
       datasets: [
         {
           label: 'Number of participant in experience',
           backgroundColor: '#f87979',
-          data: [10,20,30]
+          data: '',
         }
       ]
     },
@@ -27,6 +27,10 @@ export default {
   mounted () {
     this.renderChart(this.chartdata, this.options)
   },
+  created(){
+    this.chartdata.labels = this.dataExp
+    this.chartdata.datasets.data = this.expTitle
+  }
 
 }
 </script>
