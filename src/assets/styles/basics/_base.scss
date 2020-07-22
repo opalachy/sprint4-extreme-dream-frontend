@@ -43,6 +43,7 @@ p {
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 a {
@@ -52,7 +53,26 @@ a {
 }
 
 
-
+::-webkit-scrollbar {
+    width:10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: black; 
+    border-radius: 15px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000db; 
+  }
 
     
 

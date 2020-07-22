@@ -1,16 +1,16 @@
 <template>
   <section class="exp-filter">
-    <button @click="setOption('type')">Type</button>
-    <button @click="setOption('location')">Location</button>
-    <button @click="setOption('tags')">More filter</button>
-    <button @click="setOption('sortBy')">sort</button>
+    <button :class="isOnType" @click="setOption('type')">Type</button>
+    <button :class="isOnLocation" @click="setOption('location')">Location</button>
+    <button :class="isOnTags" @click="setOption('tags')">More filters</button>
+    <button :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
     <!-- <button @click="sort">Sort by</button> -->
   
     <div v-show="filterOption" @click="close" class="screen"></div>
 
     <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
           
-          <h2>Choose your favorite tags</h2> 
+          <h2>More filters</h2> 
     
            <div class="label-container">
  
@@ -33,13 +33,9 @@
          <button @click="save">save</button>
    </div>
 
-
-
-
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
 
-      <h2>Choose type of experience</h2>
-      
+      <h2>Select experience</h2> 
              
            <div class="label-container">
        <input id="all-type" type="radio" v-model="filterBy.type" value="all"  hidden>
@@ -54,8 +50,11 @@
        <input id="Surfing" type="radio"  v-model="filterBy.type" value="Surfing"  hidden>
      <label for="Surfing" >Surfing</label>
      
-       <input id="Motorcycle" type="radio"  v-model="filterBy.type" value="Motorcycle"  hidden>
-     <label for="Motorcycle" >Motorcycle</label>
+       <input id="Motorcross" type="radio"  v-model="filterBy.type" value="Motorcross"  hidden>
+     <label for="Motorcross" >Motorcross</label>
+
+       <input id="Offroad" type="radio"  v-model="filterBy.type" value="Offroad"  hidden>
+     <label for="Offroad" >Offroad</label>
      </div>
      <button @click="save">save</button>
 
@@ -64,7 +63,7 @@
 
    <div v-show="(filterOption === 'location')" class="location-filter filter-modal">
           
-      <h2>Choose locatin</h2>
+      <h2>Select locatin</h2>
 
         
         <div class="label-container">
@@ -121,6 +120,20 @@ export default {
         sortBy: 'newest',
       }
     }
+  },
+  computed:{
+    isOnType(){
+      return {isActive: this.filterOption === 'type'}
+    },
+    isOnLocation(){
+      return {isActive: this.filterOption === 'location'}
+    },
+    isOnTags(){
+      return {isActive: this.filterOption === 'tags'}
+    },
+    isOnSortBy(){
+      return {isActive: this.filterOption === 'sortBy'}
+    },
   },
   methods: {
     setOption(option){

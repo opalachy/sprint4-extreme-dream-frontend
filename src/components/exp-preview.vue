@@ -1,16 +1,17 @@
 <template>
-    <li @click="details" class="exp-preview container">
+    <li  class="exp-preview container">
         <div
+            @click="details"
             class="exp-preview-img"
             v-bind:style="{ backgroundImage: 'url(' + exp.imgUrls[0] + ')' }"
         ></div>
         <div class="exp-preview-title-seller">
-            <h4 class="exp-title">{{exp.title}}</h4>
+            <!-- <h4 class="exp-title">{{exp.title}}</h4> -->
             <div class="preview-seller">
                 <img class="seller-img" :src="exp.createdBy.imgUrl" />
-    
                 <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
             </div>
+            <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
         </div>
 
         <div class="exp-preview-type-ticket">
@@ -24,10 +25,10 @@
         <div class="exp-preview-price-stars-rate">
             <p class="exp-price">${{exp.currPrice}}</p>
             <button v-if="seller" class="edit" @click.stop="removeExp">Delete</button>
-            <p class="exp-rate">
+            <!-- <p class="exp-rate">
                 <i class="el-icon-star-on"></i>
                 {{averageRate}} ({{ratesCounter}})
-            </p>
+            </p> -->
         </div>
     </li>
 </template>
