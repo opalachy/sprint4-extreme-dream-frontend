@@ -57,7 +57,7 @@ function getEmptyExp() {
           tags: [],
           participants: [],
           location: "",
-          date: "",
+          date: Date.now() + 60*60*1000*24*21,
           capacity: "",
           imgUrls: [],
           reviews: []
