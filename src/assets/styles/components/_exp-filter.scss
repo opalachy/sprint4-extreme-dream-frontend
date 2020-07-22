@@ -11,7 +11,7 @@
         height: 100vh;
         width: 100vw;
     }
-    button {
+    .filter-btn {
         font-size: 15px;
         position: relative;
         z-index: 5;
@@ -48,8 +48,18 @@
         -webkit-background-clip: padding-box;
         -moz-background-clip: padding-box;
         background-clip: padding-box;
-        button {
+        .save-filter-btn {
+            font-size: 15px;
             border-radius: 13px;
+            padding: 8px 22px;
+            margin: 0;
+            border: none;
+            background-color: #113659;
+            color: white;
+            transition: .15s;
+            &:hover {
+                background-color: #113659e0;
+            }
         }
         .label-container {
             display: flex;
@@ -66,6 +76,7 @@
                 border-radius: 3px;
                 border: 1px solid white;
                 line-height: 26px;
+                transition: 0.15s;
                 &:hover {
                     cursor: pointer;
                     font-weight: bold;

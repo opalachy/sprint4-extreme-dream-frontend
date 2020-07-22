@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     creator() {
-      return  this.user._id === this.loggedinUser._id ? true: false 
+      return  this.user._id === this.loggedinUser._id
     }
     
   },
@@ -118,7 +118,7 @@ export default {
     const userId = this.$route.params.id;
     this.user = await userService.getById(userId);
     this.loggedinUser = this.$store.getters.loggedinUser;
-    const userExps = await expService.getUserExps({ userId: userId });
+    const userExps = await expService.getExps({ userId: userId });
     const userOrds = await orderService.getOrders(userId);
     this.exps = userExps;
     this.ords = userOrds;

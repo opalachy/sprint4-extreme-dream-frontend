@@ -1,106 +1,58 @@
 <template>
   <section class="exp-filter">
-    <button :class="isOnType" @click="setOption('type')">Type</button>
-    <button :class="isOnLocation" @click="setOption('location')">Location</button>
-    <button :class="isOnTags" @click="setOption('tags')">More filters</button>
-    <button :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
-    <!-- <button @click="sort">Sort by</button> -->
+    <button class="filter-btn" :class="isOnType" @click="setOption('type')">Type</button>
+    <button class="filter-btn" :class="isOnLocation" @click="setOption('location')">Location</button>
+    <button class="filter-btn" :class="isOnTags" @click="setOption('tags')">More filters</button>
+    <button class="filter-btn" :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
   
     <div v-show="filterOption" @click="close" class="screen"></div>
 
-    <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
-          
-          <h2>More filters</h2> 
-    
-           <div class="label-container">
- 
-         <input  id="Family" type="checkbox" @change="choose" hidden>
-       <label for="Family" >Family</label>
-          
-         <input id="Children" type="checkbox" @change="choose" hidden>
-       <label for="Children" >Children</label>
-                   
-         <input id="Adventure" type="checkbox" @change="choose" hidden>
-       <label for="Adventure" >Adventure</label>
-          
-         <input id="Sports" type="checkbox" @change="choose" hidden>
-       <label for="Sports" >Sports</label>
-          
-         <input id="All-level" type="checkbox" @change="choose" hidden>
-       <label for="All-level" >All level</label>
-       </div>
-  
-         <button @click="save">save</button>
-   </div>
-
+   
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
-
-      <h2>Select experience</h2> 
-             
-           <div class="label-container">
-       <input id="all-type" type="radio" v-model="filterBy.type" value="all"  hidden>
-     <label for="all-type" >All</label>
-     
-       <input id="Ski" type="radio"  v-model="filterBy.type" value="Ski"  hidden>
-     <label for="Ski" >Ski</label>
-     
-       <input id="Diving" type="radio"  v-model="filterBy.type" value="Diving"  hidden>
-     <label for="Diving" >Diving</label>
-     
-       <input id="Surfing" type="radio"  v-model="filterBy.type" value="Surfing"  hidden>
-     <label for="Surfing" >Surfing</label>
-     
-       <input id="Motorcross" type="radio"  v-model="filterBy.type" value="Motorcross"  hidden>
-     <label for="Motorcross" >Motorcross</label>
-
-       <input id="Offroad" type="radio"  v-model="filterBy.type" value="Offroad"  hidden>
-     <label for="Offroad" >Offroad</label>
-     </div>
-     <button @click="save">save</button>
-
+      <h2>Select experience</h2>          
+      <div class="label-container">
+        <div v-for="type in types" :key="type.idVal">
+          <input :id="type.idVal" type="radio" v-model="filterBy.type" :value="type.idVal"  hidden>
+          <label :for="type.idVal" >{{type.txt}}</label>
+        </div>
+      </div>
+      <button class="save-filter-btn" @click="save">save</button>
    </div>
 
-
-   <div v-show="(filterOption === 'location')" class="location-filter filter-modal">
-          
-      <h2>Select locatin</h2>
-
-        
-        <div class="label-container">
-       <input id="All-location" type="radio"  v-model="filterBy.location" value="all"  hidden>
-     <label for="All-location" >All</label>
-     
-       <input id="Israel" type="radio"  v-model="filterBy.location" value="Israel"  hidden>
-     <label for="Israel" >Israel</label>
-     
-       <input id="France" type="radio"  v-model="filterBy.location" value="France"  hidden>
-     <label for="France" >France</label>
-     
-       <input id="Egypt" type="radio"  v-model="filterBy.location" value="Egypt"  hidden>
-     <label for="Egypt" >Egypt</label>
-     
-       <input id="USA" type="radio"  v-model="filterBy.location" value="USA"  hidden>
-     <label for="USA" >USA</label>
-     </div>
-
-     <button @click="save">save</button>
-     
+   <div v-show="(filterOption === 'location')"  class="location-filter filter-modal">
+      <h2>Select locatin</h2>        
+      <div class="label-container">
+        <div v-for="location in locations" :key="location.idVal">
+          <input :id="location.idVal" type="radio" v-model="filterBy.location" :value="location.idVal"  hidden>
+          <label :for="location.idVal" >{{location.txt}}</label>
+        </div>
+      </div>
+      <button class="save-filter-btn" @click="save">save</button>
    </div>
-   <div v-show="(filterOption === 'sortBy')" class="sortBy-filter  filter-modal">
-         
-        <h2>Sort by</h2>
-        <div class="label-container">
-       <input id="newest" type="radio"  v-model="filterBy.sortBy" value="Newest"  hidden>
-     <label for="newest" >Newest</label>
-     
-       <input id="best-deal" type="radio"  v-model="filterBy.sortBy" value="currPrice"  hidden>
-     <label for="best-deal" >Best Deal</label>
-     </div>
-     <button @click="save">save</button>
-     
+
+   <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
+      <h2>More filters</h2>         
+      <div class="label-container">
+        <div v-for="tag in tags" :key="tag.idVal">
+          <input :id="tag.idVal" type="checkbox"  @change="choose" :value="tag.idVal" hidden>
+          <label :for="tag.idVal" >{{tag.txt}}</label>
+        </div>
+      </div>
+      <button class="save-filter-btn" @click="save">save</button>
    </div>
    
+  <div v-show="(filterOption === 'sortBy')"  class="sortBy-filter filter-modal">
+      <h2>Sort</h2>        
+      <div class="label-container">
+        <div v-for="sort in sortBy" :key="sort.idVal">
+          <input :id="sort.idVal" type="radio" v-model="filterBy.sortBy" :value="sort.idVal"  hidden>
+          <label :for="sort.idVal" >{{sort.txt}}</label>
+        </div>
+      </div>
+      <button class="save-filter-btn" @click="save">save</button>
+   </div>
 
+   
   </section>
 </template>
  
@@ -111,7 +63,32 @@ export default {
   name: "exp-filter",
   data(){
     return {
-      // lastFilterBy: null,
+      types: [
+       {idVal: 'all' , txt: 'All'} ,
+       {idVal: 'Diving' , txt: 'Diving'},
+       {idVal: 'Ski' , txt: 'Ski'} ,
+       {idVal: 'Surfing' , txt: 'Surfing'},
+       {idVal: 'Offroad' , txt: 'Offroad'} ,
+       {idVal: 'Motorcross' , txt: 'Motorcross'}
+       ],
+       locations: [
+       {idVal: 'all' , txt: 'All'} ,
+       {idVal: 'Israel' , txt: 'Israel'},
+       {idVal: 'France' , txt: 'France'} ,
+       {idVal: 'Egypt' , txt: 'Egypt'},
+       {idVal: 'USA' , txt: 'USA'} ,
+       ],
+       tags: [
+       {idVal: 'Family' , txt: 'Family'} ,
+       {idVal: 'Children' , txt: 'Children'},
+       {idVal: 'Adventure' , txt: 'Adventure'} ,
+       {idVal: 'Sports' , txt: 'Sports'},
+       {idVal: 'All-level' , txt: 'All level'} ,
+       ],
+       sortBy: [
+          {idVal: 'newest' , txt: 'Newest'} ,
+          {idVal: 'currPrice' , txt: 'Best Deals'}, 
+       ],
       filterOption: '',
       filterBy: {
         type: 'all',

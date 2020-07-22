@@ -1,10 +1,14 @@
 <template>
   <section class="app-header">
-    <router-link to="/">Home</router-link>
+    <router-link to="/"><span :class="isOnHome" @click="goToHome" > Home</span></router-link>
     <div class="router-header">
-      <button @click="goToExperiences">Experiences</button>
-      <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`">My Profile</router-link>
-      <router-link v-if="!loggedinUser" to="/login">Login</router-link>
+      <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
+      <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`"> 
+         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
+      </router-link>
+      <router-link v-if="!loggedinUser" to="/login">
+         <span @click="goToLogin"  :class="isOnLogin">Login</span>
+      </router-link>
       <!-- <router-link to="/login">logout</router-link> -->
       <div v-else class="log-user">
          <h5>Walcome {{loggedinUser.userName}}</h5>
@@ -17,10 +21,27 @@
 <script>
 export default {
   name: "app-header",
+  data(){ 
+    return {
+        activeLink: 'home'
+    } 
+  },
   computed:{
     loggedinUser(){
       return this.$store.getters.loggedinUser;
-    }
+    },
+    isOnHome() {
+      return {active :  this.activeLink === 'home' }
+    },
+    isOnProfile() {
+      return {active : this.activeLink === 'profile' }
+    },
+    isOnLogin() {
+      return {active : this.activeLink === 'login' }
+    },
+    isOnExperiences() {
+      return {active : this.activeLink === 'experiences' }
+    },
   },
   methods: {
       async logout(){
@@ -28,12 +49,26 @@ export default {
       this.$router.push('/');
     },
     goToExperiences(){
+      this.activeLink = 'experiences'
       this.$store.commit({type: "setFilter" , filterBy: {}});
       this.$router.push('/exp');
     },
+    goToHome(){
+      this.activeLink ='home'
+    },
+    goToProfile(){
+      this.activeLink ='profile'
+    },
+    goToLogin(){
+       this.activeLink ='login'
+    }
   },
 };
 </script>
 
 <style>
+
+.active{
+   border-bottom: 3px solid black;
+}
 </style>

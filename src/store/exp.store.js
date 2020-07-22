@@ -20,14 +20,17 @@ export const expStore = {
     },
     setFilter(state, { filterBy }){
       state.filterBy = filterBy;
+    },
+    setExps(state, { exps }){
+      state.exps = exps
     }
   },
   actions: {
-    async loadExps({ state }) {
+    async loadExps({ state ,commit }) {
       try {
         const exps = await expService.getExps(state.filterBy)
-        state.exps = exps
-        return exps
+        commit({type: "setExps" , exps})
+        // return exps
       } catch (err) {
         console.log('ERR: ', err)
       }
