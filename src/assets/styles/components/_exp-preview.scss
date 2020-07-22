@@ -4,12 +4,10 @@ li.exp-preview {
     // justify-content: space-between;
     border: 0.5px solid lightgray;
     border-radius: 8px;
+    margin-inline-start: 0.65%;
+    margin-inline-end: 0.65%;
     p {
         line-height: 1.2rem;
-    }
-    &:not(:last-child) {
-        margin-inline-start: 0.65%;
-        margin-inline-end: 0.65%;
     }
     > *:not(:first-child) {
         margin: 0 8px 3.8px 8px;
@@ -44,6 +42,7 @@ li.exp-preview {
     }
     .exp-preview-desc {
         font-size: 14px;
+        min-height: 36px;
     }
     .exp-preview-price-stars-rate {
         display: flex;

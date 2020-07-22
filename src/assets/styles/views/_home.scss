@@ -41,28 +41,27 @@
     .cards-container {
         display: flex;
         flex-direction: column;
-        max-width: 980px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 15px;
+        padding-inline-end: 8px;
         .type-container {
             display: flex;
             justify-content: space-between;
             margin-bottom: 30px;
-        }
-        button {
-            background-color: #4f94d6;
-            color: white;
-            border-radius: 7px;
-            padding: 9px 12px;
+            padding: 0 8px;
+            button {
+                background-color: white;
+                text-decoration: underline;
+                transition: .12s;
+                &:hover {
+                    color: #4f94d6;
+                }
+            }
         }
         .exp-list {
             display: flex;
             justify-content: space-between;
             margin-bottom: 50px;
-            .exp-preview {
-                width: 30%;
-                height: 360px;
-            }
         }
     }
 }

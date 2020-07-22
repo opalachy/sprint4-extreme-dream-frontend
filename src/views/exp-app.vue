@@ -1,6 +1,6 @@
 <template>
     <section class="exp-app exp-main">
-        <h2 class="app-title">Our Experiences</h2>
+        <h2 class="app-title">Choose an Experience</h2>
 
         <!-- <div class="hero-img">
     <img src="" alt="Loading...">

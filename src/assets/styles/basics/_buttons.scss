@@ -4,10 +4,10 @@ button {
     // margin: 0;
     text-decoration: none;
     cursor: pointer;
-    &:hover, button:focus {
-        opacity: 0.8;
-        transition: opacity .3S ease-in-out;
-    }
+    // &:hover, button:focus {
+    //     opacity: 0.8;
+    //     transition: opacity .3S ease-in-out;
+    // }
     &:focus {
         outline: none;
         outline-offset: -4px;

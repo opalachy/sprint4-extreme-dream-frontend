@@ -8,12 +8,12 @@ export default {
   extends: Bar,
   data: () => ({
     chartdata: {
-      labels: '',
+      labels: ['A', 'B'],
       datasets: [
         {
           label: 'Number of participant in experience',
           backgroundColor: '#f87979',
-          data: '',
+          data: []
         }
       ]
     },
@@ -25,11 +25,11 @@ export default {
   }),
 
   mounted () {
+    this.chartdata.labels = this.expTitle
+    this.chartdata.datasets[0].data = this.dataExp
     this.renderChart(this.chartdata, this.options)
-  },
+    },
   created(){
-    this.chartdata.labels = this.dataExp
-    this.chartdata.datasets.data = this.expTitle
   }
 
 }

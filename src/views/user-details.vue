@@ -53,7 +53,7 @@
             @click="hasHistory() ? $router.go(-1) : $router.push('/')"
             class="my-5 btn btn-outline-success"
         >&laquo; Back</button>
-        <chart v-if="creator" :dataExp="dataExp" :expTitle="expTitle" />
+        <chart v-if="creator" :dataExp="chartDataExp" :expTitle="chartTitleExp" />
     </section>
 </template>
 
@@ -72,27 +72,41 @@ export default {
       loggedinUser: null,
       user: null,
       ords: [],
-      dataExp: [],
-      expTitle:[]
     };
+      // dataExp: [],
+      // expTitle:[]
   },
   computed: {
     creator() {
-      return  this.user._id === this.loggedinUser._id ? true: false 
+      return  this.user._id === this.loggedinUser._id
     }
-    
   },
   methods: {
     chartData(){
       this.dataExp = this.exps.map(exp => {
          return exp.participants.length
       })
-      console.log(this.dataExp)
-      this.expTitle = this.exps.map(exp => {
+      console.log(dataExp);
+      return dataExp
+    },
+    chartTitleExp() {
+      return this.exps.map(exp => {
         return exp.title
       })
-      console.log(this.expTitle)
-    },
+    }
+    
+  },
+  methods: {
+    // chartData(){
+    //   this.dataExp = this.exps.map(exp => {
+    //      return exp.participants.length
+    //   })
+    //   console.log(this.dataExp)
+    //   this.expTitle = this.exps.map(exp => {
+    //     return exp.title
+    //   })
+    //   console.log(this.expTitle)
+    // },
     hasHistory() {
       return window.history.length > 2;
     },
@@ -118,11 +132,11 @@ export default {
     const userId = this.$route.params.id;
     this.user = await userService.getById(userId);
     this.loggedinUser = this.$store.getters.loggedinUser;
-    const userExps = await expService.getUserExps({ userId: userId });
+    const userExps = await expService.getExps({ userId: userId });
     const userOrds = await orderService.getOrders(userId);
     this.exps = userExps;
     this.ords = userOrds;
-    this.chartData();
+    // this.chartData();
   },
   components: {
     reviewDetails,

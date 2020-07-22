@@ -28,7 +28,7 @@
       }
     },
   watch: {
-     value(){
+    value(){
         this.$emit('setDay' , this.value.getTime())
      }
   },

@@ -3,7 +3,7 @@
     <h1>{{ (expToEdit._id) ? 'Edit exp' : 'Add exp' }}</h1>
     <form @submit.prevent="saveExp">
       <label>
-        Date:
+        Event Date:
         <date-picker @setDay="setDay" :date="expToEdit.date" />
       </label>
       <label>
@@ -36,6 +36,8 @@
           <el-option value="Surffing">Surffing</el-option>
           <el-option value="Bunjee Jump">Bunjee Jump</el-option>
           <el-option value="Sky Diving">Sky Diving</el-option>
+          <el-option value="Motorcross">Motorcross</el-option>
+          <el-option value="Snapling">Snapling</el-option>
         </el-select>
       </label>
       <br />
@@ -90,13 +92,16 @@
       <br />
       <label>
         Category:
-        <el-select v-model="expToEdit.tags" placeholder="Choose Category">
-          <el-option value="family">Family</el-option>
-          <el-option value="children">Children</el-option>
-          <el-option value="all level">All level</el-option>
-          <el-option value="adventure">Adventure</el-option>
-          <el-option value="sports">Sports</el-option>
+        <el-select multiple v-model="value1" placeholder="Choose Category">
+          <el-option value="Family">Family</el-option>
+          <el-option value="Children">Children</el-option>
+          <el-option value="All level">All level</el-option>
+          <el-option value="Adventure">Adventure</el-option>
+          <el-option value="Sports">Sports</el-option>
         </el-select>
+
+<!-- v-model="expToEdit.tags" -->
+
       </label>
       <br />
       <br />
@@ -147,7 +152,24 @@ export default {
       disabled: true,
       loaded: "",
       loadCount: 0,
-      expToEdit: null
+      expToEdit: null,
+      options: [{
+          value: 'Option1',
+          label: 'Option1'
+        }, {
+          value: 'Option2',
+          label: 'Option2'
+        }, {
+          value: 'Option3',
+          label: 'Option3'
+        }, {
+          value: 'Option4',
+          label: 'Option4'
+        }, {
+          value: 'Option5',
+          label: 'Option5'
+        }],
+        value1: []
     };
   },
   components: {
@@ -173,6 +195,7 @@ export default {
     },
     setDay(day) {
       if (day !== null || this.expToEdit.date !== null) this.disabled = false;
+      this.expToEdit.date = day
     },
     async saveExp() {
       if (!this.expToEdit.title) return;
@@ -180,6 +203,8 @@ export default {
       this.expToEdit.createdBy.fullName = this.loggedinUser.fullName;
       this.expToEdit.createdBy.imgUrl = this.loggedinUser.imgUrl;
       this.expToEdit.createdBy.info = this.loggedinUser.info;
+      this.expToEdit.tags = this.value1 
+      console.log(this.expToEdit)
       await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit });
       this.$router.push("/");
       this.loadExp();

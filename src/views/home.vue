@@ -1,6 +1,7 @@
 <template>
     <section class="home-page">
-        <div class="hero-img">
+        <div class="hero-img"> 
+            
           <div class="search-container">
             <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
                 <input v-model="choosedType" list="exp-list" placeholder="What Is Your Favor Experience"/>
@@ -17,8 +18,20 @@
             
         </div>
         <div class="cards-container">
+
+            <!-- <template v-for="topic in topics">
+                <div class="type-container">
+                    <h2>{{topic.name}}</h2>
+                    <router-link :to="topic.to" >See all</router-link>
+                </div>
+                <exp-list :exps="topic.exps" />
+            </template>     -->
+
+
+
+
             <div class="type-container">
-                <h2>Best Sellers</h2>
+                <h2>Best Deals</h2>
                 <button @click="goToPopular">See All</button>
             </div>
             <exp-list v-if="bestExps" :exps="bestExps" />
@@ -39,6 +52,7 @@
 <script>
 // @ is an alias to /src
 import expList from "../components/exp-list.vue";
+import socket from "../services/socket.service.js"
 
 export default {
     name: "Home-page",
@@ -71,12 +85,14 @@ export default {
             console.log(this.choosedType);
             this.$store.commit({type: 'setFilter' , filterBy : {type: this.choosedType}});
             this.$router.push('/exp');
-        }   
+        },
            
     },
     async created() {
+        // socket.setup()
         this.$store.commit({ type : "setFilter" , filterBy: {}})
-        const exps = await this.$store.dispatch({ type: "loadExps" });
+        await this.$store.dispatch({ type: "loadExps" });
+        const exps = this.$store.getters.exps
         const currExps = exps.slice(0, 4);
         this.bestExps = currExps;
         this.popSki = currExps;

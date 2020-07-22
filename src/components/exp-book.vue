@@ -12,6 +12,8 @@
 <script>
 import datePicker from './date-picker.vue';
 import selectCapacity from './select-capacity.vue';
+// import socket from "../services/socket.service.js"
+ 
 // import elButton from 
 export default {
   props: ['exp'],
@@ -24,7 +26,7 @@ export default {
       }
     },
     methods:{
-      book(){
+      book(){   
         this.$emit('booking' , this.booking)
       },
       setDay(day){
@@ -32,7 +34,7 @@ export default {
       },
       setTicket(numOfTickets){
         this.booking.numOfTickets = numOfTickets;
-      }
+      },
     },
     computed: {
       bookPrice(){
@@ -43,5 +45,10 @@ export default {
        datePicker,
        selectCapacity
    },
+   created(){
+      // socket.setup()
+   }
 }
 </script>
+
+
