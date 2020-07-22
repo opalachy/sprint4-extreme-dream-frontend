@@ -53,7 +53,7 @@
             @click="hasHistory() ? $router.go(-1) : $router.push('/')"
             class="my-5 btn btn-outline-success"
         >&laquo; Back</button>
-        <chart v-if="creator" :dataExp="chartDataExp" :expTitle="chartTitleExp" />
+        <!-- <chart v-if="creator" :dataExp="chartDataExp" :expTitle="chartTitleExp" /> -->
     </section>
 </template>
 
@@ -78,24 +78,25 @@ export default {
   },
   computed: {
     creator() {
-      return  this.user._id === this.loggedinUser._id
+      if(!this.loggedinUser) return false
+      return  this.user._id === this.loggedinUser._id 
     }
   },
-  methods: {
-    chartData(){
-      this.dataExp = this.exps.map(exp => {
-         return exp.participants.length
-      })
-      console.log(dataExp);
-      return dataExp
-    },
-    chartTitleExp() {
-      return this.exps.map(exp => {
-        return exp.title
-      })
-    }
+  // methods: {
+    // chartData(){
+    //   this.dataExp = this.exps.map(exp => {
+    //      return exp.participants.length
+    //   })
+    //   console.log(dataExp);
+    //   return dataExp
+    // },
+    // chartTitleExp() {
+    //   return this.exps.map(exp => {
+    //     return exp.title
+    //   })
+    // }
     
-  },
+  // },
   methods: {
     // chartData(){
     //   this.dataExp = this.exps.map(exp => {
@@ -130,7 +131,9 @@ export default {
   },
   async created() {
     const userId = this.$route.params.id;
+    console.log(userId)
     this.user = await userService.getById(userId);
+    console.log(this.user)
     this.loggedinUser = this.$store.getters.loggedinUser;
     const userExps = await expService.getExps({ userId: userId });
     const userOrds = await orderService.getOrders(userId);

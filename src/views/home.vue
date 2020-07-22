@@ -1,10 +1,10 @@
 <template>
     <section class="home-page">
         <div class="hero-img"> 
-            
+            <h1 class="app-title"></h1>
           <div class="search-container">
             <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
-                <input v-model="choosedType" list="exp-list" placeholder="What Is Your Favor Experience"/>
+                <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
                 <datalist  id="exp-list">
                     <option value="Ski" />
                     <option value="Sky Diving" />

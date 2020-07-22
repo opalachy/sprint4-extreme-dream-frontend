@@ -1,23 +1,29 @@
 <template>
     <li  class="exp-preview container">
-        <div
+        <!-- <div
             @click="details"
             class="exp-preview-img"
             v-bind:style="{ backgroundImage: 'url(' + exp.imgUrls[0] + ')' }"
-        ></div>
-        <div class="exp-preview-title-seller">
-            <!-- <h4 class="exp-title">{{exp.title}}</h4> -->
-            <div class="preview-seller">
-                <img class="seller-img" :src="exp.createdBy.imgUrl" />
-                <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
-            </div>
-            <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
+        ></div> -->
+          
+
+        <div @click="details" class="exp-preview-img">
+            <img :src="exp.imgUrls[0]"  />
         </div>
 
+        <div class="exp-preview-title-seller">
+            <!-- <h4 class="exp-title">{{exp.title}}</h4> -->
+            <router-link :to="`/user/${exp.createdBy._id}`" class="preview-seller">
+                <img class="seller-img" :src="exp.createdBy.imgUrl" />
+                <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
+            </router-link>
+            <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
+        </div>
+             
         <div class="exp-preview-type-ticket">
-            <h4 class="exp-type">{{exp.type}}</h4>
+            <h4 class="exp-type">{{exp.location}}</h4>
             <button v-if="seller" class="edit" @click.stop="edit">Edit</button>
-            <h4 class="preview-creator">{{left}}/{{exp.capacity}} left</h4>
+            <h4 class="preview-left">{{left}}/{{exp.capacity}} left</h4>
         </div>
         <!-- @book="book" -->
         <p class="exp-preview-desc">{{exp.shortDesc}}</p>

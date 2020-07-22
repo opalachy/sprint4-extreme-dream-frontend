@@ -64,26 +64,26 @@ export default {
   data(){
     return {
       types: [
-       {idVal: 'all' , txt: 'All'} ,
-       {idVal: 'Diving' , txt: 'Diving'},
-       {idVal: 'Ski' , txt: 'Ski'} ,
-       {idVal: 'Surfing' , txt: 'Surfing'},
-       {idVal: 'Offroad' , txt: 'Offroad'} ,
-       {idVal: 'Motorcross' , txt: 'Motorcross'}
+          {idVal: 'all' , txt: 'All'} ,
+          {idVal: 'Diving' , txt: 'Diving'},
+          {idVal: 'Ski' , txt: 'Ski'} ,
+          {idVal: 'Surfing' , txt: 'Surfing'},
+          {idVal: 'Offroad' , txt: 'Offroad'} ,
+          {idVal: 'Motorcross' , txt: 'Motorcross'}
        ],
        locations: [
-       {idVal: 'all' , txt: 'All'} ,
-       {idVal: 'Israel' , txt: 'Israel'},
-       {idVal: 'France' , txt: 'France'} ,
-       {idVal: 'Egypt' , txt: 'Egypt'},
-       {idVal: 'USA' , txt: 'USA'} ,
+          {idVal: 'all' , txt: 'All'} ,
+          {idVal: 'Israel' , txt: 'Israel'},
+          {idVal: 'France' , txt: 'France'} ,
+          {idVal: 'Egypt' , txt: 'Egypt'},
+          {idVal: 'USA' , txt: 'USA'} ,
        ],
        tags: [
-       {idVal: 'Family' , txt: 'Family'} ,
-       {idVal: 'Children' , txt: 'Children'},
-       {idVal: 'Adventure' , txt: 'Adventure'} ,
-       {idVal: 'Sports' , txt: 'Sports'},
-       {idVal: 'All-level' , txt: 'All level'} ,
+          {idVal: 'Family' , txt: 'Family'} ,
+          {idVal: 'Children' , txt: 'Children'},
+          {idVal: 'Adventure' , txt: 'Adventure'} ,
+          {idVal: 'Sports' , txt: 'Sports'},
+          {idVal: 'All-level' , txt: 'All level'} ,
        ],
        sortBy: [
           {idVal: 'newest' , txt: 'Newest'} ,

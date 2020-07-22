@@ -1,13 +1,10 @@
 .app-header {
-    // height: 90px;
-    // background-color: #0c0d0d;
-    // color: white;
-    // padding: 0 10px;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
-    // margin-bottom: 40px;
-    height: 90px;
+    font-size: 14px;
+    top: 0;
+    position: absolute;
+    height: 55px;
+    background-color: #ffffff40;
+    width: 100%;
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
@@ -16,7 +13,7 @@
     a {
         // color: white;
         color: black;
-        font-size: 22px;
+        font-size: 14px;
         letter-spacing: 0.5px;
         cursor: pointer;
     }
@@ -31,7 +28,7 @@
     }
     button{
         color: black;
-        font-size: 22px;
+        font-size: 14px;
         letter-spacing: 0.5px;
         cursor: pointer;
         background-color: white;

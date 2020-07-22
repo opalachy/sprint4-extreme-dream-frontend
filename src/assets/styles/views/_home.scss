@@ -4,13 +4,15 @@
         color: #4f94d6;
     }
     .hero-img {
-        background-image: url("https://images.unsplash.com/photo-1520568474090-4908017861eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1185&q=80");
-        height: 70vh; /* You must set a specified height */
-        @include img-background-cover-center;
+        background-image: url(https://images.unsplash.com/photo-1520568474090-4908017861eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1185&q=80);
+        height: 80vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
-        margin-bottom: 60px;
+        align-items: center;
+        margin-bottom: 30px;
         .search-container {
             height: 30px;
             margin-top: 10%;
@@ -47,7 +49,7 @@
         .type-container {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             padding: 0 8px;
             button {
                 background-color: white;

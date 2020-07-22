@@ -1,7 +1,5 @@
 .exp-filter {
-    .isActive {
-        border: 0.5px solid #000000;
-    }
+    
     margin-bottom: 18px;
     .screen {
         top: 0;
@@ -10,6 +8,8 @@
         z-index: 1;
         height: 100vh;
         width: 100vw;
+        background-color: rgba(0, 0, 0, 0.151);
+        transition: 0.3s;
     }
     .filter-btn {
         font-size: 15px;
@@ -26,6 +26,10 @@
         transition: 0.3s;
         &:hover {
             border: 0.5px solid #000000;
+        }
+        &.isActive {
+            border: 0.5px solid #000000;
+            
         }
     }
     .filter-modal {
@@ -56,7 +60,7 @@
             border: none;
             background-color: #113659;
             color: white;
-            transition: .15s;
+            transition: 0.15s;
             &:hover {
                 background-color: #113659e0;
             }
@@ -69,9 +73,8 @@
             padding: 12px 0;
             border-top: 1px solid #b3adad;
             border-bottom: 1px solid #b3adad;
-
-            label {
-                padding: 1px 7px;
+            label {  
+                padding: 3px 8px;
                 margin: 4px 5px;
                 border-radius: 3px;
                 border: 1px solid white;

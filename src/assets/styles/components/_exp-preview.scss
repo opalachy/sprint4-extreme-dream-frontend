@@ -1,7 +1,6 @@
 li.exp-preview {
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     border: 0.5px solid lightgray;
     border-radius: 8px;
     margin-inline-start: 0.65%;
@@ -18,31 +17,40 @@ li.exp-preview {
         top: 2.6px;
         position: relative;
     }
-    &:hover {
-        cursor: pointer;
-        opacity: 0.8;
-        transition: opacity 0.3s ease-in-out;
-    }
     .exp-preview-img {
         margin-bottom: 5px;
         height: 205px; /* You must set a specified height */
-        @include img-background-cover-center;
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
+        cursor: pointer;
+        overflow: hidden;
+        img{
+            @include img-cover-center-grid ;
+            transition:  0.8s ;
+            &:hover{
+                transform: scale(1.15);
+            }
+        }
     }
     .exp-type {
         font-weight: bold;
-        text-decoration: underline;
+        color: #333;
+        // text-decoration: underline;
     }
     .exp-preview-type-ticket {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 3px;
+        .preview-left{
+            font-size: 13px;
+            color: #333;
+        }
     }
     .exp-preview-desc {
         font-size: 14px;
         min-height: 36px;
+        color: #73787d;
     }
     .exp-preview-price-stars-rate {
         display: flex;
@@ -54,6 +62,7 @@ li.exp-preview {
         position: relative;
         left: 230px;
         font-weight: bold;
+        color: #333 ;
     }
     .exp-preview-title-seller {
         display: flex;
@@ -68,11 +77,13 @@ li.exp-preview {
                 height: 30px;
                 border-radius: 50%;
                 margin-bottom: 1px;
+                object-fit: cover;
             }
             .preview-creator {
                 padding-right: 1rem;
                 font-size: 10px;
                 padding: 0;
+                color: #73787d;
             }
         }
     }
