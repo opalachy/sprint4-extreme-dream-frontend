@@ -6,11 +6,13 @@
         <div class="exp-details-container">
             <div class="exp-details-header">
                 <h4 class="exp-details-title">{{exp.title}}</h4>
-                <img
-                    class="seller-img"
-                    :src="exp.createdBy.imgUrl"
-                    style="width: 50px; height: 50px; border-radius: 50%"
-                />
+                  <div class="seller-top">
+                    <div class="name-rate">
+                        <h4>{{exp.createdBy.fullName}}</h4>
+                        <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{exp.reviews.length}})</p>
+                    </div>
+                      <img class="seller-img" :src="exp.createdBy.imgUrl" />
+                  </div>
             </div>
             <div class="img-container">
                 <img v-for="img in exp.imgUrls" :src="img" alt />
@@ -31,10 +33,7 @@
                     <h4>{{exp.createdBy.fullName}}</h4>
                 </div>
                 <h4 class="exp-details-guide-info">{{exp.createdBy.info}}</h4>
-                <h4 class="reviews-num">
-                    <i class="el-icon-star-on"></i>
-                    {{exp.reviews.length}} reviews
-                </h4>
+               <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{exp.reviews.length}}) reviews</p>
             </div>
         </div>
     </section>
@@ -54,16 +53,24 @@ export default {
             bookedNow: false
         };
     },
-    computed: {},
+    computed: {
+        averageRate() {
+            if (this.exp.reviews.length === 0) return 
+            let sum = this.exp.reviews.reduce((acc, review) => {
+                return acc + review.rate;
+            }, 0);
+            return (sum / this.exp.reviews.length).toFixed(1);
+        },
+    },
     methods: {
         booking(booked) {
-            // const user = this.$store.getters.loggedinUser;
-            // this.$store.dispatch({
-            //     type: "booking",
-            //     booked,
-            //     exp: this.exp,
-            //     user
-            // });
+            const user = this.$store.getters.loggedinUser;
+            this.$store.dispatch({
+                type: "booking",
+                booked,
+                exp: this.exp,
+                user
+            });
             socket.emit('show to everyone booking' , 'gggggggg')
         },
     },

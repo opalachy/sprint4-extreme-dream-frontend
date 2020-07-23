@@ -23,7 +23,7 @@
       <h2>Select locatin</h2>        
       <div class="label-container">
         <div v-for="location in locations" :key="location.idVal">
-          <input :id="location.idVal" type="radio" v-model="filterBy.location" :value="location.idVal"  hidden>
+          <input :id="location.idVal" type="radio" v-model="filterBy.location" :value="location.idVal" hidden >
           <label :for="location.idVal" >{{location.txt}}</label>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default {
   data(){
     return {
       types: [
-          {idVal: 'all' , txt: 'All'} ,
+          {idVal: 'all-type' , txt: 'All'} ,
           {idVal: 'Diving' , txt: 'Diving'},
           {idVal: 'Ski' , txt: 'Ski'} ,
           {idVal: 'Surfing' , txt: 'Surfing'},
@@ -72,7 +72,7 @@ export default {
           {idVal: 'Motorcross' , txt: 'Motorcross'}
        ],
        locations: [
-          {idVal: 'all' , txt: 'All'} ,
+          {idVal: 'all-location' , txt: 'All'} ,
           {idVal: 'Israel' , txt: 'Israel'},
           {idVal: 'France' , txt: 'France'} ,
           {idVal: 'Egypt' , txt: 'Egypt'},
@@ -91,8 +91,8 @@ export default {
        ],
       filterOption: '',
       filterBy: {
-        type: 'all',
-        location: 'all',
+        type: 'all-type',
+        location: 'all-location',
         tags: [],
         sortBy: 'newest',
       }
@@ -116,7 +116,7 @@ export default {
     setOption(option){
       if(this.filterOption === option) {
         // this.filterBy.type = this.lastFilterBy.type
-        return this.filterOption = '' 
+        return this.filterOption = '';
       }
          if (option === 'type') this.filterOption = 'type';
          if (option === 'location') this.filterOption = 'location';
@@ -129,7 +129,8 @@ export default {
     save(){
     //  this.lastFilterBy =  this.filterBy ;
      this.filterOption = '';
-     this.$emit('setFilter' , this.filterBy)
+     this.$emit('setFilter' , this.filterBy);
+     this.filterBy = JSON.parse(JSON.stringify(this.filterBy));
     },
     choose(ev){
       if(ev.target.checked){

@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 // Styles
