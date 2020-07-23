@@ -95,7 +95,7 @@
         <el-select multiple v-model="value1" placeholder="Choose Category">
           <el-option value="Family">Family</el-option>
           <el-option value="Children">Children</el-option>
-          <el-option value="All level">All level</el-option>
+          <el-option value="All level">All levels</el-option>
           <el-option value="Adventure">Adventure</el-option>
           <el-option value="Sports">Sports</el-option>
         </el-select>

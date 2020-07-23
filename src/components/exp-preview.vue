@@ -21,7 +21,6 @@
              
         <div class="exp-preview-type-ticket">
             <h4 class="exp-type">{{exp.location}}</h4>
-            <button v-if="seller" class="edit" @click.stop="edit">Edit</button>
             <h4 class="preview-left">{{left}}/{{exp.capacity}} left</h4>
         </div>
         <!-- @book="book" -->
@@ -29,7 +28,6 @@
 
         <div class="exp-preview-price-stars-rate">
             <p class="exp-price">${{exp.currPrice}}</p>
-            <button v-if="seller" class="edit" @click.stop="removeExp">Delete</button>
         </div>
     </li>
 </template>
@@ -57,9 +55,6 @@ export default {
         ratesCounter() {
             return this.exp.reviews.length;
         },
-        seller() {
-            this.loggedinUser.fullName === this.exp.createdBy.fullName
-        }
     },
     methods: {
         details() {
