@@ -6,7 +6,6 @@
               <h1>Outdoor experiences around the world</h1>  
             </div>
           <div class="search-container">
-            <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
                 <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
                 <datalist  id="exp-list">
                     <option value="Ski" />
@@ -44,7 +43,7 @@
                 <h2>Popular In France</h2>
                 <button @click="goToFrance">See All</button>
             </div>
-            <exp-list v-if="popFrance" :exps="popFrance" />
+            <exp-list v-if="inFrance" :exps="inFrance" />
         </div>
     </section> 
 </template>
@@ -61,15 +60,12 @@ export default {
             choosedType: null,
             bestDeals: null,
             popSki: null,
-            popFrance: null
+           inFrance: null
         };
     },
     methods:{
         goToSki(){
-          const filterBy = {
-              type: 'Ski'
-          };
-          this.$store.commit({type: 'setFilter' , filterBy});
+          this.$store.commit({type: 'setFilter' , filterBy : { type: 'Ski'}});
           this.$router.push('/exp');
         },    
         goToFrance(){
@@ -89,14 +85,38 @@ export default {
            
     },
     async created() {
-        // socket.setup()
-        this.$store.commit({ type : "setFilter" , filterBy: {}})
+        
+        this.$store.commit({ type : "setFilter" , filterBy: {sortBy : 'currPrice'}})
         await this.$store.dispatch({ type: "loadExps" });
-        const exps = this.$store.getters.exps
-        const currExps = exps.slice(0, 4);
-        this.bestExps = currExps;
-        this.popSki = currExps;
-        this.popFrance = currExps;
+        let exps = this.$store.getters.exps
+        this.bestDeals = exps.slice(0, 4);
+
+        this.$store.commit({ type : "setFilter" , filterBy: {type : 'Ski'}})
+        await this.$store.dispatch({ type: "loadExps" });
+        exps = this.$store.getters.exps
+        this.popSki = exps.slice(0, 4);
+ 
+        this.$store.commit({ type : "setFilter" , filterBy: {location : 'France'}})
+        await this.$store.dispatch({ type: "loadExps" });
+        exps = this.$store.getters.exps
+        this.inFrance = exps.slice(0, 4);
+ 
+
+
+
+
+
+
+        // this.bestExps = currExps;
+        // this.popSki = currExps;
+        // this.popFrance = currExps;
+        // this.$store.commit({ type : "setFilter" , filterBy: {}})
+        // await this.$store.dispatch({ type: "loadExps" });
+        // const exps = this.$store.getters.exps
+        // const currExps = exps.slice(0, 4);
+        // this.bestExps = currExps;
+        // this.popSki = currExps;
+        // this.popFrance = currExps;
     },
     components: {
         expList
