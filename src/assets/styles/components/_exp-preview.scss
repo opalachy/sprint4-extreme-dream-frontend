@@ -24,25 +24,24 @@ li.exp-preview {
         border-top-right-radius: 0.5rem;
         cursor: pointer;
         overflow: hidden;
-        img{
-            @include img-cover-center-grid ;
-            transition:  0.8s ;
-            &:hover{
+        img {
+            @include img-cover-center-grid;
+            transition: 0.8s;
+            &:hover {
                 transform: scale(1.15);
             }
         }
-    }
-    .exp-type {
-        font-weight: bold;
-        color: #333;
-        // text-decoration: underline;
     }
     .exp-preview-type-ticket {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 3px;
-        .preview-left{
+        margin-bottom: 6px;
+        .exp-type {
+            font-weight: bold;
+            color: #333;
+        }
+        .preview-left {
             font-size: 13px;
             color: #333;
         }
@@ -62,13 +61,12 @@ li.exp-preview {
         position: relative;
         left: 230px;
         font-weight: bold;
-        color: #333 ;
+        color: #333;
     }
     .exp-preview-title-seller {
         display: flex;
         justify-content: space-between;
-        // align-items: center;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
         .preview-seller {
             display: flex;
             flex-direction: column;

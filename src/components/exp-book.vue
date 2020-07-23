@@ -39,7 +39,10 @@ export default {
     computed: {
       bookPrice(){
          return '$' + this.exp.currPrice * this.booking.numOfTickets 
-      }
+      },
+      // participants(){
+      //   return this.exp.participants
+      // }
     },
     components: {
        datePicker,

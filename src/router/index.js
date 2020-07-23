@@ -40,7 +40,7 @@ const routes = [
     component: expDetails
   },
   {
-    path: '/user/:id',
+    path: '/user/:id?',
     name: 'user-details',
     component: userDetails
   },

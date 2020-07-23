@@ -1,23 +1,24 @@
 <template>
   <section class="app-header">
-    <router-link to="/"><span :class="isOnHome" @click="goToHome" > Home
-       
-        <div v-if="msgToSeller" class="msg-to-seller">someone order your exp</div>
+   <div v-if="msgToSeller" class="msg-to-seller">
+      <h3>Hi {{loggedinUser.userName}}</h3>
+      <p>Someone ordered your experience.</p>
+      <p>Go to your profile to see more details</p>
+      <button @click="close" >close</button>
+    </div>
 
-       <!-- <img src="https://www.extremeadventures.com.au/imgs/ExtremeLogo.png" alt=""> -->
-       
-      </span></router-link>
+    <router-link to="/">
+       <span :class="isOnHome" @click="goToHome" >Home</span>
+    </router-link>
     <div class="router-header">
+       <button v-if="loggedinUser" :class="isOnProfile"  @click="goToProfile" >My Profile</button>
       <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
-         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
-      <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`"> 
-      </router-link>
       <router-link v-if="!loggedinUser" to="/login">
          <span @click="goToLogin"  :class="isOnLogin">Login</span>
       </router-link>
       <!-- <router-link to="/login">logout</router-link> -->
       <div v-else class="log-user">
-         <h5>Walcome {{loggedinUser.userName}}</h5>
+         <h5>Welcome {{loggedinUser.userName}}</h5>
          <button class="logout-btn" @click="logout">logout</button>
       </div>
     </div>
@@ -55,7 +56,7 @@ export default {
   methods: {
       async logout(){
       let user = await this.$store.dispatch({type: 'logout'})
-      this.$router.push('/');
+      this.$router.push('/login');
     },
     goToExperiences(){
       this.activeLink = 'experiences'
@@ -67,9 +68,13 @@ export default {
     },
     goToProfile(){
       this.activeLink ='profile'
+      this.$router.push(`/user/${this.loggedinUser._id}`)
     },
     goToLogin(){
        this.activeLink ='login'
+    },
+    close(){
+      this.msgToSeller = false
     }
   },
     created() {
@@ -80,7 +85,7 @@ export default {
          this.msgToSeller = true;
            setTimeout(() =>{
             this.msgToSeller = false
-            }, 3000);
+            }, 6000);
     })
   }
 };
@@ -88,16 +93,6 @@ export default {
 
 <style>
 
-.active{
-   border-bottom: 3px solid black;
-}
 
-.msg-to-seller{
-  width: 400px;
-  height: 400px;
-  z-index: 9999;
-  background-color: aqua;
-  position: fixed;
-}
 
 </style>

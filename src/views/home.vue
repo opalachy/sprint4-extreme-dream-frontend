@@ -3,7 +3,7 @@
         <div class="hero-img"> 
             <div class="app-title">  
               <h1 class="ex-dream">ExDreme</h1>  
-              <h1>Outdoor experiences around the world</h1>  
+              <h2>Outdoor experiences around the world</h2>  
             </div>
           <div class="search-container">
                 <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
