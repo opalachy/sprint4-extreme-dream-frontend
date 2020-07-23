@@ -83,7 +83,7 @@ export default {
           {idVal: 'Children' , txt: 'Children'},
           {idVal: 'Adventure' , txt: 'Adventure'} ,
           {idVal: 'Sports' , txt: 'Sports'},
-          {idVal: 'All-level' , txt: 'All level'} ,
+          {idVal: 'All-level' , txt: 'All levels'} ,
        ],
        sortBy: [
           {idVal: 'newest' , txt: 'Newest'} ,

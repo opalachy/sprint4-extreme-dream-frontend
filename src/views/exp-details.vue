@@ -17,8 +17,15 @@
             <div class="img-container">
                 <img v-for="img in exp.imgUrls" :src="img" alt />
             </div>
+            <h5 class="exp-details-shortDesc">{{exp.shortDesc}}</h5>
             <div class="exp-details-main">
-                <p class="exp-details-desc">{{exp.desc}}</p>
+            <div class="exp-descs-container">
+                <p class="exp-details-desc">{{exp.desc1}}</p>
+                <p class="exp-details-desc">{{exp.desc2}}</p>
+                <p class="exp-details-desc">{{exp.desc3}}</p>
+                <p class="exp-details-desc">{{exp.desc4}}</p>
+                <p class="exp-details-desc">{{exp.desc5}}</p>
+                </div>
                 <exp-book @booking="booking" :exp="exp" />
             </div>
             <div class="exp-details-review-list">
