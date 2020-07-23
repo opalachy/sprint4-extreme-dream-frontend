@@ -57,9 +57,9 @@ export default {
         ratesCounter() {
             return this.exp.reviews.length;
         },
-        // seller() {
-        //     this.loggedinUser.fullName === this.exp.createdBy.fullName
-        // }
+        seller() {
+            this.loggedinUser.fullName === this.exp.createdBy.fullName
+        }
     },
     methods: {
         details() {
