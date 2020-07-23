@@ -1,21 +1,24 @@
 <template>
   <section class="app-header">
-    <router-link to="/"><span :class="isOnHome" @click="goToHome" > Home
-       
-       <!-- <img src="https://www.extremeadventures.com.au/imgs/ExtremeLogo.png" alt=""> -->
-       
-      </span></router-link>
+   <div v-if="msgToSeller" class="msg-to-seller">
+      <h3>Hi {{loggedinUser.userName}}</h3>
+      <p>Someone ordered your experience.</p>
+      <p>Go to your profile to see more details</p>
+      <button @click="close" >close</button>
+    </div>
+
+    <router-link to="/">
+       <span :class="isOnHome" @click="goToHome" >Home</span>
+    </router-link>
     <div class="router-header">
-      <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`"> 
-      <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
-      </router-link>
+       <button v-if="loggedinUser" :class="isOnProfile"  @click="goToProfile" >My Profile</button>
       <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
       <router-link v-if="!loggedinUser" to="/login">
          <span @click="goToLogin"  :class="isOnLogin">Login</span>
       </router-link>
       <!-- <router-link to="/login">logout</router-link> -->
       <div v-else class="log-user">
-         <h5>Walcome {{loggedinUser.userName}}</h5>
+         <h5>Welcome {{loggedinUser.userName}}</h5>
          <button class="logout-btn" @click="logout">logout</button>
       </div>
     </div>
@@ -23,11 +26,14 @@
 </template>
 
 <script>
+import socket from "../services/socket.service.js";
+
 export default {
   name: "app-header",
   data(){ 
     return {
-        activeLink: 'home'
+        activeLink: 'home',
+        msgToSeller: false
     } 
   },
   computed:{
@@ -50,7 +56,7 @@ export default {
   methods: {
       async logout(){
       let user = await this.$store.dispatch({type: 'logout'})
-      this.$router.push('/');
+      this.$router.push('/login');
     },
     goToExperiences(){
       this.activeLink = 'experiences'
@@ -62,17 +68,31 @@ export default {
     },
     goToProfile(){
       this.activeLink ='profile'
+      this.$router.push(`/user/${this.loggedinUser._id}`)
     },
     goToLogin(){
        this.activeLink ='login'
+    },
+    close(){
+      this.msgToSeller = false
     }
   },
+    created() {
+    const loggedinuser = this.$store.getters.loggedinUser
+    if(!loggedinuser) return 
+    socket.setup()
+    socket.on(loggedinuser._id , ()=> {
+         this.msgToSeller = true;
+           setTimeout(() =>{
+            this.msgToSeller = false
+            }, 6000);
+    })
+  }
 };
 </script>
 
 <style>
 
-.active{
-   border-bottom: 3px solid black;
-}
+
+
 </style>

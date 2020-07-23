@@ -39,19 +39,27 @@
         value: 1,
       }
     },
-    created(){
-      const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
-          return acc + participant.numOfTickets
+    methods:{
+      setOptions(){
+        const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
+        return acc + participant.numOfTickets
       }, 0);
-      const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
-      this.options = this.options.map((option) => {
-        option.disabled  = (option.value > numberOfAvailableTickets) ? true : false;
-        return option
-      })
+          const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
+          this.options = this.options.map((option) => {
+          option.disabled  = (option.value > numberOfAvailableTickets) ? true : false;
+          return option
+        })
+      }
+    },
+    created(){
+       this.setOptions()
     },
      watch: {
      value(){
         this.$emit('setTicket' , this.value)
+     },
+     participants(){
+       this.setOptions()
      }
   },
 }

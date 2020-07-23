@@ -6,7 +6,6 @@
             v-bind:style="{ backgroundImage: 'url(' + exp.imgUrls[0] + ')' }"
         ></div> -->
           
-
         <div @click="details" class="exp-preview-img">
             <img :src="exp.imgUrls[0]"  />
         </div>
@@ -58,9 +57,9 @@ export default {
         ratesCounter() {
             return this.exp.reviews.length;
         },
-        seller() {
-            // this.loggedinUser.fullName === this.exp.createdBy.fullName
-        }
+        // seller() {
+        //     this.loggedinUser.fullName === this.exp.createdBy.fullName
+        // }
     },
     methods: {
         details() {

@@ -11,7 +11,7 @@
         background-size: cover;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
+        justify-content: center;
         align-items: center;
         margin-bottom: 30px;
         .app-title {
@@ -27,21 +27,12 @@
                 font-family: serif;
             }
         }
-
         .search-container {
             height: 30px;
-            margin-top: 40px;
+            // margin-top: 40px;
             display: flex;
-
             input {
-                // font-family: cursive;
-                // outline: none;
-                // border: 0;
-                // border-top-left-radius: 5px;
-                // border-bottom-left-radius: 5px;
-                // height: 100%;
-                // width: 320px;
-                // padding: 1rem 0rem 1rem 1rem;
+              
                 outline: none;
                 border: 0;
                 border-top-left-radius: 10px;
@@ -51,15 +42,7 @@
                 width: 320px;
                 padding: 1rem 0rem 1rem 1rem;
             }
-            .search-btn {
-                // font-family: cursive;
-                // height: 100%;
-                // border: 0;
-                // border-top-right-radius: 5px;
-                // border-bottom-right-radius: 5px;
-                // background-color: rgb(247, 113, 113);
-                // color: #fff;
-                // margin: 0;
+            .search-btn {   
                 height: 40px;
                 border: 0;
                 font-size: 17px;
