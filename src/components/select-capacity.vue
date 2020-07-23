@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="value" placeholder="1 Ticket">
+  <el-select class="book-selector" v-model="value" placeholder="1">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -17,42 +17,52 @@
       return {
         options: [{
           value: 1,
-          label: '1 Ticket',
+          label: '1',
           disabled: false
         }, {
           value: 2,
-          label: '2 Tickets',
+          label: '2',
           disabled: false
         }, {
           value: 3,
-          label: '3 Tickets',
+          label: '3',
            disabled: false
         }, {
           value: 4,
-          label: '4 Tickets',
+          label: '4',
           disabled: false
         }, {
           value: 5,
-          label: '5 Tickets',
+          label: '5',
           disabled: false
         }],
         value: 1,
       }
     },
-    created(){
-      const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
-          return acc + participant.numOfTickets
+    methods:{
+      setOptions(){
+        const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
+        return acc + participant.numOfTickets
       }, 0);
-      const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
-      this.options = this.options.map((option) => {
-        option.disabled  = (option.value > numberOfAvailableTickets) ? true : false;
-        return option
-      })
+          const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
+          this.options = this.options.map((option) => {
+          option.disabled  = (option.value > numberOfAvailableTickets) ? true : false;
+          return option
+        })
+      }
+    },
+    created(){
+       this.setOptions()
     },
      watch: {
      value(){
         this.$emit('setTicket' , this.value)
+     },
+     participants(){
+       this.setOptions()
      }
   },
 }
 </script>
+
+

@@ -1,8 +1,11 @@
 <template>
     <section v-if="exp" class="exp-details">
-        <div v-if="bookedNow"  class="booked">
-            An invitation has just been placed for this experience    
-        </div>
+        <!-- <div v-if="bookedNow"  class="booked-now">
+            <p> The purchase was successful </p>  
+            <button @click="closeBookingMsg">Close</button>
+        </div> -->
+        
+        
         <div class="exp-details-container">
             <div class="exp-details-header">
                 <h4 class="exp-details-title">{{exp.title}}</h4>
@@ -50,7 +53,7 @@
 import { expService } from "../services/exp.service.js";
 import expBook from "../components/exp-book.vue";
 import expReview from "../components/exp-review.vue";
-import socket from "../services/socket.service.js"
+import socket from "../services/socket.service.js";
 
 export default {
     name: "exp-details",
@@ -70,28 +73,31 @@ export default {
         },
     },
     methods: {
-        booking(booked) {
+       async booking(booked) {
+            this.bookedNow = true
+            setTimeout(() => {
+                this.bookedNow = false
+            }, 7000)
             const user = this.$store.getters.loggedinUser;
-            this.$store.dispatch({
+            await this.$store.dispatch({
                 type: "booking",
                 booked,
                 exp: this.exp,
                 user
             });
-            socket.emit('show to everyone booking' , 'gggggggg')
+            socket.emit('booking' , this.exp.createdBy._id)
         },
+        closeBookingMsg(){
+            this.bookedNow = false
+        }
     },
     async created() {
-        socket.setup()
-        socket.on('booking' , msg => {
-            this.bookedNow = true
-           setTimeout(async () =>{
-            this.bookedNow = false
-            this.exp = await expService.getById(expId);
-            }, 3000)
-        });
         const expId = this.$route.params.id;
         this.exp = await expService.getById(expId);
+        socket.setup()
+        socket.on('update exp' ,async (msg) => {
+            this.exp = await expService.getById(expId);
+        });
     },
     components: {
         expBook,
@@ -102,11 +108,12 @@ export default {
 
 
 <style  scoped>
-.booked{
-  width: 400px;
-  height: 400px;
+/* .booked-now {
+  width: 200px;
+  height: 200px;
   background-color: aqua;
   position: fixed;
-}
+  font-size: 30px;
+} */
 
 </style>

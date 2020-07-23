@@ -6,7 +6,6 @@
             v-bind:style="{ backgroundImage: 'url(' + exp.imgUrls[0] + ')' }"
         ></div> -->
           
-
         <div @click="details" class="exp-preview-img">
             <img :src="exp.imgUrls[0]"  />
         </div>

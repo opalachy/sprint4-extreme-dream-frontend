@@ -14,7 +14,7 @@ export const expService = {
   saveExp
 }
 
-async function getExps({type = 'all-type' ,location= 'all-location',tags = [] ,sortBy = 'all' , userId ='all'}) {
+async function getExps({ type = 'all-type', location = 'all-location', tags = [], sortBy = 'all', userId = 'all' }) {
   return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&userId=${userId}`)
 }
 
@@ -37,34 +37,52 @@ async function getById(expId) {
 }
 
 function getEmptyExp() {
-  const emptyExp = 
-        {
-          title: "",
-          shortDesc: "",
-          desc: "",
-          createdBy: {
-            _id: "",
-            fullName: "",
-            info: "",
-            imgUrl: ""
-          },
-          type: "",
-          currPrice: "",
-          origPrice: "",
-          tags: [],
-          participants: [],
-          location: "",
-          date: Date.now()+60*60*1000*24* (Math.floor(Math.random() * (60 - 1 + 1))),
-          capacity: "",
-          imgUrls: [],
-          reviews: []
-        }
+  const emptyExp =
+  {
+    title: "",
+    shortDesc: "",
+    desc: "",
+    createdBy: {
+      _id: "",
+      fullName: "",
+      info: "",
+      imgUrl: ""
+    },
+    type: "",
+    currPrice: "",
+    origPrice: "",
+    tags: [],
+    participants: [],
+    location: "",
+    date: Date.now() + 60 * 60 * 1000 * 24 * (Math.floor(Math.random() * (60 - 1 + 1))),
+    capacity: "",
+    imgUrls: [],
+    reviews: []
+  }
   return emptyExp
 }
 
 async function addParticipant(booked, exp, user) {
-  if (!user) user = userService.getGuestUser(booked)
-  exp.participants.push(user);
+  let miniUser;
+  if (user) {
+    miniUser = {
+      _id: user._id,
+      fullName: user.fullName,
+      imgUrl: user.imgUrl,
+      numOfTickets: booked.numOfTickets
+    }
+  } else miniUser = userService.getGuestUser(booked)
+
+  // if (!user) miniUser = userService.getGuestUser(booked)
+  // else {
+  //   miniUser = {
+  //     _id: user._id,
+  //     fullName: user.fullName,
+  //     imgUrl: user.imgUrl,
+  //     numOfTickets: booked.numOfTickets
+  //   }
+  // }
+  exp.participants.push(miniUser);
   try {
     const updatedExp = await update(exp)
     return updatedExp

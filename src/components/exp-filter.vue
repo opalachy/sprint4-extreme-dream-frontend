@@ -6,8 +6,7 @@
     <button class="filter-btn" :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
   
     <div v-show="filterOption" @click="close" class="screen"></div>
-
-   
+ 
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
       <h2>Select experience</h2>          
       <div class="label-container">
@@ -115,7 +114,6 @@ export default {
   methods: {
     setOption(option){
       if(this.filterOption === option) {
-        // this.filterBy.type = this.lastFilterBy.type
         return this.filterOption = '';
       }
          if (option === 'type') this.filterOption = 'type';
@@ -127,7 +125,6 @@ export default {
          this.filterOption = ''
     },
     save(){
-    //  this.lastFilterBy =  this.filterBy ;
      this.filterOption = '';
      this.$emit('setFilter' , this.filterBy);
      this.filterBy = JSON.parse(JSON.stringify(this.filterBy));
@@ -143,14 +140,6 @@ export default {
   },
   created() {
   },
-  //  watch: {
-  //       filterBy: {
-  //       deep: true,
-  //           handler(){
-  //             console.log(this.filterBy.tags)
-  //           }
-  //   /    }
-// }
 }
 
 </script>

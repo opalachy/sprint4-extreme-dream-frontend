@@ -12,19 +12,32 @@
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
-    .book-btn{
+    .exp-book-origPrice {
+        text-decoration: line-through;
+        color: lightgray;
+        font-size: 18px;
+    }
+    .exp-book-currPrice {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .exp-book-person {
+        font-size: 12px;
+    }
+    .book-btn {
         background-color: #0c0d0df7;
         color: white;
-        &:hover{
+        &:hover {
             background-color: #0c0d0df7;
             color: white;
             opacity: 0.9;
         }
+        &.offbooked {
+            background-color: #7c8080c0;
+            color: white;
+            &:hover {
+                cursor: default;;
+            }
+        }
     }
 }
-
-
-
-
-
-
