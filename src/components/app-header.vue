@@ -2,12 +2,14 @@
   <section class="app-header">
     <router-link to="/"><span :class="isOnHome" @click="goToHome" > Home
        
+        <div v-if="msgToSeller" class="msg-to-seller">someone order your exp</div>
+
        <!-- <img src="https://www.extremeadventures.com.au/imgs/ExtremeLogo.png" alt=""> -->
        
       </span></router-link>
     <div class="router-header">
-         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
       <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
+         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
       <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`"> 
       </router-link>
       <router-link v-if="!loggedinUser" to="/login">
@@ -23,11 +25,14 @@
 </template>
 
 <script>
+import socket from "../services/socket.service.js";
+
 export default {
   name: "app-header",
   data(){ 
     return {
-        activeLink: 'home'
+        activeLink: 'home',
+        msgToSeller: false
     } 
   },
   computed:{
@@ -67,6 +72,17 @@ export default {
        this.activeLink ='login'
     }
   },
+    created() {
+    const loggedinuser = this.$store.getters.loggedinUser
+    if(!loggedinuser) return 
+    socket.setup()
+    socket.on(loggedinuser._id , ()=> {
+         this.msgToSeller = true;
+           setTimeout(() =>{
+            this.msgToSeller = false
+            }, 3000);
+    })
+  }
 };
 </script>
 
@@ -75,4 +91,13 @@ export default {
 .active{
    border-bottom: 3px solid black;
 }
+
+.msg-to-seller{
+  width: 400px;
+  height: 400px;
+  z-index: 9999;
+  background-color: aqua;
+  position: fixed;
+}
+
 </style>

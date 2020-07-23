@@ -64,19 +64,20 @@ export default {
     },
     methods: {
         booking(booked) {
-            const user = this.$store.getters.loggedinUser;
-            this.$store.dispatch({
-                type: "booking",
-                booked,
-                exp: this.exp,
-                user
-            });
-            socket.emit('show to everyone booking' , 'gggggggg')
+            // const user = this.$store.getters.loggedinUser;
+            // this.$store.dispatch({
+            //     type: "booking",
+            //     booked,
+            //     exp: this.exp,
+            //     user
+            // });
+           
+            socket.emit('booking' , this.exp.createdBy._id)
         },
     },
     async created() {
         socket.setup()
-        socket.on('booking' , msg => {
+        socket.on('show booking' , msg => {
             this.bookedNow = true
            setTimeout(async () =>{
             this.bookedNow = false
