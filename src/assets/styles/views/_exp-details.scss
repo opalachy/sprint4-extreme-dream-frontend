@@ -71,9 +71,16 @@
             font-weight: bold;
         }
     }
+    .exp-details-shortDesc{
+        font-size: 16px;
+        font-weight: bold;
+    }
     .exp-details-main {
         margin: 0 auto;
         display: flex;
+        .exp-details-desc{
+            margin-top: 10px;
+        }
     }
     .exp-details-review-list {
         display: flex;
