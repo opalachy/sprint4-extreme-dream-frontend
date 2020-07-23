@@ -7,12 +7,15 @@
       <span class="exp-book-currPrice"> ${{exp.currPrice}}</span>/
       <span class="exp-book-person">person</span>
     </p>
+    <div class="exp-book-selector-amount-wrapper">
+
     <select-capacity
       :participants="exp.participants"
       :capacity="exp.capacity"
       @setTicket="setTicket"
     />
-    <p>{{bookPrice}}</p>
+    <p class="exp-book-price">{{bookPrice}}</p>
+    </div>
     <p v-if="bookingIsDone">Thank you for buying</p>
     <el-button :class="{offbooked: isBooking}" class="book-btn" @click.once="book">
       <span v-if="show">book</span>
