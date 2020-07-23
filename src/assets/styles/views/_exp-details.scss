@@ -1,8 +1,15 @@
 .exp-details {
     max-width: 1000px;
     margin: 0 auto;
+    margin-top: 70px;
     min-height: 100vh;
     padding: 0 20px;
+    .el-icon-star-on:before {
+        color: #4f94d6;
+        font-size: 1.5rem;
+        position: relative;
+        top: 2.5px;
+    }
     .img-container {
         margin: 10px auto;
         height: 300px;
@@ -46,6 +53,19 @@
         margin: 0 auto;
         align-items: center;
         margin-top: 10px;
+        .seller-top {
+            display: flex;
+            align-items: center;
+            .name-rate{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            h4 {
+                font-size: 17px;
+                margin-inline-end: 12px;
+            }
+        }
         h4 {
             font-size: 24px;
             font-weight: bold;
@@ -64,26 +84,32 @@
         justify-content: space-between;
         margin: 0 auto;
         max-width: 95%;
+        .reviewer-img {
+            object-fit: cover;
+        }
+    }
+    .seller-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
     }
     .exp-details-guide-container {
         margin: 0 auto;
         max-width: 95%;
         margin-bottom: 30px;
-        .exp-details-guide-info{
+        .exp-details-guide-info {
             font-size: 17px;
             margin-bottom: 15px;
         }
         .guide-details {
-            .seller-img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                margin-inline-end: 20px;
-            }
             display: flex;
             justify-content: flex-start;
             align-items: center;
             margin-bottom: 10px;
+            .seller-img {
+                margin-inline-end: 20px;
+            }
             h4 {
                 font-size: 16px;
                 line-height: 16px;
@@ -91,11 +117,6 @@
                 // font-family: cursive;
             }
         }
-        .el-icon-star-on:before {
-            color: #4f94d6;
-            font-size: 1.5rem;
-            position: relative;
-            top: 2.5px;
-        }
+    
     }
 }

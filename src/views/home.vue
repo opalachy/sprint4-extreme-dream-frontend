@@ -1,10 +1,13 @@
 <template>
     <section class="home-page">
         <div class="hero-img"> 
-            
+            <div class="app-title">  
+              <h1 class="ex-dream">ExDreme</h1>  
+              <h1>Outdoor experiences around the world</h1>  
+            </div>
           <div class="search-container">
             <!-- <el-button class="book-btn" @click.native="book">Really your dream</el-button> -->
-                <input v-model="choosedType" list="exp-list" placeholder="What Is Your Favor Experience"/>
+                <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
                 <datalist  id="exp-list">
                     <option value="Ski" />
                     <option value="Sky Diving" />
@@ -13,7 +16,7 @@
                     <option value="Surffing" />
                 </datalist>
           
-            <button class="search-btn" @click="searchExp()">Search</button>
+            <button class="search-btn" @click="searchExp()"><i class="fas fa-search"></i> </button>
           </div>
             
         </div>
@@ -27,14 +30,11 @@
                 <exp-list :exps="topic.exps" />
             </template>     -->
 
-
-
-
             <div class="type-container">
                 <h2>Best Deals</h2>
                 <button @click="goToPopular">See All</button>
             </div>
-            <exp-list v-if="bestExps" :exps="bestExps" />
+            <exp-list v-if="bestDeals" :exps="bestDeals" />
             <div class="type-container">
                 <h2>Popular Ski Experience</h2>
                 <button @click="goToSki">See All</button>
@@ -46,7 +46,7 @@
             </div>
             <exp-list v-if="popFrance" :exps="popFrance" />
         </div>
-    </section>
+    </section> 
 </template>
 
 <script>
@@ -59,7 +59,7 @@ export default {
     data() {
         return {
             choosedType: null,
-            bestExps: null,
+            bestDeals: null,
             popSki: null,
             popFrance: null
         };
