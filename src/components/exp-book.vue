@@ -1,54 +1,81 @@
 
 <template>
   <div class="exp-book">
-      <!-- <date-picker @setDay="setDay" /> -->
-      <select-capacity :participants="exp.participants"  :capacity="exp.capacity" @setTicket="setTicket"/>
-      <p>{{bookPrice}}</p>
-      <el-button class="book-btn" @click.native="book">book</el-button>
-      <!-- <button @click="book">Really your dream</button> -->
+    <!-- <date-picker @setDay="setDay" /> -->
+    <p class="exp-book-price-header">
+      <span v-if="origPrice" class="exp-book-origPrice">${{exp.origPrice}}</span>
+      <span class="exp-book-currPrice"> ${{exp.currPrice}}</span>/
+      <span class="exp-book-person">person</span>
+    </p>
+    <select-capacity
+      :participants="exp.participants"
+      :capacity="exp.capacity"
+      @setTicket="setTicket"
+    />
+    <p>{{bookPrice}}</p>
+    <p v-if="bookingIsDone">Thank you for buying</p>
+    <el-button :class="{offbooked: isBooking}" class="book-btn" @click.once="book">
+      <span v-if="show">book</span>
+      <i v-else class="el-icon-loading"></i>
+    </el-button>
+    <!-- <button @click="book">Really your dream</button> -->
   </div>
 </template>
 
 <script>
-import datePicker from './date-picker.vue';
-import selectCapacity from './select-capacity.vue';
+import datePicker from "./date-picker.vue";
+import selectCapacity from "./select-capacity.vue";
 // import socket from "../services/socket.service.js"
- 
-// import elButton from 
+
+// import elButton from
 export default {
-  props: ['exp'],
-   data() {
-      return {
-        booking: {
-          dayPicker: null,
-          numOfTickets: 1
-        }
-      }
-    },
-    methods:{
-      book(){   
-        this.$emit('booking' , this.booking)
+  props: ["exp"],
+  data() {
+    return {
+      booking: {
+        dayPicker: null,
+        numOfTickets: 1
       },
-      setDay(day){
-        this.booking.dayPicker = day.getTime()
-      },
-      setTicket(numOfTickets){
-        this.booking.numOfTickets = numOfTickets;
-      },
+      isBooking: false,
+      show:true,
+      bookingIsDone:false
+    };
+  },
+  methods: {
+    book() {
+      this.$emit("booking", this.booking);
+      this.show = false;
+      setTimeout(() => {
+        this.isBooking = true
+        this.show = true;
+        this.bookingIsDone = true
+      }, 1500);
+      clearInterval;
     },
-    computed: {
-      bookPrice(){
-         return '$' + this.exp.currPrice * this.booking.numOfTickets 
-      }
+    // show() {
+    //   return true;
+    // },
+    setDay(day) {
+      this.booking.dayPicker = day.getTime();
     },
-    components: {
-       datePicker,
-       selectCapacity
-   },
-   created(){
-      // socket.setup()
-   }
-}
+    setTicket(numOfTickets) {
+      this.booking.numOfTickets = numOfTickets;
+    }
+  },
+  computed: {
+    bookPrice() {
+      return "$" + this.exp.currPrice * this.booking.numOfTickets;
+    },
+    origPrice() {
+      if (+this.exp.origPrice > +this.exp.currPrice) return true;
+    },
+  },
+  components: {
+    datePicker,
+    selectCapacity
+  },
+  created() {}
+};
 </script>
 
 
