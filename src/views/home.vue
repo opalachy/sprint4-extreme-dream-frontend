@@ -8,11 +8,7 @@
           <div class="search-container">
                 <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
                 <datalist  id="exp-list">
-                    <option value="Ski" />
-                    <option value="Sky Diving" />
-                    <option value="Bunjee" />
-                    <option value="Diving" />
-                    <option value="Surffing" />
+                    <option v-for="type in expTypes" :key="type" :value="type" />
                 </datalist>
           
             <button class="search-btn" @click="searchExp()"><i class="fas fa-search"></i> </button>
@@ -52,11 +48,18 @@
 // @ is an alias to /src
 import expList from "../components/exp-list.vue";
 import socket from "../services/socket.service.js"
+     
+                    // <!-- <option value="Ski" />
+                    // <option value="Sky Diving" />
+                    // <option value="Bunjee" />
+                    // <option value="Diving" />
+                    // <option value="Surffing" /> -->
 
 export default {
     name: "Home-page",
     data() {
         return {
+            expTypes: ['Ski', 'Skydiving' ,'Bunjee' ,'Diving' , 'Surffing' ,'Rock Climb','Sky diving','Motorcross' ,'Snapling'],
             choosedType: null,
             bestDeals: null,
             popSki: null,

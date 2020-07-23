@@ -1,8 +1,7 @@
 <template>
-    <li  class="exp-preview container">
+    <li @click="details" class="exp-preview container">
     
-          
-        <div @click="details" class="exp-preview-img">
+        <div  class="exp-preview-img">
             <img :src="exp.imgUrls[0]"  />
         </div>
 
@@ -14,7 +13,7 @@
             </router-link>
             <p class="exp-rate"><i class="el-icon-star-on"></i>{{averageRate}} ({{ratesCounter}})</p>
         </div>
-             
+        
         <div class="exp-preview-type-ticket">
             <h4 class="exp-type">{{exp.location}}</h4>
             <h4 class="preview-left">{{left}}/{{exp.capacity}} left</h4>

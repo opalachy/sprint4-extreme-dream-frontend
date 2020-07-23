@@ -57,7 +57,6 @@
  
 <script>
 
-
 export default {
   name: "exp-filter",
   data(){
@@ -68,21 +67,44 @@ export default {
           {idVal: 'Ski' , txt: 'Ski'} ,
           {idVal: 'Surfing' , txt: 'Surfing'},
           {idVal: 'Offroad' , txt: 'Offroad'} ,
-          {idVal: 'Motorcross' , txt: 'Motorcross'}
+          {idVal: 'Motorcross' , txt: 'Motorcross'},
+          {idVal: 'Rock-climb' , txt: 'Rock Climb'},
+          {idVal: 'Bunjee' , txt: 'Bunjee'},
+          {idVal: 'Snapling' , txt: 'Snapling'} 
        ],
        locations: [
-          {idVal: 'all-location' , txt: 'All'} ,
+          {idVal: 'all-location' , txt: 'All'},
           {idVal: 'Israel' , txt: 'Israel'},
-          {idVal: 'France' , txt: 'France'} ,
+          {idVal: 'France' , txt: 'France'},
           {idVal: 'Egypt' , txt: 'Egypt'},
-          {idVal: 'USA' , txt: 'USA'} ,
+          {idVal: 'USA' , txt: 'USA'},
+          {idVal: 'Switzerland' , txt: 'Switzerland'},
+          {idVal: 'Bulgaria' , txt: 'Bulgaria'},
+          {idVal: 'Italy' , txt: 'Italy'},
+          {idVal: 'Hawaii' , txt: 'Hawaii'},
+          {idVal: 'South-africa' , txt: 'South Africa'},
+          {idVal: 'Thailand' , txt: 'Thailand'}
        ],
        tags: [
-          {idVal: 'Family' , txt: 'Family'} ,
+          {idVal: 'Family' , txt: 'Family'},
           {idVal: 'Children' , txt: 'Children'},
-          {idVal: 'Adventure' , txt: 'Adventure'} ,
+          {idVal: 'Adventure' , txt: 'Adventure'},
+          {idVal: 'Adults' , txt: 'Adults'},
           {idVal: 'Sports' , txt: 'Sports'},
-          {idVal: 'All-level' , txt: 'All levels'} ,
+          {idVal: 'Europe' , txt: 'Europe'},
+          {idVal: 'Expert' , txt: 'Expert'},
+          {idVal: 'Africa' , txt: 'Africa'},
+          {idVal: 'Asia' , txt: 'Asia'},
+          {idVal: 'water' , txt: 'water'},
+          {idVal: 'Danger' , txt: 'Danger'},
+          {idVal: 'Ropes' , txt: 'Ropes'},
+          {idVal: 'View' , txt: 'View'},
+          {idVal: 'Sun' , txt: 'Sun'} ,
+          {idVal: 'Animals' , txt: 'Animals'},
+          {idVal: 'Winter' , txt: 'Winter'},
+          {idVal: 'All-year ' , txt: 'All year '} ,
+          {idVal: 'Loud' , txt: 'Loud'},
+          {idVal: 'Desert' , txt: 'Desert'},
        ],
        sortBy: [
           {idVal: 'newest' , txt: 'Newest'} ,
