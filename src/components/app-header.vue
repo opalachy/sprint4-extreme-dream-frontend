@@ -6,16 +6,16 @@
        
       </span></router-link>
     <div class="router-header">
-         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
-      <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
       <router-link  v-if="loggedinUser"  :to="`/user/${loggedinUser._id}`"> 
+         <span @click="goToProfile" :class="isOnProfile" >My Profile</span>
       </router-link>
+      <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
       <router-link v-if="!loggedinUser" to="/login">
          <span @click="goToLogin"  :class="isOnLogin">Login</span>
       </router-link>
       <!-- <router-link to="/login">logout</router-link> -->
       <div v-else class="log-user">
-         <h5>Walcome {{loggedinUser.userName}}</h5>
+         <h5>Welcome {{loggedinUser.userName}}</h5>
          <button class="logout-btn" @click="logout">logout</button>
       </div>
     </div>
