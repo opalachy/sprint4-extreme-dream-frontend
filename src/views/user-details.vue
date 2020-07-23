@@ -57,13 +57,16 @@
     </section>
 </template>
 
+
+
 <script>
 import { expService } from "../services/exp.service.js";
 import { userService } from "../services/user.service.js";
 import reviewDetails from "./review-details.vue";
 import { orderService } from "../services/order.service.js";
 
-import chart from "../components/chart.vue";
+import lineChart from "../components/line-chart.vue";
+
 export default {
   name: "user-details",
   data() {
@@ -72,9 +75,9 @@ export default {
       loggedinUser: null,
       user: null,
       ords: [],
+      chartData: {},
+      chartOptions: {}
     };
-      // dataExp: [],
-      // expTitle:[]
   },
   computed: {
     creator() {
@@ -98,15 +101,19 @@ export default {
     
   // },
   methods: {
-    // chartData(){
-    //   this.dataExp = this.exps.map(exp => {
-    //      return exp.participants.length
-    //   })
-    //   console.log(this.dataExp)
-    //   this.expTitle = this.exps.map(exp => {
-    //     return exp.title
-    //   })
-    //   console.log(this.expTitle)
+    // chartDat() {
+    //   const data = this.exps.map(exp => {
+    //     return exp.participants.length;
+    //   console.log(data);
+    //     // this.chartData = Object.assign({}, data);
+    //   });
+    // },
+    // chartOpt() {
+    //   const opt = this.exps.map(exp => {
+    //     return exp.title;
+    //   console.log(opt)
+    //     // this.chartOptions = Object.assign({}, opt);
+    //   });
     // },
     hasHistory() {
       return window.history.length > 2;
@@ -117,9 +124,9 @@ export default {
     edit(id) {
       this.$router.push(`/exp/edit/${id}`);
     },
-    writeReview(id){
-      console.log(id)
-      this.$router.push(`/order/${id}`)
+    writeReview(id) {
+      console.log(id);
+      this.$router.push(`/order/${id}`);
     },
     async remove(id) {
       try {
@@ -139,13 +146,25 @@ export default {
     const userOrds = await orderService.getOrders(userId);
     this.exps = userExps;
     this.ords = userOrds;
-    // this.chartData();
+    // this.chartOpt();
+    // this.chartDat();
+    const opt = this.exps.map(exp => {
+        return exp.title;
+    })
+    this.chartOptions = {...opt}
+    console.log(this.chartOptions)
+        const dat = this.exps.map(exp => {
+        return exp.participants.length;
+        })
+        this.chartData = {...dat};
+        console.log(this.chartData)
+
   },
   components: {
     reviewDetails,
-    chart
+    lineChart
   }
-}
+};
 
 // Things that are only for guides / sellers and loggedinUser.id === params.id: edit button on UserExps, navigation to Dashboard
 </script>
