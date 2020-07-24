@@ -2,12 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home.vue'
 import about from '../views/about.vue'
-import appLogin from '../views/app-login.vue'
+import userLogin from '../views/user-login.vue'
+import userSignup from '../views/user-signup.vue'
 import userDetails from '../views/user-details.vue'
-import tripTypes from '../views/trip-types.vue'
-import tripDestinations from '../views/trip-destinations.vue'
-import tripEdit from '../views/trip-edit.vue'
-import tripDetails from '../views/trip-details.vue'
+import expEdit from '../views/exp-edit.vue'
+import expDetails from '../views/exp-details.vue'
+import expApp from '../views/exp-app.vue'
+import reviewDetails from '../views/review-details.vue'
+// import userProfile from '../views/user-profile.vue'
 
 Vue.use(VueRouter)
 
@@ -23,39 +25,39 @@ const routes = [
     component: about
   },
   {
-    path: '/trip',
-    name: 'trip-app',
-    component: tripApp
+    path: '/exp',
+    name: 'exp-app',
+    component: expApp
   },
   {
-    path: '/trip/type',
-    name: 'trip-types',
-    component: tripTypes
+    path: '/exp/edit/:id?',
+    name: 'exp-edit',
+    component: expEdit
   },
   {
-    path: '/trip/destination',
-    name: 'trip-destinations',
-    component: tripDestinations
+    path: '/exp/:id',
+    name: 'exp-details',
+    component: expDetails
   },
   {
-    path: '/trip/:id',
-    name: 'trip-details',
-    component: tripDetails
-  },
-  {
-    path: '/trip/edit/:id?',
-    name: 'trip-edit',
-    component: tripEdit
-  },
-  {
-    path: '/user/:id',
+    path: '/user/:id?',
     name: 'user-details',
     component: userDetails
   },
   {
     path: '/login',
-    name: 'app-login',
-    component: appLogin
+    name: 'user-login',
+    component: userLogin
+  },
+  {
+    path: '/signup',
+    name: 'user-signup',
+    component: userSignup
+  },
+  {
+    path: '/order/:id',
+    name: 'review-details',
+    component: reviewDetails
   },
 
 ]

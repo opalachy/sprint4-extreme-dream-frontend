@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {tripStore} from './trip.store.js'
+import {expStore} from './exp.store.js'
 import {userStore} from './user.store.js'
+import {orderStore} from './order.store.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
   state: {
   },
   mutations: {
@@ -13,7 +15,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    tripStore,
-    userStore
+    expStore,
+    userStore,
+    // orderStore
   }
 })

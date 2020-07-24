@@ -1,0 +1,25 @@
+.exp-edit{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 10px;
+    h1{
+        text-align: center;
+    }
+    label{
+        font-weight: bold;
+    }
+    .exp-edit-imgs-container{
+        display: flex;
+        
+    }
+    .exp-edit-imgs{
+        margin: 5px;
+
+    }
+  
+   
+    
+}
