@@ -32,7 +32,6 @@
             // margin-top: 40px;
             display: flex;
             input {
-              
                 outline: none;
                 border: 0;
                 border-top-left-radius: 10px;
@@ -42,18 +41,19 @@
                 width: 320px;
                 padding: 1rem 0rem 1rem 1rem;
             }
-            .search-btn {   
+            .search-btn {
                 height: 40px;
                 border: 0;
                 font-size: 17px;
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
-                background-color: #4f94d6;
+                background-color: rgb(28, 116, 232);
                 color: #fff;
                 margin: 0;
                 padding: 1px 12px;
             }
         }
+        
     }
     .cards-container {
         display: flex;
@@ -71,13 +71,12 @@
                 text-decoration: underline;
                 transition: 0.12s;
                 &:hover {
-                    color: #4f94d6;
+                    color: rgb(28, 116, 232);
                 }
             }
         }
         .exp-list {
             display: flex;
-            justify-content: space-between;
             margin-bottom: 50px;
         }
     }

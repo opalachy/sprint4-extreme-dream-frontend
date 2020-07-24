@@ -28,6 +28,8 @@
                 <p class="exp-details-desc">{{exp.desc3}}</p>
                 <p class="exp-details-desc">{{exp.desc4}}</p>
                 <p class="exp-details-desc">{{exp.desc5}}</p>
+                <p class="exp-details-desc">{{exp.desc6}}</p>
+                <p class="exp-details-desc">{{exp.desc7}}</p>
                 </div>
                 <exp-book @booking="booking" :exp="exp" />
             </div>
