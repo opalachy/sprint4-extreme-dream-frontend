@@ -3,7 +3,7 @@
     <div class="user-details-container">
       <ul class="user-profile-info">
         <router-link to="/">
-          <i class="el-icon-edit-outline">Edit your profile</i>
+          <i class="el-icon-edit-outline"> Edit your profile</i>
         </router-link>
         <li>Full Name: {{user.fullName}}</li>
         <li>{{user.info}}</li>
@@ -25,7 +25,7 @@
         <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
           {{ord.exp.title}}
           <button @click="writeReview(ord.exp._id)">
-            <i class="el-icon-edit-outline">Write a review</i>
+            <i class="el-icon-edit-outline"> Write a review</i>
           </button>
         </li>
       </ul>
@@ -90,7 +90,6 @@ export default {
       this.$router.push(`/exp/edit/${id}`);
     },
     writeReview(id) {
-      console.log(id);
       this.$router.push(`/order/${id}`);
     },
     async remove(id) {
