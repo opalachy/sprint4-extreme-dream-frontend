@@ -29,15 +29,18 @@
                 <p class="exp-details-desc">{{exp.desc3}}</p>
                 <p class="exp-details-desc">{{exp.desc4}}</p>
                 <p class="exp-details-desc">{{exp.desc5}}</p>
+                <p class="exp-details-desc">{{exp.desc6}}</p>
+                <p class="exp-details-desc">{{exp.desc7}}</p>
                 </div>
                 <exp-book @booking="booking" :exp="exp" />
             </div>
             <div class="exp-details-review-list">
+                <h3>Review({{exp.reviews.length}})</h3>
                 <ul class="review-list">
                     <exp-review v-for="review in exp.reviews" :key="review.id" :review="review" />
                 </ul>
             </div>
-            <hr />
+            <!-- <hr /> -->
             <div class="exp-details-guide-container">
                 <div class="guide-details">
                     <img class="seller-img" :src="exp.createdBy.imgUrl" />

@@ -5,6 +5,7 @@ li.exp-preview {
     border-radius: 8px;
     margin-inline-start: 0.65%;
     margin-inline-end: 0.65%;
+    cursor: pointer;
     p {
         line-height: 1.2rem;
     }
@@ -12,7 +13,7 @@ li.exp-preview {
         margin: 0 8px 3.8px 8px;
     }
     .el-icon-star-on:before {
-        color: #4f94d6;
+        color: #1e72e0;
         font-size: 1.5rem;
         top: 2.6px;
         position: relative;
@@ -39,7 +40,7 @@ li.exp-preview {
         margin-bottom: 6px;
         .exp-type {
             font-weight: bold;
-            color: #333;
+            color: #041b38;
         }
         .preview-left {
             font-size: 13px;
@@ -56,12 +57,16 @@ li.exp-preview {
         justify-content: space-between;
         align-items: center;
         margin: 0 0.5rem 0.3rem 0.5rem;
-    }
-    .exp-price {
-        position: relative;
-        left: 230px;
-        font-weight: bold;
-        color: #333;
+        .exp-price {
+            left: 230px;
+            font-weight: bold;
+            color: #041b38;
+        }
+        .exp-date {
+            font-size: 13px;
+            color: #041b38;
+            font-weight: bold;
+        }
     }
     .exp-preview-title-seller {
         display: flex;

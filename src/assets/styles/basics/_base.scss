@@ -66,13 +66,14 @@ a {
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: black; 
+    background: #002656; 
     border-radius: 15px;
+    transition: 0.15;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #000000db; 
+    background: #033674; 
   }
 
     

@@ -14,7 +14,7 @@ export const expService = {
   saveExp
 }
 
-async function getExps({ type = 'all-type', location = 'all-location', tags = [], sortBy = 'all', userId = 'all' }) {
+async function getExps({ type = 'all-type', location = 'all-location', tags = [], sortBy = 'newest', userId = 'all' }) {
   return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&userId=${userId}`)
 }
 
@@ -72,16 +72,6 @@ async function addParticipant(booked, exp, user) {
       numOfTickets: booked.numOfTickets
     }
   } else miniUser = userService.getGuestUser(booked)
-
-  // if (!user) miniUser = userService.getGuestUser(booked)
-  // else {
-  //   miniUser = {
-  //     _id: user._id,
-  //     fullName: user.fullName,
-  //     imgUrl: user.imgUrl,
-  //     numOfTickets: booked.numOfTickets
-  //   }
-  // }
   exp.participants.push(miniUser);
   try {
     const updatedExp = await update(exp)
