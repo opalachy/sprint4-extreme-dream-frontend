@@ -1,4 +1,4 @@
-# extream-dream
+# ExDream
 
 ## Project setup
 ```

@@ -10,9 +10,9 @@
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
       <h2>Select experience</h2>          
       <div class="label-container">
-        <div v-for="type in types" :key="type.idVal">
-          <input :id="type.idVal" type="radio" v-model="filterBy.type" :value="type.idVal"  hidden>
-          <label :for="type.idVal" >{{type.txt}}</label>
+        <div v-for="type in types" :key="type.id">
+          <input :id="type.id" type="radio" v-model="filterBy.type" :value="type.txt"  hidden>
+          <label :for="type.id" >{{type.txt}}</label>
         </div>
       </div>
       <button class="save-filter-btn" @click="save">save</button>
@@ -21,9 +21,9 @@
    <div v-show="(filterOption === 'location')"  class="location-filter filter-modal">
       <h2>Select locatin</h2>        
       <div class="label-container">
-        <div v-for="location in locations" :key="location.idVal">
-          <input :id="location.idVal" type="radio" v-model="filterBy.location" :value="location.idVal" hidden >
-          <label :for="location.idVal" >{{location.txt}}</label>
+        <div v-for="location in locations" :key="location.id">
+          <input :id="location.id" type="radio" v-model="filterBy.location" :value="location.txt" hidden >
+          <label :for="location.id" >{{location.txt}}</label>
         </div>
       </div>
       <button class="save-filter-btn" @click="save">save</button>
@@ -32,9 +32,9 @@
    <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
       <h2>More filters</h2>         
       <div class="label-container">
-        <div v-for="tag in tags" :key="tag.idVal">
-          <input :id="tag.idVal" type="checkbox"  @change="choose" :value="tag.idVal" hidden>
-          <label :for="tag.idVal" >{{tag.txt}}</label>
+        <div v-for="tag in tags" :key="tag.id">
+          <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.txt" hidden>
+          <label :for="tag.id" >{{tag.txt}}</label>
         </div>
       </div>
       <button class="save-filter-btn" @click="save">save</button>
@@ -43,9 +43,9 @@
   <div v-show="(filterOption === 'sortBy')"  class="sortBy-filter filter-modal">
       <h2>Sort</h2>        
       <div class="label-container">
-        <div v-for="sort in sortBy" :key="sort.idVal">
-          <input :id="sort.idVal" type="radio" v-model="filterBy.sortBy" :value="sort.idVal"  hidden>
-          <label :for="sort.idVal" >{{sort.txt}}</label>
+        <div v-for="sort in sortBy" :key="sort.id">
+          <input :id="sort.id" type="radio" v-model="filterBy.sortBy" :value="sort.txt"  hidden>
+          <label :for="sort.id" >{{sort.txt}}</label>
         </div>
       </div>
       <button class="save-filter-btn" @click="save">save</button>
@@ -62,59 +62,59 @@ export default {
   data(){
     return {
       types: [
-          {idVal: 'all-type' , txt: 'All'} ,
-          {idVal: 'Diving' , txt: 'Diving'},
-          {idVal: 'Ski' , txt: 'Ski'} ,
-          {idVal: 'Surfing' , txt: 'Surfing'},
-          {idVal: 'Offroad' , txt: 'Offroad'} ,
-          {idVal: 'Motorcross' , txt: 'Motorcross'},
-          {idVal: 'Rock-climb' , txt: 'Rock Climb'},
-          {idVal: 'Bunjee' , txt: 'Bunjee'},
-          {idVal: 'Snapling' , txt: 'Snapling'} 
+          {id: 'all-type' , txt: 'All'} ,
+          {id: 'Diving' , txt: 'Diving'},
+          {id: 'Ski' , txt: 'Ski'} ,
+          {id: 'Surfing' , txt: 'Surfing'},
+          {id: 'Offroad' , txt: 'Offroad'} ,
+          {id: 'Motorcross' , txt: 'Motorcross'},
+          {id: 'Rock-climb' , txt: 'Rock Climb'},
+          {id: 'Bunjee' , txt: 'Bungee'},
+          {id: 'Snapling' , txt: 'Rappelling'} 
        ],
        locations: [
-          {idVal: 'all-location' , txt: 'All'},
-          {idVal: 'Israel' , txt: 'Israel'},
-          {idVal: 'France' , txt: 'France'},
-          {idVal: 'Egypt' , txt: 'Egypt'},
-          {idVal: 'USA' , txt: 'USA'},
-          {idVal: 'Switzerland' , txt: 'Switzerland'},
-          {idVal: 'Bulgaria' , txt: 'Bulgaria'},
-          {idVal: 'Italy' , txt: 'Italy'},
-          {idVal: 'Hawaii' , txt: 'Hawaii'},
-          {idVal: 'South-africa' , txt: 'South Africa'},
-          {idVal: 'Thailand' , txt: 'Thailand'}
+          {id: 'all-location' , txt: 'All'},
+          {id: 'Israel' , txt: 'Israel'},
+          {id: 'France' , txt: 'France'},
+          {id: 'Egypt' , txt: 'Egypt'},
+          {id: 'USA' , txt: 'USA'},
+          {id: 'Switzerland' , txt: 'Switzerland'},
+          {id: 'Bulgaria' , txt: 'Bulgaria'},
+          {id: 'Italy' , txt: 'Italy'},
+          {id: 'Hawaii' , txt: 'Hawaii'},
+          {id: 'South-africa' , txt: 'South Africa'},
+          {id: 'Thailand' , txt: 'Thailand'}
        ],
        tags: [
-          {idVal: 'Family' , txt: 'Family'},
-          {idVal: 'Children' , txt: 'Children'},
-          {idVal: 'Adventure' , txt: 'Adventure'},
-          {idVal: 'Adults' , txt: 'Adults'},
-          {idVal: 'Sports' , txt: 'Sports'},
-          {idVal: 'All-levels' , txt: 'All levels'},
-          {idVal: 'Europe' , txt: 'Europe'},
-          {idVal: 'Expert' , txt: 'Expert'},
-          {idVal: 'Africa' , txt: 'Africa'},
-          {idVal: 'Asia' , txt: 'Asia'},
-          {idVal: 'water' , txt: 'water'},
-          {idVal: 'Danger' , txt: 'Danger'},
-          {idVal: 'Ropes' , txt: 'Ropes'},
-          {idVal: 'View' , txt: 'View'},
-          {idVal: 'Sun' , txt: 'Sun'} ,
-          {idVal: 'Animals' , txt: 'Animals'},
-          {idVal: 'Winter' , txt: 'Winter'},
-          {idVal: 'All-year ' , txt: 'All year '} ,
-          {idVal: 'Loud' , txt: 'Loud'},
-          {idVal: 'Desert' , txt: 'Desert'},
+          {id: 'Family' , txt: 'Family'},
+          {id: 'Children' , txt: 'Children'},
+          {id: 'Adventure' , txt: 'Adventure'},
+          {id: 'Adults' , txt: 'Adults'},
+          {id: 'Sports' , txt: 'Sports'},
+          {id: 'All-levels' , txt: 'All levels'},
+          {id: 'Europe' , txt: 'Europe'},
+          {id: 'Expert' , txt: 'Expert'},
+          {id: 'Africa' , txt: 'Africa'},
+          {id: 'Asia' , txt: 'Asia'},
+          {id: 'water' , txt: 'water'},
+          {id: 'Danger' , txt: 'Danger'},
+          {id: 'Ropes' , txt: 'Ropes'},
+          {id: 'View' , txt: 'View'},
+          {id: 'Sun' , txt: 'Sun'} ,
+          {id: 'Animals' , txt: 'Animals'},
+          {id: 'Winter' , txt: 'Winter'},
+          {id: 'All-year ' , txt: 'All year '} ,
+          {id: 'Loud' , txt: 'Loud'},
+          {id: 'Desert' , txt: 'Desert'},
        ],
        sortBy: [
-          {idVal: 'newest' , txt: 'Newest'} ,
-          {idVal: 'currPrice' , txt: 'Best Deals'}, 
+          {id: 'newest' , txt: 'Newest'} ,
+          {id: 'currPrice' , txt: 'Best Deals'}, 
        ],
       filterOption: '',
       filterBy: {
-        type: 'all-type',
-        location: 'all-location',
+        type: 'All',
+        location: 'All',
         tags: [],
         sortBy: 'newest',
       }

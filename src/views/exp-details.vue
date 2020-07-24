@@ -23,6 +23,7 @@
             <h5 class="exp-details-shortDesc">{{exp.shortDesc}}</h5>
             <div class="exp-details-main">
             <div class="exp-descs-container">
+                <p class="exp-details-desc">{{exp.desc}}</p>
                 <p class="exp-details-desc">{{exp.desc1}}</p>
                 <p class="exp-details-desc">{{exp.desc2}}</p>
                 <p class="exp-details-desc">{{exp.desc3}}</p>
