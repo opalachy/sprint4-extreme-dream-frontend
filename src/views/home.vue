@@ -2,58 +2,44 @@
     <section class="home-page">
         <div class="hero-img"> 
             <div class="app-title">  
-              <h1 class="ex-dream">ExDreme</h1>  
+              <h1 class="ex-dream">ExDream</h1>  
               <h2>Outdoor experiences around the world</h2>  
             </div>
           <div class="search-container">
-                <input v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
+                <input @change="searchExp" v-model="choosedType" list="exp-list" placeholder="Choose your next Experience"/>
                 <datalist  id="exp-list">
-                    <option v-for="type in expTypes" :key="type" :value="type" />
+                    <option  v-for="type in expTypes" :key="type" :value="type" />
                 </datalist>
           
-            <button class="search-btn" @click="searchExp()"><i class="fas fa-search"></i> </button>
+            <button class="search-btn" @click="searchExp"><i class="fas fa-search"></i> </button>
           </div>
             
         </div>
-        <div class="cards-container">
-
-            <!-- <template v-for="topic in topics">
-                <div class="type-container">
-                    <h2>{{topic.name}}</h2>
-                    <router-link :to="topic.to" >See all</router-link>
-                </div>
-                <exp-list :exps="topic.exps" />
-            </template>     -->
+        <div ref="cardsContainer" class="cards-container">
 
             <div class="type-container">
                 <h2>Best Deals</h2>
                 <button @click="goToPopular">See All</button>
             </div>
-            <exp-list v-if="bestDeals" :exps="bestDeals" />
+            <exp-list v-if="bestDeals" :exps="bestDealsToShow" />
             <div class="type-container">
                 <h2>Popular Ski Experience</h2>
                 <button @click="goToSki">See All</button>
             </div>
-            <exp-list v-if="popSki" :exps="popSki" />
+            <exp-list v-if="popSki" :exps="popSkiToShow" />
             <div class="type-container">
                 <h2>Popular In France</h2>
                 <button @click="goToFrance">See All</button>
             </div>
-            <exp-list v-if="inFrance" :exps="inFrance" />
+            <exp-list v-if="inFrance" :exps="inFranceToShow" />
         </div>
-    </section> 
+   </section> 
 </template>
 
 <script>
 // @ is an alias to /src
 import expList from "../components/exp-list.vue";
 import socket from "../services/socket.service.js"
-     
-                    // <!-- <option value="Ski" />
-                    // <option value="Sky Diving" />
-                    // <option value="Bunjee" />
-                    // <option value="Diving" />
-                    // <option value="Surffing" /> -->
 
 export default {
     name: "Home-page",
@@ -63,8 +49,20 @@ export default {
             choosedType: null,
             bestDeals: null,
             popSki: null,
-           inFrance: null
+           inFrance: null,
+           numOfCard: 4,
         };
+    },
+    computed: {
+       bestDealsToShow(){
+           return this.bestDeals.slice(0, this.numOfCard)
+       },
+       popSkiToShow(){
+           return this.popSki.slice(0, this.numOfCard)
+       },
+       inFranceToShow(){
+           return this.inFrance.slice(0, this.numOfCard)
+       },
     },
     methods:{
         goToSki(){
@@ -85,10 +83,18 @@ export default {
             this.$store.commit({type: 'setFilter' , filterBy : {type: this.choosedType}});
             this.$router.push('/exp');
         },
-           
+        getNumOfCard(){
+            if(window.innerWidth > 1200) this.numOfCard = 4;
+            else if (window.innerWidth > 960)  this.numOfCard = 3;  
+            else if (window.innerWidth > 700)  this.numOfCard = 2;  
+        }
+        
     },
     async created() {
-        
+        this.getNumOfCard()
+        window.addEventListener("resize", ()=> {
+          this.getNumOfCard()
+        });
         this.$store.commit({ type : "setFilter" , filterBy: {sortBy : 'currPrice'}})
         await this.$store.dispatch({ type: "loadExps" });
         let exps = this.$store.getters.exps
@@ -103,26 +109,12 @@ export default {
         await this.$store.dispatch({ type: "loadExps" });
         exps = this.$store.getters.exps
         this.inFrance = exps.slice(0, 4);
- 
 
-
-
-
-
-
-        // this.bestExps = currExps;
-        // this.popSki = currExps;
-        // this.popFrance = currExps;
-        // this.$store.commit({ type : "setFilter" , filterBy: {}})
-        // await this.$store.dispatch({ type: "loadExps" });
-        // const exps = this.$store.getters.exps
-        // const currExps = exps.slice(0, 4);
-        // this.bestExps = currExps;
-        // this.popSki = currExps;
-        // this.popFrance = currExps;
     },
     components: {
         expList
-    }
+    },
 };
 </script>
+
+

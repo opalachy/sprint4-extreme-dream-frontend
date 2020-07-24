@@ -1,10 +1,9 @@
 .home-page {
-
     .el-icon-star-on:before {
         color: #4f94d6;
     }
     .hero-img {
-        background-image: url(https://images.unsplash.com/photo-1522163182402-834f871fd851?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=993&q=80);
+        background-image: url(https://images.unsplash.com/photo-1493224533326-630c89563300?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
         height: 80vh;
         background-position: center;
         background-repeat: no-repeat;
@@ -17,14 +16,15 @@
         .app-title {
             text-align: center;
             width: 60%;
-            color: #052340;
             margin: 45px;
+            color: #002656;
             h1 {
-                font-family: serif;
-            }
-            .ex-dream {
                 font-size: 70px;
-                font-family: serif;
+                font-family: PassionRegular;
+            }
+            h2 {
+                font-family: PassionRegular;
+                font-size: 36px;
             }
         }
         .search-container {
@@ -32,7 +32,6 @@
             // margin-top: 40px;
             display: flex;
             input {
-              
                 outline: none;
                 border: 0;
                 border-top-left-radius: 10px;
@@ -42,13 +41,13 @@
                 width: 320px;
                 padding: 1rem 0rem 1rem 1rem;
             }
-            .search-btn {   
+            .search-btn {
                 height: 40px;
                 border: 0;
                 font-size: 17px;
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
-                background-color: #4f94d6;
+                background-color: #1e72e0;
                 color: #fff;
                 margin: 0;
                 padding: 1px 12px;
@@ -79,6 +78,27 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 50px;
+        }
+    }
+
+    @include for-wide-XL-layout {
+        .cards-container {
+            max-width: 980px;
+            .exp-list {
+                .exp-preview {
+                    width: 31%;
+                }
+            }
+        }
+    }
+    @include for-wide-layout {
+        .cards-container {
+            max-width: 700px;
+            .exp-list {
+                .exp-preview {
+                    width: 48%;
+                }
+            }
         }
     }
 }

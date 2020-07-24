@@ -5,23 +5,15 @@ export const orderService = {
     getOrders,
     getById,
     remove,
-    add,
     update,
     addOrder 
-
 }
 async function getOrders(userId) {
     return await HttpService.get(`order?userId=${userId}`)
 }
 
-
-
 async function remove(orderId) {
     return await HttpService.delete(`order/${orderId}`)
-}
-
-async function add(order) {
-    return await HttpService.post(`order`, order)
 }
 
 async function update(order) {
@@ -43,11 +35,13 @@ async function addOrder(booked, exp, user) {
         exp: {
             _id: exp._id,
             type: exp.type,
-            title: exp.title
+            title: exp.title,
+            date: exp.date,
+            location: exp.location
         }
     }
     console.log(order)
-    return await add(order) 
+    return await HttpService.post(`order`, order)
 }
 
 

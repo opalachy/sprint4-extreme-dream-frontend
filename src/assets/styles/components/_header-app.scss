@@ -10,6 +10,11 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 3px 2px -1.2px rgba(0, 0, 0, 0.2);
+    img {
+        width: 115px;
+        position: relative;
+        top: 5px;
+    }
     .log-user {
         display: flex;
         flex-direction: column;
@@ -26,8 +31,7 @@
         letter-spacing: 0.5px;
         cursor: pointer;
         &:hover {
-
-            color: #333
+            color: #333;
         }
     }
     .logo {
@@ -46,14 +50,12 @@
         background-color: transparent;
         cursor: pointer;
         &:hover {
-            color: #333
+            color: #333;
         }
     }
     .active {
-        color: #333
+        color: #333;
     }
-
-
 
     .msg-to-seller {
         width: 220px;

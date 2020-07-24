@@ -8,7 +8,9 @@
     </div>
 
     <router-link to="/">
-       <span :class="isOnHome" @click="goToHome" >Home</span>
+       <span :class="isOnHome" @click="goToHome" >
+         <img src="https://res.cloudinary.com/dobvwuisl/image/upload/v1595581028/dy5miswkx05lnpmf1ao1.png" alt="">
+       </span>
     </router-link>
     <div class="router-header">
        <button v-if="loggedinUser" :class="isOnProfile"  @click="goToProfile" >My Profile</button>

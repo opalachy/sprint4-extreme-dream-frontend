@@ -1,12 +1,11 @@
 <template>
-    <li @click="details" class="exp-preview container">
+    <li  class="exp-preview container">
     
-        <div  class="exp-preview-img">
+        <div @click="details" class="exp-preview-img">
             <img :src="exp.imgUrls[0]"  />
         </div>
 
         <div class="exp-preview-title-seller">
-            <!-- <h4 class="exp-title">{{exp.title}}</h4> -->
             <router-link :to="`/user/${exp.createdBy._id}`" class="preview-seller">
                 <img class="seller-img" :src="exp.createdBy.imgUrl" />
                 <h4 class="preview-creator">{{exp.createdBy.fullName}}</h4>
@@ -18,16 +17,19 @@
             <h4 class="exp-type">{{exp.location}}</h4>
             <h4 class="preview-left">{{left}}/{{exp.capacity}} left</h4>
         </div>
-        <!-- @book="book" -->
         <p class="exp-preview-desc">{{exp.shortDesc}}</p>
 
         <div class="exp-preview-price-stars-rate">
+            <p class="exp-date">{{expDate}}</p>
             <p class="exp-price">${{exp.currPrice}}</p>
         </div>
     </li>
 </template>
 
 <script>
+import moment from "moment";
+
+
 export default {
     props: ["exp", "loggedinUser"],
     computed: {
@@ -50,6 +52,9 @@ export default {
         ratesCounter() {
             return this.exp.reviews.length;
         },
+        expDate(){
+           return moment(this.exp.date).format('DD/MM/YY')    
+        } 
     },
     methods: {
         details() {

@@ -1,4 +1,5 @@
 import { expService } from '../services/exp.service.js'
+import { orderService } from '../services/order.service.js'
 
 export const expStore = {
   state: {
@@ -41,7 +42,8 @@ export const expStore = {
 
     },
     async booking({ state }, { booked, exp, user }) {
-      const updatedExp = await expService.addParticipant(booked, exp, user)
+      await expService.addParticipant(booked, exp, user);
+      await orderService.addOrder(booked, exp, user);
     },
     async saveExp({ commit }, { exp }) {
       const type = (exp._id) ? 'updateExp' : 'addExp';
