@@ -91,9 +91,7 @@ export default {
           {idVal: 'Adventure' , txt: 'Adventure'},
           {idVal: 'Adults' , txt: 'Adults'},
           {idVal: 'Sports' , txt: 'Sports'},
-<<<<<<< HEAD
-          {idVal: 'All-levels' , txt: 'All levels'} ,
-=======
+          {idVal: 'All-levels' , txt: 'All levels'},
           {idVal: 'Europe' , txt: 'Europe'},
           {idVal: 'Expert' , txt: 'Expert'},
           {idVal: 'Africa' , txt: 'Africa'},
@@ -108,7 +106,6 @@ export default {
           {idVal: 'All-year ' , txt: 'All year '} ,
           {idVal: 'Loud' , txt: 'Loud'},
           {idVal: 'Desert' , txt: 'Desert'},
->>>>>>> 62f161f68aa20b272a7fb2b93807cdcba01b439c
        ],
        sortBy: [
           {idVal: 'newest' , txt: 'Newest'} ,
