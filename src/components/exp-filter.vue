@@ -11,7 +11,7 @@
       <h2>Select experience</h2>          
       <div class="label-container">
         <div v-for="type in types" :key="type.id">
-          <input :id="type.id" type="radio" v-model="filterBy.type" :value="type.txt"  hidden>
+          <input :id="type.id" type="radio" v-model="filterBy.type" :value="type.id"  hidden>
           <label :for="type.id" >{{type.txt}}</label>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <h2>Select locatin</h2>        
       <div class="label-container">
         <div v-for="location in locations" :key="location.id">
-          <input :id="location.id" type="radio" v-model="filterBy.location" :value="location.txt" hidden >
+          <input :id="location.id" type="radio" v-model="filterBy.location" :value="location.id" hidden >
           <label :for="location.id" >{{location.txt}}</label>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <h2>More filters</h2>         
       <div class="label-container">
         <div v-for="tag in tags" :key="tag.id">
-          <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.txt" hidden>
+          <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.id" hidden>
           <label :for="tag.id" >{{tag.txt}}</label>
         </div>
       </div>
@@ -44,7 +44,7 @@
       <h2>Sort</h2>        
       <div class="label-container">
         <div v-for="sort in sortBy" :key="sort.id">
-          <input :id="sort.id" type="radio" v-model="filterBy.sortBy" :value="sort.txt"  hidden>
+          <input :id="sort.id" type="radio" v-model="filterBy.sortBy" :value="sort.id"  hidden>
           <label :for="sort.id" >{{sort.txt}}</label>
         </div>
       </div>
@@ -70,7 +70,8 @@ export default {
           {id: 'Motorcross' , txt: 'Motorcross'},
           {id: 'Rock-climb' , txt: 'Rock Climb'},
           {id: 'Bunjee' , txt: 'Bungee'},
-          {id: 'Snapling' , txt: 'Rappelling'} 
+          {id: 'Snapling' , txt: 'Rappelling'},
+          // {id: 'Skidiving' , txt: 'Skidiving'} 
        ],
        locations: [
           {id: 'all-location' , txt: 'All'},
@@ -113,8 +114,8 @@ export default {
        ],
       filterOption: '',
       filterBy: {
-        type: 'All',
-        location: 'All',
+        type: 'all-type',
+        location: 'all-location',
         tags: [],
         sortBy: 'newest',
       }

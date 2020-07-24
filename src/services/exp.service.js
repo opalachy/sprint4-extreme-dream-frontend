@@ -14,7 +14,7 @@ export const expService = {
   saveExp
 }
 
-async function getExps({ type = 'All', location = 'All', tags = [], sortBy = 'All', userId = 'all' }) {
+async function getExps({ type = 'all-type', location = 'all-location', tags = [], sortBy = 'newest', userId = 'all' }) {
   return await HttpService.get(`exp?type=${type}&location=${location}&tags=${tags}&sortBy=${sortBy}&userId=${userId}`)
 }
 
