@@ -86,7 +86,6 @@ export default {
       this.$router.push(`/exp/edit/${id}`);
     },
     writeReview(id) {
-      console.log(id);
       this.$router.push(`/order/${id}`);
     },
     async remove(id) {
