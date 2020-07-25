@@ -10,10 +10,11 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1.2px solid rgb(28, 116, 232);
-    img {
+    .user-details-img {
       height: 200px;
       width: 200px;
       margin-inline-end: 20px;
+      object-fit: cover;
     }
     .user-details-name-info {
       margin-top: 15px;
@@ -60,8 +61,8 @@
         border: none;
         background-color: #1e72e0;
         color: white;
-        &:hover{
-          background-color: #115aba
+        &:hover {
+          background-color: #115aba;
         }
       }
       h4 {
@@ -84,7 +85,7 @@
         text-decoration: underline;
         font-weight: bold;
       }
-      li:hover{
+      li:hover {
         text-decoration: underline;
         cursor: pointer;
         color: blue;
@@ -120,8 +121,8 @@
     background-color: #1e72e0;
     color: white;
     transition: 0.15s;
-    &:hover{
-      background-color:  #115aba
+    &:hover {
+      background-color: #115aba;
     }
   }
 }
