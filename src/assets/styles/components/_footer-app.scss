@@ -1,12 +1,14 @@
-.footer-app{
+.footer-app {
     border-top: 1px solid black;
-    .footer-container{
+    .footer-container {
         display: flex;
         justify-content: space-between;
         padding: 30px 15px;
         max-width: 1200px;
-        margin: 0 auto; 
+        margin: 0 auto;
+        @include for-narrow-layout {
+            padding: 20px 15px;
+            font-size: 12px;
+        }
     }
-
 }
-

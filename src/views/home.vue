@@ -45,7 +45,7 @@ export default {
     name: "Home-page",
     data() {
         return {
-            expTypes: ['Ski', 'Skydiving' ,'Bunjee' ,'Diving' , 'Surffing' ,'Rock Climb','Motorcross' ,'Snapling'],
+            expTypes: ['Ski', 'Skydiving' ,'Bunjee' ,'Diving' , 'Surffing' ,'Rock Climb','Motorcross' ,'Rappeling'],
             choosedType: null,
             bestDeals: null,
             popSki: null,

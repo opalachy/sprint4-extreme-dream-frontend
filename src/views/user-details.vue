@@ -20,7 +20,7 @@
                 <h4>Your orders:</h4>
                 <ul  class="orders-list">
                     <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
-                        <user-order :ord="ord" />
+                        <user-order @writeReview="writeReview" :ord="ord" />
                     </li>
                     <router-link v-else to="/exp">No Orders Yet, Go Choose The First One</router-link>
                 </ul>
@@ -88,9 +88,9 @@ export default {
         edit(id) {
             this.$router.push(`/exp/edit/${id}`);
         },
-        writeReview(id) {
-            console.log(id);
-            this.$router.push(`/order/${id}`);
+        writeReview(expId) {
+            console.log(expId);
+            this.$router.push(`/order/${expId}`);
         },
         async remove(id) {
             try {
@@ -125,7 +125,7 @@ export default {
         return acc + tickets;
       }, 0);
       console.log(totalNumTickets);
-      this.loaded = totalNumTickets > 0 ? true : fale;
+      this.loaded = totalNumTickets > 0 ? true : false;
     } catch (err) {
       console.log("ERROR: cannot find exps");
       throw err;

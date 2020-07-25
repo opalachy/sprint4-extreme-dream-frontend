@@ -2,16 +2,53 @@
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 15px;
-    
-    .app-title{
+
+    .app-title {
         margin-top: 85px;
         margin-bottom: 20px;
         font-size: 40px;
         margin-inline-start: 7px;
     }
-    // .exp-list  :not(:last-child){
-    //   margin-inline-end: 1.7333%;
-    // }
-    // background-color: rgb(224, 190, 190);
-}
+    @include for-narrow-layout {
+        .app-title {
+            font-size: 25px;
+            width: 92%;
+            margin-inline-start: 4%;
+            margin-inline-end: 4%;
+        }
+        .exp-list {
+            flex-direction: column;
+            max-width: 380px;
 
+            .exp-preview {
+                width: 92%;
+                margin-inline-start: 4%;
+                margin-inline-end: 4%;
+                height: 360px;
+                .exp-preview-img {
+                    height: 270px;
+                }
+                .exp-preview-title-seller {
+                    .preview-creator {
+                        font-size: 12px;
+                    }
+                }
+                .exp-preview-type-ticket {
+                    .exp-type {
+                        font-size: 17px;
+                    }
+                    .preview-left {
+                        font-size: 14px;
+                    }
+                }
+                .exp-preview-desc {
+                    font-size: 16px;
+                    min-height: 41px;
+                }
+                .exp-price {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+}
