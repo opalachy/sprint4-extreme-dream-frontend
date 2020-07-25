@@ -19,17 +19,17 @@
 
             <div class="type-container">
                 <h2>Best Deals</h2>
-                <button @click="goToPopular">See All</button>
+                <button @click="goToExpApp({ sortBy: 'currPrice'})">See All</button>
             </div>
             <exp-list v-if="bestDeals" :exps="bestDealsToShow" />
             <div class="type-container">
                 <h2>Popular Ski Experience</h2>
-                <button @click="goToSki">See All</button>
+                <button @click="goToExpApp({ type: 'Ski'})">See All</button>
             </div>
             <exp-list v-if="popSki" :exps="popSkiToShow" />
             <div class="type-container">
                 <h2>Popular In Europe</h2>
-                <button @click="goToEurope">See All</button>
+                <button @click="goToExpApp({ tags : ['Europe']})">See All</button>
             </div>
             <exp-list v-if="inEurope" :exps="inEuropeToShow" />
         </div>
@@ -39,7 +39,7 @@
 <script>
 // @ is an alias to /src
 import expList from "../components/exp-list.vue";
-import socket from "../services/socket.service.js"
+import socket from "../services/socket.service.js";
 
 export default {
     name: "Home-page",
@@ -49,8 +49,8 @@ export default {
             choosedType: null,
             bestDeals: null,
             popSki: null,
-           inEurope: null,
-           numOfCard: 2,
+            inEurope: null,
+            numOfCard: 2,
         };
     },
     computed: {
@@ -65,18 +65,10 @@ export default {
        },
     },
     methods:{
-        goToSki(){
-          this.$store.commit({type: 'setFilter' , filterBy : { type: 'Ski'}});
+        goToExpApp(filterBy){
+          this.$store.commit({type: 'setFilter' , filterBy });
           this.$router.push('/exp');
-        },    
-        goToEurope(){
-          this.$store.commit({type: 'setFilter' , filterBy:  {tags : ['Europe']}});
-          this.$router.push('/exp')
-        },    
-        goToPopular(){
-          this.$store.commit({type: 'setFilter' , filterBy: {sortBy: 'currPrice'}});
-          this.$router.push('/exp')
-        }, 
+        },
         searchExp(){
             if(!this.choosedType) return 
             console.log(this.choosedType);
