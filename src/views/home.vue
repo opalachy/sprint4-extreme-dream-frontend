@@ -50,7 +50,7 @@ export default {
             bestDeals: null,
             popSki: null,
            inEurope: null,
-           numOfCard: 4,
+           numOfCard: 2,
         };
     },
     computed: {

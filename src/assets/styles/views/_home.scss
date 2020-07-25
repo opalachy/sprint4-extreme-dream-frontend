@@ -1,10 +1,9 @@
 .home-page {
     .el-icon-star-on:before {
-        color: #4f94d6;
+        color: #1e72e0;
     }
     .hero-img {
-        background-image: url(https://images.unsplash.com/photo-1493224533326-630c89563300?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80
-        );
+        background-image: url(https://images.unsplash.com/photo-1493224533326-630c89563300?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
         height: 80vh;
         background-position: center;
         background-repeat: no-repeat;
@@ -54,14 +53,14 @@
                 padding: 1px 12px;
             }
         }
-        
     }
     .cards-container {
         display: flex;
         flex-direction: column;
         max-width: 1200px;
         margin: 0 auto;
-        padding-inline-end: 8px;
+        // padding-inline-end: 8px;
+        padding: 0;
         .type-container {
             display: flex;
             justify-content: space-between;
@@ -85,9 +84,14 @@
     @include for-wide-XL-layout {
         .cards-container {
             max-width: 980px;
+            .type-container {
+                padding: 0 1.15%;
+            }
             .exp-list {
                 .exp-preview {
                     width: 31%;
+                    margin-inline-start: 1.15%;
+                    margin-inline-end: 1.15%;
                 }
             }
         }
@@ -95,11 +99,64 @@
     @include for-wide-layout {
         .cards-container {
             max-width: 700px;
+            .type-container {
+                padding: 0 2%;
+            }
             .exp-list {
                 .exp-preview {
-                    width: 48%;
+                    width: 46%;
+                    margin-inline-start: 2%;
+                    margin-inline-end: 2%;
+                }
+            }
+        }
+    }
+    @include for-normal-layout {
+        .cards-container {
+            max-width: 600px;
+        }
+    }
+    @include for-narrow-layout {
+        .hero-img{
+            height: 70vh;
+        }
+        .cards-container {
+            max-width: 450px;
+            .type-container {
+                padding: 0 4%;
+            }
+            .exp-list {
+                .exp-preview {
+                    width: 92%;
+                    margin-inline-start: 4%;
+                    margin-inline-end: 4%;
+                    .exp-preview-img {
+                        height: 270px;
+                    }
+                    .exp-preview-title-seller{
+                        .preview-creator{
+                            font-size: 12px;
+                        }
+                    }
+                    .exp-preview-type-ticket{
+                        .exp-type{
+                            font-size: 17px;
+                        }
+                        .preview-left{
+                            font-size: 14px;
+                        }
+                    }
+                    .exp-preview-desc {
+                        font-size: 16px;
+                        min-height: 41px;
+                    }
+                    .exp-price{
+                        font-size: 19px;
+                    }
                 }
             }
         }
     }
 }
+
+
