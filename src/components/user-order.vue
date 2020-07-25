@@ -1,7 +1,7 @@
 <template>
     <section>
         <p>{{ord.exp.title}}</p>
-        <button v-if="datePass" @click="writeReview(ord.exp._id)">
+        <button @click="writeReview(ord.exp._id)">
             <i class="el-icon-edit-outline"> Write a review</i>
         </button>
         <ul class="ord-location-date">
@@ -23,6 +23,11 @@ export default {
        expDate(){
            return moment(this.ord.exp.date).format('DD/MM/YY')    
         } 
+    },
+    methods:{
+        writeReview(expId){
+            this.$emit('writeReview', expId)
+        }
     }
 }
 </script>

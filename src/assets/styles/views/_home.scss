@@ -25,6 +25,7 @@
             h2 {
                 font-family: PassionRegular;
                 font-size: 36px;
+                text-transform: capitalize;
             }
         }
         .search-container {
@@ -117,8 +118,20 @@
         }
     }
     @include for-narrow-layout {
-        .hero-img{
+        .hero-img {
             height: 70vh;
+            .search-container {
+                width: 75%;
+                input {
+                    font-size: 15px;
+                }
+            }
+            .app-title {
+                width: 72%;
+                h1{
+                    font-size: 60px;
+                }
+            }
         }
         .cards-container {
             max-width: 450px;
@@ -130,19 +143,20 @@
                     width: 92%;
                     margin-inline-start: 4%;
                     margin-inline-end: 4%;
+                    height: 360px;
                     .exp-preview-img {
                         height: 270px;
                     }
-                    .exp-preview-title-seller{
-                        .preview-creator{
+                    .exp-preview-title-seller {
+                        .preview-creator {
                             font-size: 12px;
                         }
                     }
-                    .exp-preview-type-ticket{
-                        .exp-type{
+                    .exp-preview-type-ticket {
+                        .exp-type {
                             font-size: 17px;
                         }
-                        .preview-left{
+                        .preview-left {
                             font-size: 14px;
                         }
                     }
@@ -150,7 +164,7 @@
                         font-size: 16px;
                         min-height: 41px;
                     }
-                    .exp-price{
+                    .exp-price {
                         font-size: 19px;
                     }
                 }
@@ -158,5 +172,3 @@
         }
     }
 }
-
-

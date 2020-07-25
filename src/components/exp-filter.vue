@@ -1,10 +1,11 @@
 <template>
   <section class="exp-filter">
+    <!-- <div class="filter-btn-container"> -->
     <button class="filter-btn" :class="isOnType" @click="setOption('type')">Type</button>
     <button class="filter-btn" :class="isOnLocation" @click="setOption('location')">Location</button>
     <button class="filter-btn" :class="isOnTags" @click="setOption('tags')">More filters</button>
     <button class="filter-btn" :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
-  
+    <!-- </div> -->
     <div v-show="filterOption" @click="close" class="screen"></div>
  
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
@@ -69,8 +70,8 @@ export default {
           {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Motorcross' , txt: 'Motorcross'},
           {id: 'Rock-climb' , txt: 'Rock Climb'},
-          {id: 'Bunjee' , txt: 'Bungee'},
-          {id: 'Snapling' , txt: 'Rappelling'},
+          {id: 'Bungee' , txt: 'Bungee'},
+          {id: 'Rappelling' , txt: 'Rappelling'},
           // {id: 'Skidiving' , txt: 'Skidiving'} 
        ],
        locations: [
