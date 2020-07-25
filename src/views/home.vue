@@ -28,10 +28,10 @@
             </div>
             <exp-list v-if="popSki" :exps="popSkiToShow" />
             <div class="type-container">
-                <h2>Popular In France</h2>
-                <button @click="goToFrance">See All</button>
+                <h2>Popular In Europe</h2>
+                <button @click="goToEurope">See All</button>
             </div>
-            <exp-list v-if="inFrance" :exps="inFranceToShow" />
+            <exp-list v-if="inEurope" :exps="inEuropeToShow" />
         </div>
    </section> 
 </template>
@@ -49,7 +49,7 @@ export default {
             choosedType: null,
             bestDeals: null,
             popSki: null,
-           inFrance: null,
+           inEurope: null,
            numOfCard: 4,
         };
     },
@@ -60,8 +60,8 @@ export default {
        popSkiToShow(){
            return this.popSki.slice(0, this.numOfCard)
        },
-       inFranceToShow(){
-           return this.inFrance.slice(0, this.numOfCard)
+       inEuropeToShow(){
+           return this.inEurope.slice(0, this.numOfCard)
        },
     },
     methods:{
@@ -69,8 +69,8 @@ export default {
           this.$store.commit({type: 'setFilter' , filterBy : { type: 'Ski'}});
           this.$router.push('/exp');
         },    
-        goToFrance(){
-          this.$store.commit({type: 'setFilter' , filterBy:  {location: 'France'}});
+        goToEurope(){
+          this.$store.commit({type: 'setFilter' , filterBy:  {tags : ['Europe']}});
           this.$router.push('/exp')
         },    
         goToPopular(){
@@ -87,29 +87,22 @@ export default {
             if(window.innerWidth > 1200) this.numOfCard = 4;
             else if (window.innerWidth > 960)  this.numOfCard = 3;  
             else if (window.innerWidth > 700)  this.numOfCard = 2;  
-        }
-        
+        },
+        async getExps(filterBy){
+            this.$store.commit({ type : "setFilter" , filterBy });
+            await this.$store.dispatch({ type: "loadExps" });
+            let exps = this.$store.getters.exps;
+            return exps.slice(0, 4);
+        },
     },
     async created() {
         this.getNumOfCard()
         window.addEventListener("resize", ()=> {
           this.getNumOfCard()
         });
-        this.$store.commit({ type : "setFilter" , filterBy: {sortBy : 'currPrice'}})
-        await this.$store.dispatch({ type: "loadExps" });
-        let exps = this.$store.getters.exps
-        this.bestDeals = exps.slice(0, 4);
-
-        this.$store.commit({ type : "setFilter" , filterBy: {type : 'Ski'}})
-        await this.$store.dispatch({ type: "loadExps" });
-        exps = this.$store.getters.exps
-        this.popSki = exps.slice(0, 4);
- 
-        this.$store.commit({ type : "setFilter" , filterBy: {location : 'France'}})
-        await this.$store.dispatch({ type: "loadExps" });
-        exps = this.$store.getters.exps
-        this.inFrance = exps.slice(0, 4);
-
+        this.bestDeals = await this.getExps({sortBy : 'currPrice'});
+        this.popSki = await this.getExps({type : 'Ski'});
+        this.inEurope = await this.getExps({tags : ['Europe']});
     },
     components: {
         expList
