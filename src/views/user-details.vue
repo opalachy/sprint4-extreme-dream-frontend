@@ -1,35 +1,37 @@
 <template>
-  <section class="user-details" v-if="user">
-    <div class="user-details-container">
-      <!-- <router-link to="/">
+    <section class="user-details" v-if="user">
+        <div class="user-details-container">
+            <!-- <router-link to="/">
           <i class="el-icon-edit-outline">Edit your profile</i>
-      </router-link>-->
+            </router-link>-->
 
-      <img v-if="user.imgUrl" :src="user.imgUrl" />
-      <i v-else class="el-icon-user"></i>
+            <img class="user-details-img" v-if="user.imgUrl" :src="user.imgUrl" />
+            <i v-else class="el-icon-user"></i>
 
-      <div class="user-details-name-info">
-        <h2>{{user.fullName}}</h2>
-        <p>{{user.info}}</p>
-      </div>
-      <button class="add-exp-btn" @click="add">Add Activity</button>
-    </div>
+            <div class="user-details-name-info">
+                <h2>{{user.fullName}}</h2>
+                <p>{{user.info}}</p>
+            </div>
+            <button class="add-exp-btn" @click="add">Add Activity</button>
+        </div>
 
-    <div class="user-order-activities">
-      <div v-if="creator" class="orders-list-container">
-        <h4>Your orders:</h4>
-        <ul class="orders-list">
-          <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
-            <user-order :ord="ord" />
-          </li>
-        </ul>
-      </div>
+        <div class="user-order-activities">
+            <div v-if="creator" class="orders-list-container">
+                <h4>Your orders:</h4>
+                <ul  class="orders-list">
+                    <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
+                        <user-order :ord="ord" />
+                    </li>
+                    <router-link v-else to="/exp">No Orders Yet, Go Choose The First One</router-link>
+                </ul>
+            </div>
 
       <div v-if="exps" class="activities-list-container">
         <h4 class="activities-list-header">Your Activities:</h4>
         <ul class="activities-list">
           <li class="activity" v-for="exp in exps" :key="exp._id">
-            <p @click="routActivity()">{{exp.title}}</p>  
+            <user-activity :exp="exp" />
+            <!-- {{exp.title}}   -->
             <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
               <i class="el-icon-edit-outline"></i>
             </button>
@@ -57,47 +59,46 @@ import { userService } from "../services/user.service.js";
 import reviewDetails from "./review-details.vue";
 import { orderService } from "../services/order.service.js";
 import userOrder from "../components/user-order.vue";
+import userActivity from "../components/user-activity.vue";
 import barChart from "../components/bar-chart.vue";
 
 export default {
-  name: "user-details",
-  data() {
-    return {
-      exps: [],
-      loggedinUser: null,
-      user: null,
-      ords: [],
-      loaded: false,
-      cData: null,
-      cLabels: null,
-    };
-  },
-  computed: {
-    creator() {
-      if (!this.loggedinUser) return false;
-      return this.user._id === this.loggedinUser._id;
+    name: "user-details",
+    data() {
+        return {
+            exps: [],
+            loggedinUser: null,
+            user: null,
+            ords: [],
+        };
     },
-  },
-  methods: {
-    hasHistory() {
-      return window.history.length > 2;
+    computed: {
+        creator() {
+            if (!this.loggedinUser) return false;
+            return this.user._id === this.loggedinUser._id;
+        },
     },
-    add() {
-      this.$router.push("/exp/edit");
-    },
-    edit(id) {
-      this.$router.push(`/exp/edit/${id}`);
-    },
-    writeReview(id) {
-      this.$router.push(`/order/${id}`);
-    },
-    async remove(id) {
-      try {
-        await this.$store.dispatch({ type: "removeExp", id });
-      } catch (err) {
-        console.log("error:", err);
-      }
-    },
+    methods: {
+        hasHistory() {
+            return window.history.length > 2;
+        },
+        add() {
+            this.$router.push("/exp/edit");
+        },
+        edit(id) {
+            this.$router.push(`/exp/edit/${id}`);
+        },
+        writeReview(id) {
+            console.log(id);
+            this.$router.push(`/order/${id}`);
+        },
+        async remove(id) {
+            try {
+                await this.$store.dispatch({ type: "removeExp", id });
+            } catch (err) {
+                console.log("error:", err);
+            }
+        },   
   },
   async created() {
     this.loaded = false;
@@ -136,6 +137,7 @@ export default {
     reviewDetails,
     userOrder,
     barChart,
+    userActivity
   },
 };
 </script>
