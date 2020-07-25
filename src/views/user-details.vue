@@ -29,7 +29,8 @@
         <h4 class="activities-list-header">Your Activities:</h4>
         <ul class="activities-list">
           <li class="activity" v-for="exp in exps" :key="exp._id">
-            <p @click="routActivity()">{{exp.title}}</p>  
+            <user-activity :exp="exp" />
+            <!-- {{exp.title}}   -->
             <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
               <i class="el-icon-edit-outline"></i>
             </button>
@@ -57,6 +58,7 @@ import { userService } from "../services/user.service.js";
 import reviewDetails from "./review-details.vue";
 import { orderService } from "../services/order.service.js";
 import userOrder from "../components/user-order.vue";
+import userActivity from "../components/user-activity.vue";
 import barChart from "../components/bar-chart.vue";
 
 export default {
@@ -136,6 +138,7 @@ export default {
     reviewDetails,
     userOrder,
     barChart,
+    userActivity
   },
 };
 </script>
