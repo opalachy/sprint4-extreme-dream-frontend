@@ -110,13 +110,18 @@
       }
     }
   }
+  .chart{
+    display: block;
+    width: 380px;
+    height: 350px;
+  }
   .back-btn {
     justify-self: flex-end;
     align-self: flex-end;
     font-size: 15px;
     border-radius: 13px;
     padding: 8px 22px;
-    margin: 0;
+    margin-bottom: 5px;
     border: none;
     background-color: #1e72e0;
     color: white;
