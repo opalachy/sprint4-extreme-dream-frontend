@@ -29,7 +29,7 @@
         <h4 class="activities-list-header">Your Activities:</h4>
         <ul class="activities-list">
           <li class="activity" v-for="exp in exps" :key="exp._id">
-            {{exp.title}}
+            <p @click="routActivity()">{{exp.title}}</p>  
             <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
               <i class="el-icon-edit-outline"></i>
             </button>
@@ -40,7 +40,7 @@
         </ul>
       </div>
     </div>
-    <line-chart v-if="loaded" :cData="cData" :cLabels="cLabels" />
+    <bar-chart class="chart" v-if="loaded" :cData="cData" :cLabels="cLabels" />
     <button
       type="button"
       @click="hasHistory() ? $router.go(-1) : $router.push('/')"
@@ -57,7 +57,7 @@ import { userService } from "../services/user.service.js";
 import reviewDetails from "./review-details.vue";
 import { orderService } from "../services/order.service.js";
 import userOrder from "../components/user-order.vue";
-import lineChart from "../components/line-chart.vue";
+import barChart from "../components/bar-chart.vue";
 
 export default {
   name: "user-details",
@@ -109,38 +109,34 @@ export default {
       const userExps = await expService.getExps({ userId: userId });
       this.exps = userExps;
       const data = this.exps.map((exp) => {
-        return exp.participants.map(p=>{
-          return p.numOfTickets
-        })
+        const tickets = exp.participants.reduce((acc, participant) => {
+          return acc + participant.numOfTickets;
+        }, 0);
+        return tickets;
       });
       this.cData = data;
-      // this.cData = Object.assign({}, data);
       console.log(this.cData);
       const activity = this.exps.map((exp) => {
         return exp.title;
       });
       this.cLabels = activity;
-      // this.cLabels = Object.assign({}, activity);
-      console.log(this.cLabels);
-      this.loaded = true;
-    }  catch (err) {
-        console.log('ERROR: cannot find exps')
-        throw err;
+      const totalNumTickets = data.reduce((acc, tickets) => {
+        return acc + tickets;
+      }, 0);
+      console.log(totalNumTickets);
+      this.loaded = totalNumTickets > 0 ? true : fale;
+    } catch (err) {
+      console.log("ERROR: cannot find exps");
+      throw err;
     }
-    // const userExps = await expService.getExps({ userId: userId });
     const userOrds = await orderService.getOrders(userId);
-    // this.exps = userExps;
     this.ords = userOrds;
-    // this.chartData();
-    // this.chartOpts();
   },
   components: {
     reviewDetails,
     userOrder,
-    lineChart,
+    barChart,
   },
 };
-
-// Things that are only for guides / sellers and loggedinUser.id === params.id: edit button on UserExps, navigation to Dashboard
 </script>
     
