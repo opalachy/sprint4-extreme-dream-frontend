@@ -31,15 +31,12 @@ export const expStore = {
       try {
         const exps = await expService.getExps(state.filterBy)
         commit({type: "setExps" , exps})
-        // return exps
       } catch (err) {
         console.log('ERR: ', err)
       }
     },
     async removeExp({ commit }, { id }) {
       await expService.remove(id)
-      // commit({ type: 'removeExp', id })
-
     },
     async booking({ state }, { booked, exp, user }) {
       await expService.addParticipant(booked, exp, user);

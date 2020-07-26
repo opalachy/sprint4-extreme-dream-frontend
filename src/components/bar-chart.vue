@@ -43,14 +43,9 @@ export default {
     }
   }),
   mounted() {
-      console.log(this.cData)
       this.chartdata.labels = this.cLabels
       this.chartdata.datasets[0].data = this.cData
       this.options.scales.yAxes[0].ticks.max = Math.max.apply(null, this.cData)
-      // this.cData.reduce((acc, data) => {
-      //     return acc + participant.numOfTickets;
-      //   }, #1e72e0);
-      // this.chartdata.datasets[0].backgroundColor.push(`${#1e72e0}`+100)
     this.renderChart(this.chartdata, this.options);
   },
 };

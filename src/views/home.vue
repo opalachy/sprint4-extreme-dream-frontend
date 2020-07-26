@@ -41,7 +41,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import expList from "../components/exp-list.vue";
 import socket from "../services/socket.service.js";
 
@@ -78,7 +78,6 @@ export default {
         },
         searchExp(){
             if(!this.choosedType) return 
-            console.log(this.choosedType);
             this.$store.commit({type: 'setFilter' , filterBy : {type: this.choosedType}});
             this.$router.push('/exp');
         },

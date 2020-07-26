@@ -97,7 +97,6 @@ export default {
     },
     async loadUser(userId) {
       this.loaded = false;
-      // const userId = this.$route.params.id;
       this.user = await userService.getById(userId);
       this.loggedinUser = this.$store.getters.loggedinUser;
       try {

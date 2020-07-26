@@ -61,7 +61,6 @@ export default {
             this.$router.push("/exp/" + this.exp._id);
         },
         async removeExp() {
-            console.log(this.exp._id);
             await this.$store.dispatch({ type: "removeExp", id: this.exp._id });
             this.$router.push("/");
         },

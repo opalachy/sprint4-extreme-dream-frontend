@@ -84,7 +84,6 @@ export default {
     if(!loggedinuser) return 
     socket.setup()
     socket.on(loggedinuser._id , (buyer)=> {
-      console.log(buyer);
       this.buyer = buyer
          this.msgToSeller = true;
            setTimeout(() =>{

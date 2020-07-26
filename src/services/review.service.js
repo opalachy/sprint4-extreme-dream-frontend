@@ -6,6 +6,5 @@ export const reviewService = {
 
 
 async function addReview(review) {
-    console.log(review)
   return await HttpService.post(`review`, review)
 }

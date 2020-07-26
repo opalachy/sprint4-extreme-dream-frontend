@@ -35,11 +35,7 @@ export default {
     },
     routUser(id){
       this.$emit('loadUser', id)
-      // this.$router.push('/')
-      // setTimeout(()=> {
-      //   this.$router.push(`/user/${id}`)
 
-      // },500) 
     }
   },
   computed: {
@@ -52,5 +48,4 @@ export default {
   },
 };
 
-// <router-link :to="'/user/' + participant._id"></router-link>
 </script> 

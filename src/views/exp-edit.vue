@@ -248,7 +248,6 @@ export default {
         this.expToEdit.tags.forEach(element => {
           this.value1.push(element)
         });
-        // this.value1.push(this.expToEdit.tags)
       } else {
         this.expToEdit = expService.getEmptyExp();
       }
@@ -264,7 +263,6 @@ export default {
       this.expToEdit.createdBy.imgUrl = this.loggedinUser.imgUrl;
       this.expToEdit.createdBy.info = this.loggedinUser.info;
       this.expToEdit.tags = this.value1 
-      console.log(this.expToEdit)
       await this.$store.dispatch({ type: "saveExp", exp: this.expToEdit });
       this.$router.push("/");
       this.loadExp();

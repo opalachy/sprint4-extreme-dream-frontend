@@ -9,7 +9,6 @@ export const orderService = {
     addOrder 
 }
 async function getOrders(userId) {
-    console.log('id: ', userId);
     return await HttpService.get(`order?userId=${userId}`)
 }
 
@@ -41,7 +40,6 @@ async function addOrder(booked, exp, user) {
             location: exp.location
         }
     }
-    console.log(order)
     return await HttpService.post(`order`, order)
 }
 
