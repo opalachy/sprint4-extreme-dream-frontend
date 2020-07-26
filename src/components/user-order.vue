@@ -2,7 +2,7 @@
     <section>
         <p>{{ord.exp.title}}</p>
         <button @click="writeReview(ord.exp._id)">
-            <i class="el-icon-edit-outline"> Write a review</i>
+            <i class="el-icon-edit-outline"> Add review</i>
         </button>
         <ul class="ord-location-date">
           <li>{{ord.exp.location}}</li>

@@ -13,6 +13,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/styles/styles.scss'
 
+Vue.use(require('vue-moment'));
 Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false;
 

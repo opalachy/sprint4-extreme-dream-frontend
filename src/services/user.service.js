@@ -14,10 +14,11 @@ export const userService ={
 
 function getGuestUser(booked) {
     const user = {
-        _id: 'userId',
+        _id: makeId(),
         fullName: 'guest',
         imgUrl: "https://icon-library.com/images/male-avatar-icon/male-avatar-icon-29.jpg",
-        numOfTickets: booked.numOfTickets
+        numOfTickets: booked.numOfTickets,
+        createdAt: Date.now()
     }
     return user
 }
@@ -62,6 +63,17 @@ async function getUsers(id) {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+function makeId(l=5)
+{
+var text = "";
+var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+for(var i=0; i < l; i++ )
+{  
+text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+}
+return text;
 }
 
 

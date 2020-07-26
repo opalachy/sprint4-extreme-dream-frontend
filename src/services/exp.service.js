@@ -69,7 +69,8 @@ async function addParticipant(booked, exp, user) {
       _id: user._id,
       fullName: user.fullName,
       imgUrl: user.imgUrl,
-      numOfTickets: booked.numOfTickets
+      numOfTickets: booked.numOfTickets,
+      createdAt: Date.now()
     }
   } else miniUser = userService.getGuestUser(booked)
   exp.participants.push(miniUser);

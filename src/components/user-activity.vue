@@ -9,7 +9,7 @@
     </button>
     <ul>
       <li v-if="isParticipant" v-for="participant in this.exp.participants" :key="participant._id">
-        <p @click="routUser(participant._id)" class="name-num-tickets">- {{participant.fullName}} ordered {{participant.numOfTickets}} {{(participant.numOfTickets>1)? 'tickets': 'ticket'}} on </p>
+        <p @click="routUser(participant._id)" class="name-num-tickets"><span class="user-activity-user-name">-{{participant.fullName}}</span> ordered {{participant.numOfTickets}} {{(participant.numOfTickets>1)? 'tickets': 'ticket'}} on <span>{{ participant.createdAt | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</span> </p>
       </li>
     </ul>
   </section>
@@ -34,9 +34,12 @@ export default {
       this.$emit('delete', expId)
     },
     routUser(id){
-      console.log(id)
-      this.$router.push('/')
-      this.$router.push(`/user/${id}`)
+      this.$emit('loadUser', id)
+      // this.$router.push('/')
+      // setTimeout(()=> {
+      //   this.$router.push(`/user/${id}`)
+
+      // },500) 
     }
   },
   computed: {
@@ -48,5 +51,6 @@ export default {
     },
   },
 };
-//{{moment(participant.date).format("DD/MM/YY")}}
+
+// <router-link :to="'/user/' + participant._id"></router-link>
 </script> 

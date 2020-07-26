@@ -12,12 +12,9 @@
           v-model="review.txt"
         ></el-input>
       </label>
-      <br />
-     
-      <br />
       <label>
         Rate:
-        <el-select v-model="review.rate" placeholder="Choose your rate">
+        <el-select class="rate-selector" v-model="review.rate" placeholder="Choose your rate">
           <el-option value="1">1</el-option>
           <el-option value="2">2</el-option>
           <el-option value="3">3</el-option>
@@ -25,13 +22,12 @@
           <el-option value="5">5</el-option>
         </el-select>
       </label>
-      <br />
-      <button>Save</button>
+      <button class="btn-save">Save</button>
     </form>
     <button
             type="button"
             @click="hasHistory() ? $router.go(-1) : $router.push('/')"
-            class="my-5 btn btn-outline-success"
+            class="btn-back"
         >&laquo; Back</button>
     <br />
   </section>

@@ -1,6 +1,6 @@
 .user-details {
   min-height: 75vh;
-  max-width: 1350px;
+  max-width: 1050px;
   margin: 0 auto;
   margin-top: 90px;
   display: flex;
@@ -114,12 +114,11 @@
         }
       }
     }
-    .name-num-tickets {
+    .user-activity-user-name {
       margin-left: 15px;
       &:hover {
         text-decoration: underline;
         cursor: pointer;
-        color: blue;
       }
     }
   }
