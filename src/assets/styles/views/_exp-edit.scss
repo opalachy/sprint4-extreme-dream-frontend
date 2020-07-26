@@ -8,6 +8,10 @@
     margin-top: 65px;
     padding-top: 10px;
     margin-bottom: 10px;
+    input[type="text"]{
+        border: 1px solid white;
+        border-bottom: 1px solid;
+    }
     h1{
         text-align: center;
     }
@@ -16,7 +20,6 @@
     }
     .exp-edit-imgs-container{
         display: flex;
-        
     }
     .exp-edit-imgs{
         margin: 5px;
