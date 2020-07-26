@@ -30,19 +30,14 @@
         <h4 class="activities-list-header">Your Activities:</h4>
         <ul class="activities-list">
           <li class="activity" v-for="exp in exps" :key="exp._id">
-            <user-activity :exp="exp" />
-            <!-- {{exp.title}}   -->
-            <button v-if="creator" class="add-exp-btn" @click="edit(exp._id)">
-              <i class="el-icon-edit-outline"></i>
-            </button>
-            <button v-if="creator" class="delete-exp-btn" @click="remove(exp._id)">
-              <i class="el-icon-delete"></i>
-            </button>
+
+            
+            <user-activity :exp="exp" @delete="remove" @edit="edit" :creator="creator"/>
           </li>
         </ul>
       </div>
     </div>
-    <bar-chart class="chart" v-if="loaded" :cData="cData" :cLabels="cLabels" />
+    <bar-chart class="chart" v-if="loaded" :cData="cData" :cLabels="cLabels" :width="300" :height="400" />
     <button
       type="button"
       @click="hasHistory() ? $router.go(-1) : $router.push('/')"
@@ -125,7 +120,7 @@ export default {
         return acc + tickets;
       }, 0);
       console.log(totalNumTickets);
-      this.loaded = totalNumTickets > 0 ? true : fale;
+      this.loaded = totalNumTickets > 0 ? true : false;
     } catch (err) {
       console.log("ERROR: cannot find exps");
       throw err;

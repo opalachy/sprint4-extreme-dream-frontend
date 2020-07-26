@@ -1,8 +1,8 @@
 <template>
     <section class="user-login">
       <form class="login-form" @submit.prevent="login">
-        <input type="text" placeholder="Please input user name" v-model="credentials.userName"/>
-        <input type="password" placeholder="Please input password" v-model="credentials.password" show-password/>
+        <input ref="input" class="login-user-name" type="text" placeholder="Please input user name" v-model="credentials.userName"/>
+        <input class="login-password" type="password" placeholder="Please input password" v-model="credentials.password" show-password/>
         <button>Login</button>
       </form>
       <p>Not registered yet?</p>
@@ -30,8 +30,8 @@ export default {
         this.$router.push('/signup')
     }
   },
-  created() {
-
+  mounted() {
+    this.$refs.input.focus()
   },
 
 }

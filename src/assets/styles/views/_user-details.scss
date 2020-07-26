@@ -1,6 +1,6 @@
 .user-details {
   min-height: 75vh;
-  max-width: 980px;
+  max-width: 1350px;
   margin: 0 auto;
   margin-top: 90px;
   display: flex;
@@ -49,9 +49,6 @@
     > * {
       width: 50%;
     }
-    p {
-      display: inline;
-    }
     .orders-list-container {
       button {
         font-size: 15px;
@@ -79,16 +76,24 @@
       }
     }
     .activities-list-container {
-      h4 {
+      .activities-list-header {
         font-size: 30px;
         margin-bottom: 15px;
         text-decoration: underline;
         font-weight: bold;
       }
-      li:hover {
-        text-decoration: underline;
-        cursor: pointer;
-        color: blue;
+      .activity {
+        display: inline;
+      }
+      .user-activity-title {
+        font-size: 18px;
+        line-height: 1.4;
+        display: inline;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+          color: blue;
+        }
       }
       button {
         font-size: 18px;
@@ -109,11 +114,21 @@
         }
       }
     }
+    .name-num-tickets {
+      margin-left: 15px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: blue;
+      }
+    }
   }
-  .chart{
+
+  .chart {
     display: block;
     width: 380px;
     height: 350px;
+    margin-top: 20px;
   }
   .back-btn {
     justify-self: flex-end;

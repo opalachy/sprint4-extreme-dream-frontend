@@ -17,7 +17,7 @@ export default {
       ]
     },
     options: {
-      responsive: true,
+      responsive: false,
       maintainAspectRatio: false,
       title:{
         fontSize:100
@@ -36,6 +36,9 @@ export default {
           min: 0,
           max: '',
           stepSize: 10,
+          barPercentage: 0.1,
+          barThickness: 2,
+          maxBarThickness: 4,
         }}]},
     }
   }),

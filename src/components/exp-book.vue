@@ -18,7 +18,7 @@
     </div>
     <p v-if="bookingIsDone">Thank you for buying</p>
     <el-button :class="{offbooked: isBooking}" class="book-btn" @click.once="book">
-      <span v-if="show">book</span>
+      <span v-if="show">Book</span>
       <i v-else class="el-icon-loading"></i>
     </el-button>
     <!-- <button @click="book">Really your dream</button> -->

@@ -65,12 +65,12 @@ export default {
           {id: 'all-type' , txt: 'All'} ,
           {id: 'Diving' , txt: 'Diving'},
           {id: 'Ski' , txt: 'Ski'} ,
-          {id: 'Surfing' , txt: 'Surfing'},
+          {id: 'Surffing' , txt: 'Surffing'},
           {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Motorcross' , txt: 'Motorcross'},
           {id: 'Rock-climb' , txt: 'Rock Climb'},
           {id: 'Bunjee' , txt: 'Bungee'},
-          {id: 'Snapling' , txt: 'Rappelling'},
+          {id: 'Rappelling' , txt: 'Rappelling'},
           // {id: 'Skidiving' , txt: 'Skidiving'} 
        ],
        locations: [
@@ -97,7 +97,7 @@ export default {
           {id: 'Expert' , txt: 'Expert'},
           {id: 'Africa' , txt: 'Africa'},
           {id: 'Asia' , txt: 'Asia'},
-          {id: 'water' , txt: 'water'},
+          {id: 'Water' , txt: 'Water'},
           {id: 'Danger' , txt: 'Danger'},
           {id: 'Ropes' , txt: 'Ropes'},
           {id: 'View' , txt: 'View'},

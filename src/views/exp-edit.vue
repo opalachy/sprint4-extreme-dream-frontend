@@ -1,7 +1,7 @@
 <template>
   <section class="exp-edit" v-if="expToEdit">
     <h1>{{ (expToEdit._id) ? 'Edit exp' : 'Add exp' }}</h1>
-    <form @submit.prevent="saveExp">
+    <form class="form-edit-add" @submit.prevent="saveExp">
       <label>
         Event Date:
         <date-picker @setDay="setDay" :date="expToEdit.date" />
@@ -15,7 +15,6 @@
           v-model="expToEdit.location"
         ></el-input>
       </label>
-      <br />
       <label>
         Title:
         <el-input
@@ -25,118 +24,120 @@
           v-model="expToEdit.title"
         ></el-input>
       </label>
-      <br />
-      <br />
       <label>
         Type:
-        <el-select required v-model="expToEdit.type" placeholder="Choose Experience type">
+        <el-select class="selector-type" required v-model="expToEdit.type" placeholder="Choose Experience type">
           <el-option value="Ski">Ski</el-option>
           <el-option value="Diving">Diving</el-option>
-          <el-option value="Rock Climb">Rock Climb</el-option>
+          <el-option value="Rock-Climb">Rock-Climb</el-option>
           <el-option value="Surffing">Surffing</el-option>
-          <el-option value="Bunjee Jump">Bunjee Jump</el-option>
+          <el-option value="Bunjee">Bunjee</el-option>
           <el-option value="Sky Diving">Sky Diving</el-option>
           <el-option value="Motorcross">Motorcross</el-option>
-          <el-option value="Snapling">Snapling</el-option>
+          <el-option value="Rappelling">Snapling</el-option>
+          <el-option value="Offroad">Snapling</el-option>
         </el-select>
       </label>
-      <br />
-      <br />
       <label>
-        Upload/Have at least 5 images: {{loaded}}
+        Upload/Have at least 5 images: 
+        <p>{{loaded}}</p>
         <input
+          class="input-img"
           :required="isNotEnoughImg"
           type="file"
           placeholder="Experience image"
           @change="onUploadImg"
         />
       </label>
-      <br />
-      <br />
       <div class="exp-edit-imgs-container">
         <div class="exp-edit-imgs" v-for="(img, idx ) in expToEdit.imgUrls">
           <img :src="img" style="height: 50px; width: 50px;" />
-          <button @click.prevent="deleteImg(idx)">x</button>
+          <button @click.prevent="deleteImg(idx)"><i class="el-icon-delete"></i></button>
         </div>
       </div>
       <el-input
-        class="el-input"
+        class="el-input-textarea"
         required
         type="textarea"
         :rows="2"
         placeholder="Please input short description"
         v-model="expToEdit.shortDesc"
       ></el-input>
-      <br />
-      <br />
       <el-input
-        class="el-input"
+        class="el-input-textarea"
         required
         type="textarea"
         :rows="2"
         placeholder="Please input long description"
         v-model="expToEdit.desc"
       ></el-input>
-      <br />
       <label>
         Capacity:
         <el-input
-          class="el-input"
+          class="el-input-capacity"
           required
           type="number"
           placeholder="Max participants"
           v-model="expToEdit.capacity"
         ></el-input>
       </label>
-      <br />
-      <br />
       <label>
         Category:
-        <el-select multiple v-model="value1" placeholder="Choose Category">
+        <el-select class="multi-selector" multiple v-model="value1" placeholder="Choose Category">
           <el-option value="Family">Family</el-option>
           <el-option value="Children">Children</el-option>
           <el-option value="All level">All levels</el-option>
           <el-option value="Adventure">Adventure</el-option>
           <el-option value="Sports">Sports</el-option>
+          <el-option value="Adults">Adults</el-option>
+          <el-option value="Europe">Europe</el-option>
+          <el-option value="Expert">Expert</el-option>
+          <el-option value="Africa">Africa</el-option>
+          <el-option value="Asia">Asia</el-option>
+          <el-option value="Water">Water</el-option>
+          <el-option value="Danger">Danger</el-option>
+          <el-option value="Ropes">Ropes</el-option>
+          <el-option value="View">View</el-option>
+          <el-option value="Sun">Sun</el-option>
+          <el-option value="Animals">Animals</el-option>
+          <el-option value="Winter">Winter</el-option>
+          <el-option value="All-year">All-year</el-option>
+          <el-option value="Loud">Loud</el-option>
+          <el-option value="Desert">Desert</el-option>
         </el-select>
-
-<!-- v-model="expToEdit.tags" -->
-
       </label>
-      <br />
-      <br />
       <label>
         Price:
         <el-input-number
+        class="input-price"
           v-model="expToEdit.origPrice"
           controls-position="right"
           :min="0"
           placeholder="origPrice"
         ></el-input-number>
       </label>
-      <br />
-      <br />
       <label>
         Price with discount:
         <el-input-number
+        class="input-price"
           v-model="expToEdit.currPrice"
           controls-position="right"
           :min="0"
           placeholder="currPrice"
         ></el-input-number>
       </label>
-      <br />
-
-      <button :disabled="disabled">Save</button>
+      <button class="btn-save" :disabled="disabled">Save</button>
     </form>
-    <button 
-  type="button"    
-  @click="hasHistory() 
-    ? $router.go(-1) 
-    : $router.push('/')" class="my-5 btn btn-outline-success">&laquo; 
-  Back
-</button><br />
-    <button v-if="expToEdit._id" @click="removeExp">Delete Experience</button>
+    <div class="btn-container">
+      <button
+        type="button"    
+        @click="hasHistory() 
+        ? $router.go(-1) 
+        : $router.push('/')" class="btn-back">&laquo; 
+        >Back
+      </button>
+      <button class="delete-exp" v-if="expToEdit._id" @click="removeExp">Delete</button>
+    </div>
   </section>
 </template>
 
@@ -168,6 +169,61 @@ export default {
         }, {
           value: 'Option5',
           label: 'Option5'
+        }, {
+          value: 'Option6',
+          label: 'Option6'
+        }, {
+        }, {
+          value: 'Option7',
+          label: 'Option7'
+        }, {
+        }, {
+          value: 'Option8',
+          label: 'Option8'
+        }, {
+        }, {
+          value: 'Option9',
+          label: 'Option9'
+        }, {
+        }, {
+          value: 'Option10',
+          label: 'Option10'
+        }, {
+        }, {
+          value: 'Option11',
+          label: 'Option11'
+        }, {
+        }, {
+          value: 'Option12',
+          label: 'Option12'
+        }, {
+        }, {
+          value: 'Option13',
+          label: 'Option13'
+        }, {
+        }, {
+          value: 'Option14',
+          label: 'Option14'
+        }, {
+        }, {
+          value: 'Option15',
+          label: 'Option15'
+        }, {
+        }, {
+          value: 'Option16',
+          label: 'Option16'
+        }, {
+          value: 'Option17',
+          label: 'Option17'
+        }, {
+          value: 'Option18',
+          label: 'Option18'
+        }, {
+          value: 'Option19',
+          label: 'Option19'
+        }, {
+          value: 'Option20',
+          label: 'Option20'
         }],
         value1: []
     };
@@ -189,6 +245,10 @@ export default {
       if (expId) {
         const exp = await expService.getById(expId);
         this.expToEdit = JSON.parse(JSON.stringify(exp));
+        this.expToEdit.tags.forEach(element => {
+          this.value1.push(element)
+        });
+        // this.value1.push(this.expToEdit.tags)
       } else {
         this.expToEdit = expService.getEmptyExp();
       }
