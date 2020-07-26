@@ -70,14 +70,9 @@ export default {
           {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Motorcross' , txt: 'Motorcross'},
           {id: 'Rock-climb' , txt: 'Rock Climb'},
-<<<<<<< HEAD
-          {id: 'Bunjee' , txt: 'Bungee'},
-          {id: 'Snapling' , txt: 'Rappelling'},
-=======
           {id: 'Bungee' , txt: 'Bungee'},
           {id: 'Rappelling' , txt: 'Rappelling'},
           // {id: 'Skidiving' , txt: 'Skidiving'} 
->>>>>>> 8904cc28fd0d07c290ae344e7f845865f0d6ca40
        ],
        locations: [
           {id: 'all-location' , txt: 'All'},

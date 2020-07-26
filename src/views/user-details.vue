@@ -89,7 +89,6 @@ export default {
             this.$router.push(`/exp/edit/${id}`);
         },
         writeReview(expId) {
-            console.log(expId);
             this.$router.push(`/order/${expId}`);
         },
         async remove(id) {
@@ -106,7 +105,6 @@ export default {
     this.user = await userService.getById(userId);
     this.loggedinUser = this.$store.getters.loggedinUser;
     try {
-      // const { userlist } = await fetch('/api/userlist')
       const userExps = await expService.getExps({ userId: userId });
       this.exps = userExps;
       const data = this.exps.map((exp) => {
@@ -116,7 +114,6 @@ export default {
         return tickets;
       });
       this.cData = data;
-      console.log(this.cData);
       const activity = this.exps.map((exp) => {
         return exp.title;
       });
@@ -124,7 +121,6 @@ export default {
       const totalNumTickets = data.reduce((acc, tickets) => {
         return acc + tickets;
       }, 0);
-      console.log(totalNumTickets);
       this.loaded = totalNumTickets > 0 ? true : false;
     } catch (err) {
       console.log("ERROR: cannot find exps");

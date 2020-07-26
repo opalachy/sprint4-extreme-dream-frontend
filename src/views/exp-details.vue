@@ -35,10 +35,11 @@
                 <exp-book @booking="booking" :exp="exp" />
             </div>
             <div class="exp-details-review-list">
-                <h3>Review({{exp.reviews.length}})</h3>
-                <ul class="review-list">
+                <h3>Reviews({{exp.reviews.length}})</h3>
+                <ul v-if="exp.reviews.length > 0" class="review-list">
                     <exp-review v-for="review in exp.reviews" :key="review.id" :review="review" />
                 </ul>
+                <p v-else >No reviews have been got yet </p>
             </div>
             <!-- <hr /> -->
             <div class="exp-details-guide-container">
