@@ -35,6 +35,7 @@ export default {
     },
     routUser(id){
       console.log(id)
+      this.$router.push('/')
       this.$router.push(`/user/${id}`)
     }
   },

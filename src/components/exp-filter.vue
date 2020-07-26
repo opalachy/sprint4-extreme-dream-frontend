@@ -1,10 +1,11 @@
 <template>
   <section class="exp-filter">
+    <!-- <div class="filter-btn-container"> -->
     <button class="filter-btn" :class="isOnType" @click="setOption('type')">Type</button>
-    <button class="filter-btn" :class="isOnLocation" @click="setOption('location')">Location</button>
+    <button class="filter-btn" :class="isOnLocation" @click="setOption('location')">Country</button>
     <button class="filter-btn" :class="isOnTags" @click="setOption('tags')">More filters</button>
     <button class="filter-btn" :class="isOnSortBy" @click="setOption('sortBy')">sort</button>
-  
+    <!-- </div> -->
     <div v-show="filterOption" @click="close" class="screen"></div>
  
    <div v-show="(filterOption === 'type')"  class="type-filter filter-modal">
@@ -69,9 +70,9 @@ export default {
           {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Motorcross' , txt: 'Motorcross'},
           {id: 'Rock-climb' , txt: 'Rock Climb'},
-          {id: 'Bunjee' , txt: 'Bungee'},
+          {id: 'Bungee' , txt: 'Bungee'},
           {id: 'Rappelling' , txt: 'Rappelling'},
-          // {id: 'Skidiving' , txt: 'Skidiving'} 
+          {id: 'Skydiving' , txt: 'Skydiving'} 
        ],
        locations: [
           {id: 'all-location' , txt: 'All'},
@@ -87,26 +88,28 @@ export default {
           {id: 'Thailand' , txt: 'Thailand'}
        ],
        tags: [
-          {id: 'Family' , txt: 'Family'},
-          {id: 'Children' , txt: 'Children'},
+          {id: 'Africa' , txt: 'Africa'},
+          {id: 'America' , txt: 'America'},
+          {id: 'Asia' , txt: 'Asia'},
+          {id: 'Europe' , txt: 'Europe'},
           {id: 'Adventure' , txt: 'Adventure'},
           {id: 'Adults' , txt: 'Adults'},
-          {id: 'Sports' , txt: 'Sports'},
           {id: 'All-levels' , txt: 'All levels'},
-          {id: 'Europe' , txt: 'Europe'},
-          {id: 'Expert' , txt: 'Expert'},
-          {id: 'Africa' , txt: 'Africa'},
-          {id: 'Asia' , txt: 'Asia'},
-          {id: 'Water' , txt: 'Water'},
-          {id: 'Danger' , txt: 'Danger'},
-          {id: 'Ropes' , txt: 'Ropes'},
-          {id: 'View' , txt: 'View'},
-          {id: 'Sun' , txt: 'Sun'} ,
-          {id: 'Animals' , txt: 'Animals'},
-          {id: 'Winter' , txt: 'Winter'},
           {id: 'All-year ' , txt: 'All year '} ,
-          {id: 'Loud' , txt: 'Loud'},
+          {id: 'Animals' , txt: 'Animals'},
+          {id: 'Children' , txt: 'Children'},
+          {id: 'Danger' , txt: 'Danger'},
           {id: 'Desert' , txt: 'Desert'},
+          {id: 'Expert' , txt: 'Expert'},
+          {id: 'Family' , txt: 'Family'},
+          {id: 'Loud' , txt: 'Loud'},
+          {id: 'Ropes' , txt: 'Ropes'},
+          {id: 'Sports' , txt: 'Sports'},
+          {id: 'Summer' , txt: 'Summer'} ,
+          {id: 'Sun' , txt: 'Sun'} ,
+          {id: 'View' , txt: 'View'},
+          {id: 'Water' , txt: 'Water'},
+          {id: 'Winter' , txt: 'Winter'},
        ],
        sortBy: [
           {id: 'newest' , txt: 'Newest'} ,

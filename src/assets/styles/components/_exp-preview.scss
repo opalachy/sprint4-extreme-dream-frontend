@@ -5,7 +5,6 @@ li.exp-preview {
     border-radius: 8px;
     margin-inline-start: 0.65%;
     margin-inline-end: 0.65%;
-    cursor: pointer;
     p {
         line-height: 1.2rem;
     }
@@ -58,7 +57,6 @@ li.exp-preview {
         align-items: center;
         margin: 0 0.5rem 0.3rem 0.5rem;
         .exp-price {
-            left: 230px;
             font-weight: bold;
             color: #041b38;
         }

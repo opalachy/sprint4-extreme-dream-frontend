@@ -29,7 +29,6 @@
         }
         &.isActive {
             border: 0.5px solid #000000;
-            
         }
     }
     .filter-modal {
@@ -38,9 +37,9 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        top: 50%;
+        top: 185px;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, 0%);
         background-color: white;
         padding: 10px;
         z-index: 5;
@@ -58,11 +57,11 @@
             padding: 8px 22px;
             margin: 0;
             border: none;
-            background-color: #113659;
+            background-color: #1e72e0;
             color: white;
             transition: 0.15s;
             &:hover {
-                background-color: #113659e0;
+                background-color: #115aba;
             }
         }
         .label-container {
@@ -73,7 +72,7 @@
             padding: 12px 0;
             border-top: 1px solid #b3adad;
             border-bottom: 1px solid #b3adad;
-            label {  
+            label {
                 padding: 3px 8px;
                 margin: 4px 5px;
                 border-radius: 3px;
@@ -98,6 +97,20 @@
         h2 {
             font-size: 20px;
             font-weight: bold;
+        }
+    }
+    @include for-narrow-layout {
+        width: 92%;
+        margin-inline-start: 4%;
+        margin-inline-end: 4%;
+        .filter-modal {
+            width: 96%;
+            position: fixed;
+        }
+        .filter-btn {
+            padding: 5px 14px;
+            font-size: 11px;
+            margin-inline-end: 6px;
         }
     }
 }
