@@ -64,28 +64,28 @@ export default {
     return {
       types: [
           {id: 'all-type' , txt: 'All'} ,
+          {id: 'Bungee' , txt: 'Bungee'},
           {id: 'Diving' , txt: 'Diving'},
           {id: 'Ski' , txt: 'Ski'} ,
-          {id: 'Surffing' , txt: 'Surffing'},
-          {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Motorcross' , txt: 'Motorcross'},
-          {id: 'Rock-climb' , txt: 'Rock Climb'},
-          {id: 'Bungee' , txt: 'Bungee'},
+          {id: 'Offroad' , txt: 'Offroad'} ,
           {id: 'Rappelling' , txt: 'Rappelling'},
-          {id: 'Skydiving' , txt: 'Skydiving'} 
+          {id: 'Rock-climb' , txt: 'Rock Climb'},
+          {id: 'Skydiving' , txt: 'Skydiving'}, 
+          {id: 'Surffing' , txt: 'Surffing'}
        ],
        locations: [
           {id: 'all-location' , txt: 'All'},
-          {id: 'Israel' , txt: 'Israel'},
-          {id: 'France' , txt: 'France'},
-          {id: 'Egypt' , txt: 'Egypt'},
-          {id: 'USA' , txt: 'USA'},
-          {id: 'Switzerland' , txt: 'Switzerland'},
           {id: 'Bulgaria' , txt: 'Bulgaria'},
-          {id: 'Italy' , txt: 'Italy'},
+          {id: 'Egypt' , txt: 'Egypt'},
+          {id: 'France' , txt: 'France'},
           {id: 'Hawaii' , txt: 'Hawaii'},
+          {id: 'Israel' , txt: 'Israel'},
+          {id: 'Italy' , txt: 'Italy'},
           {id: 'South-africa' , txt: 'South Africa'},
-          {id: 'Thailand' , txt: 'Thailand'}
+          {id: 'Switzerland' , txt: 'Switzerland'},
+          {id: 'Thailand' , txt: 'Thailand'},
+          {id: 'USA' , txt: 'USA'}
        ],
        tags: [
           {id: 'Africa' , txt: 'Africa'},
@@ -112,8 +112,8 @@ export default {
           {id: 'Winter' , txt: 'Winter'},
        ],
        sortBy: [
-          {id: 'newest' , txt: 'Newest'} ,
-          {id: 'currPrice' , txt: 'Best Deals'}, 
+          {id: 'newest' , txt: 'Date'} ,
+          {id: 'currPrice' , txt: 'Price'}, 
        ],
       filterOption: '',
       filterBy: {

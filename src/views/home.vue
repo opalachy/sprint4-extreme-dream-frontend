@@ -1,6 +1,10 @@
 <template>
     <section class="home-page">
         <div class="hero-img"> 
+            <div class="welcome" v-if="loggedinUser">
+            <h4 class="welcome-txt">Welcome </h4>
+            <h4 class="welcome-txt">{{loggedinUser.fullName}}</h4>
+            </div>
             <div class="app-title">  
               <h1 class="ex-dream">ExDream</h1>  
               <h2>Outdoor experiences around the world</h2>  
@@ -63,6 +67,9 @@ export default {
        inEuropeToShow(){
            return this.inEurope.slice(0, this.numOfCard)
        },
+       loggedinUser(){
+           return this.$store.getters.loggedinUser
+       }
     },
     methods:{
         goToExpApp(filterBy){

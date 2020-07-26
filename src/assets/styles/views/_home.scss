@@ -13,7 +13,17 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 30px;
-        .app-title { 
+        .welcome {
+            position: absolute;
+            top: 70px;
+            right: 30px;
+            .welcome-txt {
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        .app-title {
             text-align: center;
             width: 60%;
             margin: 45px;
@@ -128,7 +138,7 @@
             }
             .app-title {
                 width: 72%;
-                h1{
+                h1 {
                     font-size: 60px;
                 }
             }
