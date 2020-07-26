@@ -72,7 +72,7 @@ export default {
           {id: 'Rock-climb' , txt: 'Rock Climb'},
           {id: 'Bungee' , txt: 'Bungee'},
           {id: 'Rappelling' , txt: 'Rappelling'},
-          // {id: 'Skidiving' , txt: 'Skidiving'} 
+          {id: 'Skydiving' , txt: 'Skydiving'} 
        ],
        locations: [
           {id: 'all-location' , txt: 'All'},
@@ -88,17 +88,18 @@ export default {
           {id: 'Thailand' , txt: 'Thailand'}
        ],
        tags: [
-         {id: 'Adventure' , txt: 'Adventure'},
-         {id: 'Adults' , txt: 'Adults'},
           {id: 'Africa' , txt: 'Africa'},
+          {id: 'America' , txt: 'America'},
+          {id: 'Asia' , txt: 'Asia'},
+          {id: 'Europe' , txt: 'Europe'},
+          {id: 'Adventure' , txt: 'Adventure'},
+          {id: 'Adults' , txt: 'Adults'},
           {id: 'All-levels' , txt: 'All levels'},
           {id: 'All-year ' , txt: 'All year '} ,
           {id: 'Animals' , txt: 'Animals'},
-          {id: 'Asia' , txt: 'Asia'},
           {id: 'Children' , txt: 'Children'},
           {id: 'Danger' , txt: 'Danger'},
           {id: 'Desert' , txt: 'Desert'},
-          {id: 'Europe' , txt: 'Europe'},
           {id: 'Expert' , txt: 'Expert'},
           {id: 'Family' , txt: 'Family'},
           {id: 'Loud' , txt: 'Loud'},

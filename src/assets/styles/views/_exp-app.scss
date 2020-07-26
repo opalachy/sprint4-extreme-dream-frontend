@@ -9,17 +9,44 @@
         font-size: 40px;
         margin-inline-start: 7px;
     }
+    @include for-wide-XL-layout{
+        max-width: 980px;
+            .exp-list {
+                .exp-preview {
+                    width: 31%;
+                    margin-inline-start: 1.15%;
+                    margin-inline-end: 1.15%;
+                }
+            }
+
+    }
+    @include for-wide-layout {
+        max-width: 700px;
+            .exp-list {
+                .exp-preview {
+                    width: 47%;
+                    margin-inline-start: 1.5%;
+                    margin-inline-end: 1.5%;
+                }
+            }
+        
+    }
+    @include for-normal-layout {
+            max-width: 600px;
+            .exp-preview-desc {
+                font-size: 13px;
+                min-height: 36px;
+              
+            }
+    }
     @include for-narrow-layout {
+        max-width: 400px;
         .app-title {
             font-size: 25px;
-            width: 92%;
-            margin-inline-start: 4%;
-            margin-inline-end: 4%;
+            margin-inline-start: 15px;
         }
         .exp-list {
             flex-direction: column;
-            max-width: 380px;
-
             .exp-preview {
                 width: 92%;
                 margin-inline-start: 4%;
