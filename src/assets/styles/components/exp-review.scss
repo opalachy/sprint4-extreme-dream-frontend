@@ -4,9 +4,10 @@
     margin: 20px 0;
     .reviewer-container-wraper{
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 150px;
+        .reviewer-img{
+            margin-inline-end: 10px;
+        }
         .reviewer-container{
             display: flex;
             flex-direction: column;

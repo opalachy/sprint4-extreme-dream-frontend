@@ -1,7 +1,6 @@
 
 <template>
   <div class="exp-book">
-    <!-- <date-picker @setDay="setDay" /> -->
     <p class="exp-book-price-header">
       <span v-if="origPrice" class="exp-book-origPrice">${{exp.origPrice}}</span>
       <span class="exp-book-currPrice"> ${{exp.currPrice}}</span>/
@@ -21,16 +20,14 @@
       <span v-if="show">Book</span>
       <i v-else class="el-icon-loading"></i>
     </el-button>
-    <!-- <button @click="book">Really your dream</button> -->
   </div>
 </template>
 
 <script>
 import datePicker from "./date-picker.vue";
 import selectCapacity from "./select-capacity.vue";
-// import socket from "../services/socket.service.js"
 
-// import elButton from
+
 export default {
   props: ["exp"],
   data() {
@@ -46,18 +43,15 @@ export default {
   },
   methods: {
     book() {
-      this.$emit("booking", this.booking);
+      
       this.show = false;
       setTimeout(() => {
         this.isBooking = true
         this.show = true;
         this.bookingIsDone = true
+        this.$emit("booking", this.booking);
       }, 1500);
-      clearInterval;
     },
-    // show() {
-    //   return true;
-    // },
     setDay(day) {
       this.booking.dayPicker = day.getTime();
     },

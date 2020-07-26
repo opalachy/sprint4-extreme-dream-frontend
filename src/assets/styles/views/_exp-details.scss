@@ -5,7 +5,7 @@
     min-height: 100vh;
     padding: 0 20px;
     .el-icon-star-on:before {
-        color: #4f94d6;
+        color: #1e72e0;
         font-size: 1.5rem;
         position: relative;
         top: 2.5px;
@@ -56,6 +56,9 @@
         .seller-top {
             display: flex;
             align-items: center;
+            .exp-rate{
+                line-height: 0.7;
+            }
             .name-rate {
                 display: flex;
                 flex-direction: column;
@@ -66,9 +69,10 @@
                 margin-inline-end: 12px;
             }
         }
-        h4 {
+        .exp-details-title {
             font-size: 24px;
             font-weight: bold;
+            margin-bottom: 10px;
         }
     }
     .exp-details-shortDesc {
@@ -79,19 +83,19 @@
         margin: 0 auto;
         display: flex;
         padding-bottom: 30px;
-        border-bottom: 1px solid black;
-        margin-bottom: 10px;
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 25px;
         .exp-details-desc {
             margin-top: 10px;
         }
     }
     .exp-details-review-list {
         padding-bottom: 10px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid lightgray;
         margin-bottom: 20px;
     }
     .review-list {
-        margin-inline-start: 20px;
+       margin: 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

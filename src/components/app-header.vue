@@ -2,8 +2,8 @@
   <section class="app-header">
    <div v-if="msgToSeller" class="msg-to-seller">
       <h3>Hi {{loggedinUser.userName}}</h3>
-      <p>Someone ordered your experience.</p>
-      <p>Go to your profile to see more details</p>
+      <p>{{buyer.fullName}} ordered experience from you,</p>
+      <p>Check your profile for more details.</p>
       <button @click="close" >close</button>
     </div>
 
@@ -20,7 +20,6 @@
       </router-link>
       <!-- <router-link to="/login">logout</router-link> -->
       <div v-else class="log-user">
-         <h5>Welcome {{loggedinUser.userName}}</h5>
          <button class="logout-btn" @click="logout">logout</button>
       </div>
     </div>
@@ -35,7 +34,8 @@ export default {
   data(){ 
     return {
         activeLink: 'home',
-        msgToSeller: false
+        msgToSeller: false,
+        buyer: null
     } 
   },
   computed:{
@@ -83,7 +83,9 @@ export default {
     const loggedinuser = this.$store.getters.loggedinUser
     if(!loggedinuser) return 
     socket.setup()
-    socket.on(loggedinuser._id , ()=> {
+    socket.on(loggedinuser._id , (buyer)=> {
+      console.log(buyer);
+      this.buyer = buyer
          this.msgToSeller = true;
            setTimeout(() =>{
             this.msgToSeller = false
