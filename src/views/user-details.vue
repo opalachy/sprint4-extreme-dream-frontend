@@ -1,9 +1,6 @@
 <template>
   <section class="user-details" v-if="user">
     <div class="user-details-container">
-      <!-- <router-link to="/">
-          <i class="el-icon-edit-outline">Edit your profile</i>
-      </router-link>-->
 
       <img class="user-details-img" v-if="user.imgUrl" :src="user.imgUrl" />
       <i v-else class="el-icon-user"></i>
@@ -17,7 +14,7 @@
 
     <div class="user-order-activities">
       <div v-if="creator" class="orders-list-container">
-        <h4>Your orders:</h4>
+        <h4>Orders:</h4>
         <ul class="orders-list">
           <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
             <user-order @writeReview="writeReview" :ord="ord" />
@@ -27,7 +24,7 @@
       </div>
 
       <div v-if="exps" class="activities-list-container">
-        <h4 class="activities-list-header">Your Activities:</h4>
+        <h4 class="activities-list-header">Activities:</h4>
         <ul class="activities-list">
           <li class="activity" v-for="exp in exps" :key="exp._id">
             <user-activity :exp="exp" @delete="remove" @edit="edit" :creator="creator" />
