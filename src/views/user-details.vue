@@ -140,14 +140,19 @@ export default {
         });
         this.participantsTable = participantsTable;
 
-        const data = this.exps.map((exp) => {
+      const expsInOrder = this.exps.sort((a, b)=>{
+        return new Date(a.date) - new Date(b.date)
+      })
+        console.log(expsInOrder)
+
+        const data = expsInOrder.map((exp) => {
           const tickets = exp.participants.reduce((acc, participant) => {
             return acc + participant.numOfTickets;
           }, 0);
           return tickets;
         });
         this.cData = data;
-        const activities = this.exps.map((exp) => {
+        const activities = expsInOrder.map((exp) => {
           return exp.date;
         });
         activities.sort((a, b) => {
