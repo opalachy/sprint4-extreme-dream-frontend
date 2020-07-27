@@ -299,8 +299,10 @@
             width: 100%;
             margin: 20px 0;
         }
-        .exp-details-guide-info {
-            margin: 0;
+        .exp-details-guide-container {
+            .exp-details-guide-info {
+                margin: 0;
+            }
         }
     }
 }
