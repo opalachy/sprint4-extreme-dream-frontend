@@ -97,11 +97,8 @@ export default {
             participantsTable: null,
         };
     },
-    computed: {
-        creator() {
-            if (!this.loggedinUser) return false;
-            return this.user._id === this.loggedinUser._id;
-        },
+    edit(id) {
+        this.$router.push(`/exp/edit/${id}`);
     },
     methods: {
         hasHistory() {
@@ -174,9 +171,16 @@ export default {
             this.ords = userOrds;
         },
     },
-    created() {
+    async remove(id) {
+        try {
+            await this.$store.dispatch({ type: "removeExp", id });
+        } catch (err) {
+            console.log("error:", err);
+        }
+    },
+    created(){
         const userId = this.$route.params.id;
-        this.loadUser(userId);
+        this.loadUser(userId)
     },
     components: {
         reviewDetails,
