@@ -2,7 +2,7 @@
     <section class="app-header">
         <div
             ref="divMsg"
-            v-if="true"
+            v-if="numOfNoticications"
             class="msg-to-seller"
             :style="{top: msgToSellerY + 'px', left: (msgToSellerX -270)  + 'px' }"
         >

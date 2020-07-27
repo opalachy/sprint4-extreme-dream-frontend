@@ -54,7 +54,7 @@
           </tbody>
         </table>
       </div>
-  
+    </div>
     <bar-chart
       class="chart"
       v-if="loaded"
@@ -106,68 +106,18 @@ export default {
     add() {
       this.$router.push("/exp/edit");
     },
-    computed: {
-        creator() {
-            if (!this.loggedinUser) return false;
-            return this.user._id === this.loggedinUser._id;
-        },
+    edit(id) {
+      this.$router.push(`/exp/edit/${id}`);
     },
-    methods: {
-        hasHistory() {
-            return window.history.length > 2;
-        },
-        add() {
-            this.$router.push("/exp/edit");
-        },
-        edit(id) {
-            this.$router.push(`/exp/edit/${id}`);
-        },
-        writeReview(expId) {
-            this.$router.push(`/order/${expId}`);
-        },
-        async remove(id) {
-            try {
-                await this.$store.dispatch({ type: "removeExp", id });
-            } catch (err) {
-                console.log("error:", err);
-            }
-        },
-        async loadUser(userId) {
-            this.loaded = false;
-            this.user = await userService.getById(userId);
-            this.loggedinUser = this.$store.getters.loggedinUser;
-            try {
-                const userExps = await expService.getExps({ userId: userId });
-                this.exps = userExps;
-                const data = this.exps.map((exp) => {
-                    const tickets = exp.participants.reduce(
-                        (acc, participant) => {
-                            return acc + participant.numOfTickets;
-                        },
-                        0
-                    );
-                    return tickets;
-                });
-                this.cData = data;
-                const activity = this.exps.map((exp) => {
-                    return exp.title;
-                });
-                this.cLabels = activity;
-                const totalNumTickets = data.reduce((acc, tickets) => {
-                    return acc + tickets;
-                }, 0);
-                this.loaded = totalNumTickets > 0 ? true : false;
-            } catch (err) {
-                console.log("ERROR: cannot find exps");
-                throw err;
-            }
-            const userOrds = await orderService.getOrders(userId);
-            this.ords = userOrds;
-        },
+    writeReview(expId) {
+      this.$router.push(`/order/${expId}`);
     },
-    created() {
-        const userId = this.$route.params.id;
-        this.loadUser(userId);
+    async remove(id) {
+      try {
+        await this.$store.dispatch({ type: "removeExp", id });
+      } catch (err) {
+        console.log("error:", err);
+      }
     },
     async loadUser(userId) {
       this.loaded = false;
@@ -189,20 +139,14 @@ export default {
           return a.expDate - b.expDate;
         });
         this.participantsTable = participantsTable;
-
-      const expsInOrder = this.exps.sort((a, b)=>{
-        return new Date(a.date) - new Date(b.date)
-      })
-        console.log(expsInOrder)
-
-        const data = expsInOrder.map((exp) => {
+        const data = this.exps.map((exp) => {
           const tickets = exp.participants.reduce((acc, participant) => {
                 return acc + participant.numOfTickets;
           }, 0);
           return tickets;
         });
         this.cData = data;
-        const activities = expsInOrder.map((exp) => {
+        const activities = this.exps.map((exp) => {
           return exp.date;
         });
         activities.sort((a, b) => {
