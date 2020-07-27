@@ -7,11 +7,7 @@
             :style="{top: msgToSellerY + 'px', left: (msgToSellerX -270)  + 'px' }"
         >
             <div class="user-cntainer">
-                <img
-                    class="user-img"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs9ccaTeJbnGuHHSgKT7PYtvHeQ4WOOZReSlwmYNK-KxG3kuVCStcKO0NwBWxHJiMhcIMN-yMr5_bV3ODQMfSENRKVdXOMvYKfCFdj&usqp=CAU&ec=45682162"
-                    alt
-                />
+                <img class="user-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs9ccaTeJbnGuHHSgKT7PYtvHeQ4WOOZReSlwmYNK-KxG3kuVCStcKO0NwBWxHJiMhcIMN-yMr5_bV3ODQMfSENRKVdXOMvYKfCFdj&usqp=CAU&ec=45682162"/>
                 <p class="user-name">{{loggedinUser.fullName}} ordered from you</p>
             </div>
             <button @click="close">x</button>
