@@ -15,9 +15,9 @@
     />
     <p class="exp-book-price">{{bookPrice}}</p>
     </div>
-    <p v-if="bookingIsDone">Thank you for buying</p>
-    <el-button :class="{offbooked: isBooking}" class="book-btn" @click.once="book" >
-      <span v-if="show">Book</span>
+    <p class="book-bless" v-if="bookingIsDone">Thank you for buying!</p>
+    <el-button  :class="{offbooked: isBooking}" class="book-btn" @click.once="book" >
+      <span v-if="show">{{bookBtnTxt}}</span>
       <i v-else class="el-icon-loading"></i>
     </el-button>
   </div>
@@ -39,11 +39,13 @@ export default {
       numberOfSoldTickets: 0,
       isBooking: false,
       show:true,
-      bookingIsDone:false
+      bookingIsDone:false,
+      bookBtnTxt: 'Book'
     };
   },
   methods: {
     book() {
+      this.bookBtnTxt = 'Booked';
       if(this.isFull) return
       this.show = false;
       setTimeout(() => {
@@ -52,9 +54,6 @@ export default {
         this.bookingIsDone = true
         this.$emit("booking", this.booking);
       }, 1500);
-    },
-    setDay(day) {
-      this.booking.dayPicker = day.getTime();
     },
     setTicket(numOfTickets) {
       this.booking.numOfTickets = numOfTickets;
@@ -80,7 +79,6 @@ export default {
        this.numberOfSoldTickets = this.exp.participants.reduce((acc , participant) => {
         return acc + participant.numOfTickets
       }, 0);
-      console.log(this.numberOfSoldTickets)
       if(this.isFull) this.isBooking = true
   }
 };

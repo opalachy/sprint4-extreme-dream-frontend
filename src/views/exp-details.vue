@@ -42,11 +42,12 @@
                     {{averageRate}} ({{exp.reviews.length}}) reviews
                 </p>
                 <ul v-if="exp.reviews.length > 0" class="review-list">
-                    <exp-review v-for="review in exp.reviews" :key="review.id" :review="review" />
+                    <exp-review v-for="review in expReviewsToShow" :key="review.id" :review="review" />
                 </ul>
                 <p v-else>No reviews have been got yet</p>
+                <button @click="toggleReview" v-if="isHide" class="show-hide-review-btn">Show more...</button>
+                <button @click="toggleReview" v-else class="show-hide-review-btn">Hide</button>
             </div>
-            <!-- <hr /> -->
             <div class="exp-details-guide-container">
                 <div class="guide-details">
                     <router-link :to="'/user/'+ exp.createdBy._id">
@@ -76,6 +77,7 @@ export default {
     data() {
         return {
             exp: null,
+            isHide : true,
         };
     },
     computed: {
@@ -89,6 +91,11 @@ export default {
         expDate() {
             return moment(this.exp.date).format("DD/MM/YY");
         },
+        expReviewsToShow(){
+            if(this.exp.reviews.length <= 6) return this.exp.reviews
+            if(this.isHide) return this.exp.reviews.slice(0,6)
+            return this.exp.reviews
+        }
     },
     methods: {
         async booking(booked) {
@@ -105,6 +112,9 @@ export default {
             };
             socket.emit("booking" , connectDetails);
         },
+        toggleReview(){
+            this.isHide = !this.isHide
+        }
     },
     async created() {
         window.scrollTo(0,0);

@@ -32,10 +32,10 @@
             </div>
             <exp-list v-if="popSki" :exps="popSkiToShow" />
             <div class="type-container">
-                <h2>Popular In Europe</h2>
-                <button @click="goToExpApp({ tags : ['Europe']})">See All</button>
+                <h2>Popular In Asia</h2>
+                <button @click="goToExpApp({ tags : ['Asia']})">See All</button>
             </div>
-            <exp-list v-if="inEurope" :exps="inEuropeToShow" />
+            <exp-list v-if="inAsia" :exps="inAsiaToShow" />
         </div>
    </section> 
 </template>
@@ -53,7 +53,7 @@ export default {
             choosedType: null,
             bestDeals: null,
             popSki: null,
-            inEurope: null,
+            inAsia: null,
             numOfCard: 2,
         };
     },
@@ -64,8 +64,8 @@ export default {
        popSkiToShow(){
            return this.popSki.slice(0, this.numOfCard)
        },
-       inEuropeToShow(){
-           return this.inEurope.slice(1, (this.numOfCard+1))
+       inAsiaToShow(){
+           return this.inAsia.slice(0, (this.numOfCard))
        },
        loggedinUser(){
            return this.$store.getters.loggedinUser
@@ -90,8 +90,7 @@ export default {
             filterBy.limit = 4;
             this.$store.commit({ type : "setFilter" , filterBy });
             await this.$store.dispatch({ type: "loadExps" });
-            let exps = this.$store.getters.exps;
-            return exps.slice(0, 8);
+            return this.$store.getters.exps;
         },
     },
     async created() {
@@ -102,7 +101,7 @@ export default {
         });
         this.bestDeals = await this.getExps({sortBy : 'currPrice'});
         this.popSki = await this.getExps({type : 'Ski'});
-        this.inEurope = await this.getExps({tags : ['Asia']});
+        this.inAsia = await this.getExps({tags : ['Asia']});
     },
     components: {
         expList

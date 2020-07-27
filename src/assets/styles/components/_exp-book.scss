@@ -53,6 +53,11 @@
             }
         }
     }
+    @include for-wide-layout {
+        .book-bless{
+          display: none;
+        }
+    }
 }
 
 
