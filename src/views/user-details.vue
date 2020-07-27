@@ -143,7 +143,7 @@ export default {
       const expsInOrder = this.exps.sort((a, b)=>{
         return new Date(a.date) - new Date(b.date)
       })
-        console.log(expsInOrder)
+
 
         const data = expsInOrder.map((exp) => {
           const tickets = exp.participants.reduce((acc, participant) => {

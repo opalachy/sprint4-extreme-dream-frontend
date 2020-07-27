@@ -80,7 +80,6 @@ export default {
        this.numberOfSoldTickets = this.exp.participants.reduce((acc , participant) => {
         return acc + participant.numOfTickets
       }, 0);
-      console.log(this.numberOfSoldTickets)
       if(this.isFull) this.isBooking = true
   }
 };

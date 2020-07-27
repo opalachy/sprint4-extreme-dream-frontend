@@ -49,7 +49,6 @@
       }
     },
     created(){
-      console.log(this.capacity)
        this.setOptions()
     },
      watch: {
