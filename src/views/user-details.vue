@@ -65,7 +65,7 @@
             :cData="cData"
             :cLabels="cLabels"
             :width="300"
-            :height="400"
+            :height="350"
         />
         <button
             type="button"
@@ -171,13 +171,6 @@ export default {
             this.ords = userOrds;
         },
     },
-    async remove(id) {
-        try {
-            await this.$store.dispatch({ type: "removeExp", id });
-        } catch (err) {
-            console.log("error:", err);
-        }
-    },
     created(){
         const userId = this.$route.params.id;
         this.loadUser(userId)
@@ -190,3 +183,4 @@ export default {
 };
 </script>
     
+  

@@ -86,15 +86,14 @@
       text-decoration: underline;
       font-weight: bold;
     }
-   
   }
   .user-activity-table {
     border-collapse: collapse;
     width: fit-content;
     margin-bottom: 20px;
     thead {
-      th { 
-        padding: 0 12px;
+      th {
+        padding: 14px 19.8px;
         background-color: #c1dcff47;
         text-align-last: center;
       }
@@ -154,13 +153,24 @@
       background-color: #115aba;
     }
   }
-  @include for-wide-layout{
+  @include for-wide-layout {
     max-width: 700px;
-    padding: 0 20px;
+    padding: 0 7px;
+    .user-details-container {
+      .user-details-img {
+        height: 140px;
+      }
+      .user-details-name-info {
+        width: 47%;
+        p {
+          font-size: 14px;
+        }
+      }
+    }
     .user-activity-table {
       thead {
-        th { 
-          padding: 0 5px;
+        th {
+          padding: 11px 10.5px;
           font-size: 12px;
         }
       }
@@ -177,6 +187,10 @@
         }
       }
     }
+  }
+  @include for-normal-layout{
+    max-width: 540px;
+    padding: 0 15px;
 
   }
 }

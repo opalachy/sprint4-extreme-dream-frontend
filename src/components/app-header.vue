@@ -20,10 +20,24 @@
                 />
             </span>
         </router-link>
+<<<<<<< HEAD
         <div v-if="isMenuOpen" @click="toggleMenu" class="screen"></div>
         <button @click="toggleMenu" class="hamburger">
             <i class="fas fa-bars"></i>
         </button>
+=======
+        <div v-if="isMenuOpen" @click="toggleManu" class="screen"></div>
+
+        <div class="mobil-container">
+            <button @click="reset" class="bell-btn mobile" v-if="loggedinUser">
+                    <i class="fas fa-bell"></i>
+                    <div :class="{visible: numOfNoticications}" class="msg">{{numOfNoticications}}</div>
+            </button>
+            <button @click="toggleManu" class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+>>>>>>> a2e4fdaa344a86ba2facd94427e5c10626b0e3b9
         <div class="router-header" :class="{openMenu: isMenuOpen}">
             <button @click="reset" class="bell-btn" v-if="loggedinUser">
                 <i class="fas fa-bell"></i>

@@ -44,11 +44,12 @@
                     {{averageRate}} ({{exp.reviews.length}}) reviews
                 </p>
                 <ul v-if="exp.reviews.length > 0" class="review-list">
-                    <exp-review v-for="review in exp.reviews" :key="review.id" :review="review" />
+                    <exp-review v-for="review in expReviewsToShow" :key="review.id" :review="review" />
                 </ul>
                 <p v-else>No reviews have been got yet</p>
+                <button @click="toggleReview" v-if="isHide" class="show-hide-review-btn">Show more...</button>
+                <button @click="toggleReview" v-else class="show-hide-review-btn">Hide</button>
             </div>
-            <!-- <hr /> -->
             <div class="exp-details-guide-container">
                 <div class="guide-details">
                     <router-link :to="'/user/'+ exp.createdBy._id">
@@ -78,7 +79,11 @@ export default {
     data() {
         return {
             exp: null,
+<<<<<<< HEAD
             readMore: false,
+=======
+            isHide : true,
+>>>>>>> a2e4fdaa344a86ba2facd94427e5c10626b0e3b9
         };
     },
     computed: {
@@ -92,6 +97,11 @@ export default {
         expDate() {
             return moment(this.exp.date).format("DD/MM/YY");
         },
+        expReviewsToShow(){
+            if(this.exp.reviews.length <= 6) return this.exp.reviews
+            if(this.isHide) return this.exp.reviews.slice(0,6)
+            return this.exp.reviews
+        }
     },
     methods: {
         async booking(booked) {
@@ -108,8 +118,13 @@ export default {
             };
             socket.emit("booking", connectDetails);
         },
+<<<<<<< HEAD
         toggleMoreReading() {
             this.readMore = !this.readMore;
+=======
+        toggleReview(){
+            this.isHide = !this.isHide
+>>>>>>> a2e4fdaa344a86ba2facd94427e5c10626b0e3b9
         }
     },
     async created() {
