@@ -49,11 +49,11 @@
     }
   }
   .user-order-activities {
-    display: flex;
-    justify-content: space-between;
-    > * {
-      width: 50%;
-    }
+    // display: flex;
+    // justify-content: space-between;
+    // > * {
+    //   width: 50%;
+    // }
     .orders-list-container {
       button {
         font-size: 15px;
@@ -80,52 +80,13 @@
         font-size: 15.6px;
       }
     }
-    .activities-list-container {
-      .activities-list-header {
-        font-size: 30px;
-        margin-bottom: 15px;
-        text-decoration: underline;
-        font-weight: bold;
-      }
-      .activity {
-        display: inline;
-      }
-      .user-activity-title {
-        font-size: 18px;
-        line-height: 1.4;
-        display: inline;
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-          color: blue;
-        }
-      }
-      button {
-        font-size: 18px;
-        border-radius: 13px;
-        padding: 3px 6px;
-        margin: 0;
-        background-color: white;
-        transition: 0.5;
-        .el-icon-edit-outline:before {
-          color: #113659;
-        }
-        .el-icon-delete:before {
-          color: red;
-        }
-
-        &:hover {
-          transform: scale(1.25);
-        }
-      }
+    .activities-list-header {
+      font-size: 30px;
+      margin-bottom: 15px;
+      text-decoration: underline;
+      font-weight: bold;
     }
-    .user-activity-user-name {
-      margin-left: 15px;
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+   
   }
   .user-activity-table {
     border-collapse: collapse;
@@ -176,10 +137,9 @@
     display: block;
     width: 380px;
     height: 350px;
-    margin-top: 20px;
+    margin: 20px;
   }
   .back-btn {
-    justify-self: flex-end;
     align-self: flex-end;
     font-size: 15px;
     border-radius: 13px;
@@ -189,6 +149,7 @@
     background-color: #1e72e0;
     color: white;
     transition: 0.15s;
+    position: relative;
     &:hover {
       background-color: #115aba;
     }
