@@ -1,20 +1,18 @@
 <template>
   <section class="user-details" v-if="user">
-
     <div class="user-details-container">
       <img class="user-details-img" v-if="user.imgUrl" :src="user.imgUrl" />
       <i v-else class="el-icon-user"></i>
+
       <div class="user-details-name-info">
         <h2>{{user.fullName}}</h2>
         <p>{{user.info}}</p>
       </div>
-      <div class="add-exp-btn-container">
-         <button class="add-exp-btn" @click="add">Add Activity</button>
-      </div>
+      <button class="add-exp-btn" @click="add">Add Activity</button>
     </div>
 
     <div class="user-order-activities">
-     <!-- <div v-if="creator" class="orders-list-container">
+      <!-- <div v-if="creator" class="orders-list-container">
         <h4>Orders:</h4>
         <ul class="orders-list">
           <li v-if="ords" class="order" v-for="ord in ords" :key="ord._id">
@@ -22,9 +20,7 @@
           </li>
           <router-link v-else to="/exp">No Orders Yet, Go Choose The First One</router-link>
         </ul>
-      </div> -->
-    </div>
-
+      </div>-->
 
       <div v-if="exps" class="activities-list-container">
         <h4 class="activities-list-header">Activities:</h4>
@@ -40,11 +36,15 @@
             </tr>
           </thead>
           <tbody v-if="participantsTable">
-            <tr class="user-activity-tr"  v-for="participant in participantsTable"  :key="participant._id">
+            <tr
+              class="user-activity-tr"
+              v-for="participant in participantsTable"
+              :key="participant._id"
+            >
               <td class="img-cell">
-               <img class="participant-img" :src="participant.imgUrl"   alt />
+                <img class="participant-img" :src="participant.imgUrl" alt />
               </td>
-              <td >{{participant.fullName}}</td>
+              <td>{{participant.fullName}}</td>
               <td class="center">{{participant.expDate | moment("DD/MM/YYYY")}}</td>
               <td class="center">{{participant.numOfTickets}}</td>
               <td class="center">{{participant.currPrice}}</td>
@@ -141,7 +141,7 @@ export default {
         this.participantsTable = participantsTable;
         const data = this.exps.map((exp) => {
           const tickets = exp.participants.reduce((acc, participant) => {
-                return acc + participant.numOfTickets;
+            return acc + participant.numOfTickets;
           }, 0);
           return tickets;
         });
@@ -167,8 +167,7 @@ export default {
       this.ords = userOrds;
     },
   },
-  created(){
-    window.scrollTo(0,0);
+  created() {
     const userId = this.$route.params.id;
     this.loadUser(userId);
   },
