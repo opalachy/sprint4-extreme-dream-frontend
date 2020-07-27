@@ -1,6 +1,6 @@
 import HttpService from './http.service.js'
 
-export const userService ={
+export const userService = {
     login,
     logout,
     signup,
@@ -37,11 +37,10 @@ async function update(user) {
 
 async function login(userCred) {
     const user = await HttpService.post('auth/login', userCred)
-    return _handleLogin(user) 
+    return _handleLogin(user)
 }
 
 async function signup(userCred) {
-
     const user = await HttpService.post('auth/signup', userCred)
     return _handleLogin(user)
 }
@@ -56,15 +55,13 @@ function _handleLogin(user) {
     return user;
 }
 
-function makeId(l=5)
-{
-var text = "";
-var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-for(var i=0; i < l; i++ )
-{  
-text += char_list.charAt(Math.floor(Math.random() * char_list.length));
-}
-return text;
+function makeId(l = 5) {
+    var text = "";
+    var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < l; i++) {
+        text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+    }
+    return text;
 }
 
 

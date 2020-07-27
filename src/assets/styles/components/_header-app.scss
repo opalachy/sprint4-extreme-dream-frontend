@@ -42,6 +42,30 @@
     }
     .router-header {
         display: flex;
+        align-items: center;
+        .bell-btn {
+            height: 100%;
+            font-size: 22px;
+            position: relative;
+            top: 7.5px;
+
+            .msg {
+                visibility: hidden;
+                width: 13px;
+                height: 15px;
+                position: relative;
+                background-color: red;
+                left: 10px;
+                bottom: 27px;
+                border-radius: 3px;
+                color: white;
+                font-size: 13px;
+                font-weight: bold;
+                &.visible {
+                    visibility: visible;
+                }
+            }
+        }
     }
     button {
         color: #73787d;
@@ -58,12 +82,8 @@
     }
 
     .msg-to-seller {
-        width: 220px;
-        height: 260px;
         z-index: 9999;
-        position: fixed;
-        top: 60px;
-        left: 15px;
+        position: absolute;
         background-color: white;
         border: 1px solid black;
         border-radius: 8px;
@@ -73,19 +93,27 @@
         justify-content: flex-start;
         align-items: center;
         padding: 18px;
-        h3 {
-            font-size: 22px;
-        }
-        p {
-            margin: 9px 0;
+        .user-container {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            align-self: flex-start;
+            font-size: 17px;
         }
         button {
             font-size: 18px;
-            margin-top: 27px;
-            background-color: #1e72e0;
-            padding: 6px 15px;
-            border-radius: 10px;
+            margin: 0;
+            align-self: flex-end;
+            background-color: lightgray;
+            padding: 3px 10px;
+            border-radius: 3px;
             color: white;
+        }
+        .user-img{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            object-fit: cover;
         }
     }
 }

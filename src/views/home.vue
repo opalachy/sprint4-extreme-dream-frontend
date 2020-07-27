@@ -65,7 +65,7 @@ export default {
            return this.popSki.slice(0, this.numOfCard)
        },
        inEuropeToShow(){
-           return this.inEurope.slice(0, this.numOfCard)
+           return this.inEurope.slice(1, (this.numOfCard+1))
        },
        loggedinUser(){
            return this.$store.getters.loggedinUser
@@ -90,7 +90,7 @@ export default {
             this.$store.commit({ type : "setFilter" , filterBy });
             await this.$store.dispatch({ type: "loadExps" });
             let exps = this.$store.getters.exps;
-            return exps.slice(0, 4);
+            return exps.slice(0, 8);
         },
     },
     async created() {
@@ -100,7 +100,7 @@ export default {
         });
         this.bestDeals = await this.getExps({sortBy : 'currPrice'});
         this.popSki = await this.getExps({type : 'Ski'});
-        this.inEurope = await this.getExps({tags : ['Europe']});
+        this.inEurope = await this.getExps({tags : ['Asia']});
     },
     components: {
         expList

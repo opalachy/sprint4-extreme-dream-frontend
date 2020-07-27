@@ -10,13 +10,18 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1.1px solid #504658;
-    .user-details-img {
-      height: 200px;
-      width: 200px;
-      margin-inline-end: 20px;
-      object-fit: cover;
+    .img-seller-container {
+      height: 100px;
+      width: 100px;
+      .user-details-img {
+        height: 100%;
+        width: 100%;
+        margin-inline-end: 20px;
+        object-fit: cover;
+      }
     }
     .user-details-name-info {
+      margin-inline-start: 15px;
       margin-top: 15px;
       h2 {
         margin-bottom: 10px;

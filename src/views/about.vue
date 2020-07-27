@@ -1,5 +1,5 @@
-<template>
-  <div class="about">
+
+  <!-- <div class="about">
     <h2>
 Welcome to Extreme Dream, your number one Experience marketplace. We're dedicated to provide you the very best experience, with a focus on safty, fun, exciting and exotic moment.
 
@@ -19,5 +19,7 @@ Sincerely,
 Raniel, Yair and Oren
 
 </h2>
-  </div>
-</template>
+  </div> -->
+
+
+

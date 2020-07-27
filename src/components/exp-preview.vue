@@ -53,6 +53,9 @@ export default {
             return this.exp.reviews.length;
         },
         expDate(){
+            // if (this.exp.date < Date.now() + 60 * 60 * 1000 * 24 * 3 ){
+            //     this.exp.date = Date.now() +( 60 * 60 * 1000 * 24 * (Math.floor(Math.random() * (60)) + 1))
+            // }
            return moment(this.exp.date).format('DD/MM/YY')    
         } 
     },
@@ -67,6 +70,9 @@ export default {
         edit() {
             this.$router.push("/exp/edit/" + this.exp._id);
         }
+    },
+    mounted(){
+       
     },
     components: {}
 };
