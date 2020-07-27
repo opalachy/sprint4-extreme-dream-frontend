@@ -6,22 +6,27 @@
       <p>Check your profile for more details.</p>
       <button @click="close" >close</button>
     </div>
+     
+
 
     <router-link to="/">
        <span :class="isOnHome" @click="goToHome" >
          <img src="https://res.cloudinary.com/dobvwuisl/image/upload/v1595581028/dy5miswkx05lnpmf1ao1.png" alt="">
        </span>
     </router-link>
-    <div class="router-header">
+    <div v-if="isMenuOpen" @click="toggleManu" class="screen"></div>
+    <button @click="toggleManu" class="hamburger">
+       <i class="fas fa-bars"></i>
+    </button>
+    <div class="router-header" :class="{openMenu: isMenuOpen}">
        <button v-if="loggedinUser" :class="isOnProfile"  @click="goToProfile" >My Profile</button>
       <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
       <router-link v-if="!loggedinUser" to="/login">
          <span @click="goToLogin"  :class="isOnLogin">Login</span>
       </router-link>
-      <!-- <router-link to="/login">logout</router-link> -->
-      <div v-else class="log-user">
-         <button class="logout-btn" @click="logout">Logout</button>
-      </div>
+    
+        <button v-else  class="logout-btn" @click="logout">Logout</button>
+    
     </div>
   </section>
 </template>
@@ -35,7 +40,8 @@ export default {
     return {
         activeLink: 'home',
         msgToSeller: false,
-        buyer: null
+        buyer: null,
+        isMenuOpen: false, 
     } 
   },
   computed:{
@@ -61,23 +67,30 @@ export default {
       this.$router.push('/login');
     },
     goToExperiences(){
+      this.isMenuOpen = false;
       this.activeLink = 'experiences'
       this.$store.commit({type: "setFilter" , filterBy: {}});
       this.$router.push('/exp');
     },
     goToHome(){
       this.activeLink ='home'
+      this.isMenuOpen = false;
     },
     goToProfile(){
       this.activeLink ='profile'
+      this.isMenuOpen = false;
       this.$router.push(`/user/${this.loggedinUser._id}`)
     },
     goToLogin(){
-       this.activeLink ='login'
+      this.activeLink ='login'
+      this.isMenuOpen = false;
     },
     close(){
       this.msgToSeller = false
-    }
+    },
+    toggleManu(){
+        this.isMenuOpen = !this.isMenuOpen
+    },
   },
     created() {
     const loggedinuser = this.$store.getters.loggedinUser

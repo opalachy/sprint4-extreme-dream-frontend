@@ -87,13 +87,14 @@ export default {
             else if (window.innerWidth > 700)  this.numOfCard = 2;  
         },
         async getExps(filterBy){
+            filterBy.limit = 4;
             this.$store.commit({ type : "setFilter" , filterBy });
             await this.$store.dispatch({ type: "loadExps" });
-            let exps = this.$store.getters.exps;
-            return exps.slice(0, 4);
+            return this.$store.getters.exps;
         },
     },
     async created() {
+        window.scrollTo(0,0);
         this.getNumOfCard()
         window.addEventListener("resize", ()=> {
           this.getNumOfCard()

@@ -1,52 +1,46 @@
-
 <script>
 import { Bar } from 'vue-chartjs'
 
 export default {
-    props:['cData', 'cLabels'],
   extends: Bar,
   data: () => ({
     chartdata: {
-      labels: [],
+      labels: ['January', 'February' ,'rrrr'],
       datasets: [
         {
-          label: 'Number of Participants/Experience',
-          backgroundColor: ['#1e72e0','#1e7200', '#1e7500', '#1e7800', '#1e8000'],
-          data: []
-        }
+        barPercentage: 0.8,
+        barThickness: 50,
+        maxBarThickness: 60,
+        minBarLength: 1,
+        data: [10, 20, 30, 40, 50, 60, 70]
+        },
+        // {
+        //   label: 'February',
+        //   backgroundColor: '#f87979',
+        //   data: [10, 20]
+        // },
+        // {
+        //   label: 'rrrr',
+        //   backgroundColor: '#f87979',
+        //   data: [15, 20]
+        // }
       ]
     },
     options: {
-      responsive: false,
-      maintainAspectRatio: false,
-      title:{
-        fontSize:100
-      },
-      scales: {
-        yAxes: [{
-        ticks: {
-          fontSize:15,
-          min: 0,
-          max: '',
-          stepSize: 10,
-        }}],
-        xAxes: [{
-        ticks: {
-          fontSize:10.5,
-          min: 0,
-          max: '',
-          stepSize: 10,
-          barPercentage: 0.1,
-          barThickness: 2,
-          maxBarThickness: 4,
-        }}]},
+      responsive: true,
+      maintainAspectRatio: false
     }
   }),
-  mounted() {
-      this.chartdata.labels = this.cLabels
-      this.chartdata.datasets[0].data = this.cData
-      this.options.scales.yAxes[0].ticks.max = Math.max.apply(null, this.cData)
-    this.renderChart(this.chartdata, this.options);
-  },
-};
+
+  mounted () {
+    this.renderChart(this.chartdata, this.options)
+  }
+}
 </script>
+
+<style>
+canvas#bar-chart{
+  width: 500px;
+  height: 350px;
+}
+</style>
