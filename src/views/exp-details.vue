@@ -79,11 +79,8 @@ export default {
     data() {
         return {
             exp: null,
-<<<<<<< HEAD
             readMore: false,
-=======
             isHide : true,
->>>>>>> a2e4fdaa344a86ba2facd94427e5c10626b0e3b9
         };
     },
     computed: {
@@ -118,13 +115,11 @@ export default {
             };
             socket.emit("booking", connectDetails);
         },
-<<<<<<< HEAD
         toggleMoreReading() {
             this.readMore = !this.readMore;
-=======
+        },
         toggleReview(){
             this.isHide = !this.isHide
->>>>>>> a2e4fdaa344a86ba2facd94427e5c10626b0e3b9
         }
     },
     async created() {
