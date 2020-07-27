@@ -65,7 +65,7 @@ export default {
            return this.popSki.slice(0, this.numOfCard)
        },
        inEuropeToShow(){
-           return this.inEurope.slice(0, this.numOfCard)
+           return this.inEurope.slice(1, (this.numOfCard+1))
        },
        loggedinUser(){
            return this.$store.getters.loggedinUser
@@ -87,20 +87,22 @@ export default {
             else if (window.innerWidth > 700)  this.numOfCard = 2;  
         },
         async getExps(filterBy){
+            filterBy.limit = 4;
             this.$store.commit({ type : "setFilter" , filterBy });
             await this.$store.dispatch({ type: "loadExps" });
             let exps = this.$store.getters.exps;
-            return exps.slice(0, 4);
+            return exps.slice(0, 8);
         },
     },
     async created() {
+        window.scrollTo(0,0);
         this.getNumOfCard()
         window.addEventListener("resize", ()=> {
           this.getNumOfCard()
         });
         this.bestDeals = await this.getExps({sortBy : 'currPrice'});
         this.popSki = await this.getExps({type : 'Ski'});
-        this.inEurope = await this.getExps({tags : ['Europe']});
+        this.inEurope = await this.getExps({tags : ['Asia']});
     },
     components: {
         expList

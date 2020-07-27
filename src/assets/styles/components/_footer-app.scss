@@ -6,9 +6,13 @@
         padding: 30px 15px;
         max-width: 1200px;
         margin: 0 auto;
+
+        @include for-wide-layout{
+            padding: 19px 15px;
+        }
         @include for-narrow-layout {
-            padding: 20px 15px;
             font-size: 12px;
         }
     }
 }
+

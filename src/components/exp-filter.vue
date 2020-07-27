@@ -31,9 +31,23 @@
    </div>
 
    <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
-      <h2>More filters</h2>         
+      <h2 >Continent</h2>         
       <div class="label-container">
-        <div v-for="tag in tags" :key="tag.id">
+        <div v-for="tag in tags1" :key="tag.id">
+          <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.id" hidden>
+          <label :for="tag.id" >{{tag.txt}}</label>
+        </div>
+      </div>
+      <h2 class="seasons-filter">Seasons</h2>         
+      <div class="label-container">
+        <div v-for="tag in tags2" :key="tag.id">
+          <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.id" hidden>
+          <label :for="tag.id" >{{tag.txt}}</label>
+        </div>
+      </div>
+      <h2 class="more-filters">More filters</h2>         
+      <div class="label-container">
+        <div v-for="tag in tags3" :key="tag.id">
           <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.id" hidden>
           <label :for="tag.id" >{{tag.txt}}</label>
         </div>
@@ -87,15 +101,21 @@ export default {
           {id: 'Thailand' , txt: 'Thailand'},
           {id: 'USA' , txt: 'USA'}
        ],
-       tags: [
+       tags1: [
           {id: 'Africa' , txt: 'Africa'},
           {id: 'America' , txt: 'America'},
           {id: 'Asia' , txt: 'Asia'},
           {id: 'Europe' , txt: 'Europe'},
+          ],
+          tags2:[
+          {id: 'All-year ' , txt: 'All year '} ,
+          {id: 'Summer' , txt: 'Summer'} ,
+          {id: 'Winter' , txt: 'Winter'},
+          ],
+          tags3:[
           {id: 'Adventure' , txt: 'Adventure'},
           {id: 'Adults' , txt: 'Adults'},
           {id: 'All-levels' , txt: 'All levels'},
-          {id: 'All-year ' , txt: 'All year '} ,
           {id: 'Animals' , txt: 'Animals'},
           {id: 'Children' , txt: 'Children'},
           {id: 'Danger' , txt: 'Danger'},
@@ -105,11 +125,9 @@ export default {
           {id: 'Loud' , txt: 'Loud'},
           {id: 'Ropes' , txt: 'Ropes'},
           {id: 'Sports' , txt: 'Sports'},
-          {id: 'Summer' , txt: 'Summer'} ,
           {id: 'Sun' , txt: 'Sun'} ,
           {id: 'View' , txt: 'View'},
           {id: 'Water' , txt: 'Water'},
-          {id: 'Winter' , txt: 'Winter'},
        ],
        sortBy: [
           {id: 'newest' , txt: 'Date'} ,

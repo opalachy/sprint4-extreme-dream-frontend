@@ -1,5 +1,4 @@
-
-<script>
+ <script>
 import { Bar } from 'vue-chartjs'
 
 export default {
@@ -47,7 +46,7 @@ export default {
       this.chartdata.labels = this.cLabels
       this.chartdata.datasets[0].data = this.cData
       this.options.scales.yAxes[0].ticks.max = Math.max.apply(null, this.cData)
-    this.renderChart(this.chartdata, this.options);
+      this.renderChart(this.chartdata, this.options);
   },
 };
 </script>

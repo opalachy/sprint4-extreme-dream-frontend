@@ -4,7 +4,7 @@
             <div class="exp-details-header">
                 <div class="exp-title-container">
                     <h4 class="exp-details-title">{{exp.title}}</h4>
-                    <h5>{{expDate}}</h5>
+                    <h5 class="exp-date">{{expDate}}</h5>
                 </div>
                 <div class="seller-top">
                     <div class="name-rate">
@@ -107,6 +107,7 @@ export default {
         },
     },
     async created() {
+        window.scrollTo(0,0);
         const expId = this.$route.params.id;
         this.exp = await expService.getById(expId);
         socket.setup();
@@ -121,13 +122,3 @@ export default {
 };
 </script>
 
-
-<style  scoped>
-/* .booked-now {
-  width: 200px;
-  height: 200px;
-  background-color: aqua;
-  position: fixed;
-  font-size: 30px;
-} */
-</style>
