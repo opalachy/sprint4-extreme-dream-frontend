@@ -94,6 +94,22 @@
         .exp-details-desc {
             margin-top: 10px;
         }
+        .exp-descs-container {
+            .show-hide-desc-btn {
+                font-size: 13px;
+                border-radius: 13px;
+                padding: 8px 18px;
+                margin: 0;
+                border: none;
+                background-color: #1e72e0;
+                color: white;
+                transition: 0.15s;
+                margin: 14px 0;
+                &:hover {
+                    background-color: #115aba;
+                }
+            }
+        }
     }
     .exp-details-review-list {
         padding-bottom: 10px;

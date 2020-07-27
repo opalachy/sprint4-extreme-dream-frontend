@@ -28,11 +28,13 @@
                     <p class="exp-details-desc">{{exp.desc}}</p>
                     <p class="exp-details-desc">{{exp.desc1}}</p>
                     <p class="exp-details-desc">{{exp.desc2}}</p>
-                    <p class="exp-details-desc">{{exp.desc3}}</p>
-                    <p class="exp-details-desc">{{exp.desc4}}</p>
-                    <p class="exp-details-desc">{{exp.desc5}}</p>
-                    <p class="exp-details-desc">{{exp.desc6}}</p>
-                    <p class="exp-details-desc">{{exp.desc7}}</p>
+                    <p v-if="readMore" class="exp-details-desc">{{exp.desc3}}</p>
+                    <p v-if="readMore" class="exp-details-desc">{{exp.desc4}}</p>
+                    <p v-if="readMore" class="exp-details-desc">{{exp.desc5}}</p>
+                    <p v-if="readMore" class="exp-details-desc">{{exp.desc6}}</p>
+                    <p v-if="readMore" class="exp-details-desc">{{exp.desc7}}</p>
+                    <button v-if="!readMore" @click="toggleMoreReading" class="show-hide-desc-btn">Read More...</button>
+                    <button v-else class="show-hide-desc-btn" @click="toggleMoreReading">Hide...</button>
                 </div>
                 <exp-book @booking="booking" :exp="exp" />
             </div>
@@ -76,6 +78,7 @@ export default {
     data() {
         return {
             exp: null,
+            readMore: false,
         };
     },
     computed: {
@@ -101,13 +104,16 @@ export default {
             });
             const connectDetails = {
                 sellerId: this.exp.createdBy._id,
-                buyer: user
+                buyer: user,
             };
-            socket.emit("booking" , connectDetails);
+            socket.emit("booking", connectDetails);
         },
+        toggleMoreReading() {
+            this.readMore = !this.readMore;
+        }
     },
     async created() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         const expId = this.$route.params.id;
         this.exp = await expService.getById(expId);
         socket.setup();

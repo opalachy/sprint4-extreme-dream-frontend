@@ -89,12 +89,17 @@
         justify-content: flex-start;
         align-items: center;
         padding: 18px;
+        width: 285px;
         .user-container {
             display: flex;
-            justify-content: center;
+            align-items: center;
             margin: 0;
-            align-self: flex-start;
             font-size: 17px;
+            .user-name{
+                line-height: 20px;
+                padding-top: 10px;
+                margin-inline-start: 5px;
+            }
         }
         button {
             font-size: 18px;
