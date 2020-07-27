@@ -1,5 +1,4 @@
-
-<script>
+ <script>
 import { Bar } from 'vue-chartjs'
 
 export default {
@@ -11,7 +10,7 @@ export default {
       datasets: [
         {
           label: 'Number of Participants/Experience',
-          backgroundColor: ['#1e72e0','#1e7200', '#1e7500', '#1e7800', '#1e8000'],
+          backgroundColor: ['#1e72e0', 'lightblue', 'lightpink', 'lightgreen', 'lightblakc'],
           data: []
         }
       ]
@@ -20,7 +19,7 @@ export default {
       responsive: false,
       maintainAspectRatio: false,
       title:{
-        fontSize:100
+        fontSize:10
       },
       scales: {
         yAxes: [{
@@ -28,17 +27,18 @@ export default {
           fontSize:15,
           min: 0,
           max: '',
-          stepSize: 10,
+          stepSize: 1,
         }}],
         xAxes: [{
         ticks: {
-          fontSize:10.5,
+          fontSize:15,
           min: 0,
           max: '',
           stepSize: 10,
-          barPercentage: 0.1,
-          barThickness: 2,
-          maxBarThickness: 4,
+          categorySpacing: 0.1,
+          barPercentage:0.1,
+          barThickness: 0.2,
+          mixBarThickness: 0.3,
         }}]},
     }
   }),
@@ -46,7 +46,7 @@ export default {
       this.chartdata.labels = this.cLabels
       this.chartdata.datasets[0].data = this.cData
       this.options.scales.yAxes[0].ticks.max = Math.max.apply(null, this.cData)
-    this.renderChart(this.chartdata, this.options);
+      this.renderChart(this.chartdata, this.options);
   },
 };
 </script>

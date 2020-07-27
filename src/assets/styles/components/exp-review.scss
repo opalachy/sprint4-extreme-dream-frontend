@@ -1,6 +1,5 @@
 .exp-review{
-    min-width: 300px;
-    max-width: 40%;
+    width: 50%;
     margin: 20px 0;
     .reviewer-container-wraper{
         display: flex;
@@ -19,6 +18,7 @@
         }
     }
     .review-txt{
+        margin-inline-end: 20px;
         line-height: 20px;
         margin-top: 10px;
         font-size: 14px;    

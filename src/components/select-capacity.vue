@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    props: ['participants' , 'capacity'],
+    props: ['numberOfSoldTickets' , 'capacity'],
     data() {
       return {
         options: [{
@@ -41,10 +41,7 @@
     },
     methods:{
       setOptions(){
-        const numberOfSoldTickets = this.participants.reduce((acc , participant) => {
-        return acc + participant.numOfTickets
-      }, 0);
-          const numberOfAvailableTickets =  this.capacity - numberOfSoldTickets;
+          const numberOfAvailableTickets =  this.capacity - this.numberOfSoldTickets;
           this.options = this.options.map((option) => {
           option.disabled  = (option.value > numberOfAvailableTickets) ? true : false;
           return option
@@ -52,6 +49,7 @@
       }
     },
     created(){
+      console.log(this.capacity)
        this.setOptions()
     },
      watch: {

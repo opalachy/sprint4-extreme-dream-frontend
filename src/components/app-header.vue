@@ -1,8 +1,19 @@
 <template>
     <section class="app-header">
-        <div ref="divMsg" v-if="true" class="msg-to-seller" :style="{top: msgToSellerY + 'px', left: (msgToSellerX -270)  + 'px' }">
-            <div class="user-cntainer"> <img class="user-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs9ccaTeJbnGuHHSgKT7PYtvHeQ4WOOZReSlwmYNK-KxG3kuVCStcKO0NwBWxHJiMhcIMN-yMr5_bV3ODQMfSENRKVdXOMvYKfCFdj&usqp=CAU&ec=45682162" alt=""/><p class="user-name"> {{loggedinUser.fullName}} ordered from you</p></div>            
-            
+        <div
+            ref="divMsg"
+            v-if="true"
+            class="msg-to-seller"
+            :style="{top: msgToSellerY + 'px', left: (msgToSellerX -270)  + 'px' }"
+        >
+            <div class="user-cntainer">
+                <img
+                    class="user-img"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs9ccaTeJbnGuHHSgKT7PYtvHeQ4WOOZReSlwmYNK-KxG3kuVCStcKO0NwBWxHJiMhcIMN-yMr5_bV3ODQMfSENRKVdXOMvYKfCFdj&usqp=CAU&ec=45682162"
+                    alt
+                />
+                <p class="user-name">{{loggedinUser.fullName}} ordered from you</p>
+            </div>
             <button @click="close">x</button>
         </div>
         <router-link to="/">
@@ -13,13 +24,14 @@
                 />
             </span>
         </router-link>
-        <div class="router-header">
+        <div v-if="isMenuOpen" @click="toggleManu" class="screen"></div>
+        <button @click="toggleManu" class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="router-header" :class="{openMenu: isMenuOpen}">
             <button @click="reset" class="bell-btn" v-if="loggedinUser">
                 <i class="fas fa-bell"></i>
-                <div
-                    :class="{visible: numOfNoticications}"
-                    class="msg"
-                >{{numOfNoticications}}</div>
+                <div :class="{visible: numOfNoticications}" class="msg">{{numOfNoticications}}</div>
             </button>
             <button v-if="loggedinUser" :class="isOnProfile" @click="goToProfile">My Profile</button>
             <button :class="isOnExperiences" @click="goToExperiences">Experiences</button>
@@ -44,6 +56,7 @@ export default {
             activeLink: "home",
             msgToSeller: false,
             buyer: null,
+            isMenuOpen: false,
             numOfNoticications: 0,
             msgToSellerX: 0,
             msgToSellerY: 0,
@@ -69,33 +82,40 @@ export default {
     methods: {
         async logout() {
             let user = await this.$store.dispatch({ type: "logout" });
-            this.$router.push("/login").catch(() => {});
+            this.$router.push("/login");
         },
         goToExperiences() {
+            this.isMenuOpen = false;
             this.activeLink = "experiences";
             this.$store.commit({ type: "setFilter", filterBy: {} });
-            this.$router.push("/exp").catch(() => {});
+            this.$router.push("/exp");
         },
         goToHome() {
             this.activeLink = "home";
+            this.isMenuOpen = false;
         },
         goToProfile() {
             this.activeLink = "profile";
+            this.isMenuOpen = false;
             this.$router.push(`/user/${this.loggedinUser._id}`);
         },
         goToLogin() {
             this.activeLink = "login";
+            this.isMenuOpen = false;
         },
         close() {
             this.msgToSeller = false;
         },
+        toggleManu() {
+            this.isMenuOpen = !this.isMenuOpen;
+        },
         reset(ev) {
-          const divi = this.$refs.divMsg
-          console.log(divi.getBoundingClientRect());
-          this.msgToSellerX =  ev.pageX;
-          this.msgToSellerY =  ev.pageY;
-          this.numOfNoticications = 0;
-          this.msgToSeller = true;
+            const divi = this.$refs.divMsg;
+            console.log(divi.getBoundingClientRect());
+            this.msgToSellerX = ev.pageX;
+            this.msgToSellerY = ev.pageY;
+            this.numOfNoticications = 0;
+            this.msgToSeller = true;
         },
     },
     created() {
@@ -109,3 +129,6 @@ export default {
     },
 };
 </script>
+
+
+
