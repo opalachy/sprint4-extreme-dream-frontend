@@ -64,7 +64,7 @@
                 </p>
             </div>
         </div>
-    </section>
+  </section>
 </template>
  
 <script>
@@ -131,10 +131,10 @@ export default {
             this.exp = await expService.getById(expId);
         });
     },
-    components: {
-        expBook,
-        expReview,
-    },
+  components: {
+    expBook,
+    expReview,
+  },
 };
 </script>
 
