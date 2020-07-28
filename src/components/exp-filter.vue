@@ -20,7 +20,7 @@
    </div>
 
    <div v-show="(filterOption === 'location')"  class="location-filter filter-modal">
-      <h2>Select locatin</h2>        
+      <h2>Select location</h2>        
       <div class="label-container">
         <div v-for="location in locations" :key="location.id">
           <input :id="location.id" type="radio" v-model="filterBy.location" :value="location.id" hidden >
@@ -31,7 +31,7 @@
    </div>
 
    <div v-show="(filterOption === 'tags')"  class="more-filter filter-modal">
-      <h2 >Continent</h2>         
+      <h2 >Continents</h2>         
       <div class="label-container">
         <div v-for="tag in tags1" :key="tag.id">
           <input :id="tag.id" type="checkbox"  @change="choose" :value="tag.id" hidden>
