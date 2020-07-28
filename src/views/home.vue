@@ -54,18 +54,18 @@ export default {
             bestDeals: null,
             popSki: null,
             inAsia: null,
-            numOfCard: 2,
+            cardsCount: 2,
         };
     },
     computed: {
        bestDealsToShow(){
-           return this.bestDeals.slice(0, this.numOfCard)
+           return this.bestDeals.slice(0, this.cardsCount)
        },
        popSkiToShow(){
-           return this.popSki.slice(0, this.numOfCard)
+           return this.popSki.slice(0, this.cardsCount)
        },
        inAsiaToShow(){
-           return this.inAsia.slice(0, (this.numOfCard))
+           return this.inAsia.slice(0, (this.cardsCount))
        },
        loggedinUser(){
            return this.$store.getters.loggedinUser
@@ -81,10 +81,10 @@ export default {
             this.$store.commit({type: 'setFilter' , filterBy : {type: this.choosedType}});
             this.$router.push('/exp');
         },
-        getNumOfCard(){
-            if(window.innerWidth > 1200) this.numOfCard = 4;
-            else if (window.innerWidth > 960)  this.numOfCard = 3;  
-            else if (window.innerWidth > 700)  this.numOfCard = 2;  
+        setCardsLayout(){
+            if(window.innerWidth > 1200) this.cardsCount = 4;
+            else if (window.innerWidth > 960)  this.cardsCount = 3;  
+            else if (window.innerWidth > 700)  this.cardsCount = 2;  
         },
         async getExps(filterBy){
             filterBy.limit = 4;
@@ -95,9 +95,9 @@ export default {
     },
     async created() {
         window.scrollTo(0,0);
-        this.getNumOfCard()
+        this.setCardsLayout()
         window.addEventListener("resize", ()=> {
-          this.getNumOfCard()
+          this.setCardsLayout()
         });
         this.bestDeals = await this.getExps({sortBy : 'currPrice'});
         this.popSki = await this.getExps({type : 'Ski'});
