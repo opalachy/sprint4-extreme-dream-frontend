@@ -18,8 +18,7 @@
         position: relative;
         top: 5px;
     }
-      
-    
+
     // a {
     // color: white;
     // color: #73787d;
@@ -44,7 +43,6 @@
             font-size: 22px;
             position: relative;
             top: 7.5px;
-
             .msg {
                 visibility: hidden;
                 width: 13px;
@@ -62,6 +60,9 @@
                 }
             }
         }
+    }
+    .bell-btn.mobile {
+        display: none;
     }
     button {
         color: #73787d;
@@ -89,12 +90,17 @@
         justify-content: flex-start;
         align-items: center;
         padding: 18px;
+        width: 285px;
         .user-container {
             display: flex;
-            justify-content: center;
+            align-items: center;
             margin: 0;
-            align-self: flex-start;
             font-size: 17px;
+            .user-name{
+                line-height: 20px;
+                padding-top: 10px;
+                margin-inline-start: 5px;
+            }
         }
         button {
             font-size: 18px;
@@ -105,7 +111,7 @@
             border-radius: 3px;
             color: white;
         }
-        .user-img{
+        .user-img {
             height: 30px;
             width: 30px;
             border-radius: 50%;
@@ -113,14 +119,14 @@
         }
     }
     @include for-narrow-layout {
-        .screen{
+        .screen {
             position: fixed;
             width: 100%;
             height: 100vh;
             top: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.308);
-            z-index: 11 ;
+            z-index: 11;
         }
         .router-header {
             display: flex;
@@ -134,27 +140,55 @@
             justify-content: flex-start;
             align-items: center;
             transform: translateX(100%);
-            transition: .8s;
-            &.openMenu{
+            transition: 0.8s;
+            &.openMenu {
                 transform: translateX(0);
             }
             a {
                 font-size: 26px;
                 margin: 24px 0;
             }
-            button{
+            button {
                 font-size: 26px;
                 margin: 24px 0;
             }
-        
         }
         .hamburger {
             display: block;
-            font-size: 30px
+            font-size: 30px;
         }
         .router-header {
             position: fixed;
         }
+        .mobil-container{
+            display: flex;
+        }
+        .bell-btn {
+            display: none;
+        }
+        .bell-btn.mobile {
+            margin-inline-end: 10px;
+            display: block;
+            height: 100%;
+            font-size: 22px;
+            position: relative;
+            top: 7.5px;
+            .msg {
+                visibility: hidden;
+                width: 13px;
+                height: 15px;
+                position: relative;
+                background-color: red;
+                left: 10px;
+                bottom: 27px;
+                border-radius: 3px;
+                color: white;
+                font-size: 13px;
+                font-weight: bold;
+                &.visible {
+                    visibility: visible;
+                }
+            }
+        }
     }
-   
 }

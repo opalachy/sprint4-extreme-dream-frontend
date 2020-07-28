@@ -1,14 +1,14 @@
 <template>
     <section class="app-header">
         <div
-            ref="divMsg"
-            v-if="numOfNoticications"
+            v-if="msgToSeller"
             class="msg-to-seller"
-            :style="{top: msgToSellerY + 'px', left: (msgToSellerX -270)  + 'px' }"
+            :style="{top: msgToSellerY + 'px', left: (msgToSellerX -285)  + 'px' }"
         >
-            <div class="user-cntainer">
-                <img class="user-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs9ccaTeJbnGuHHSgKT7PYtvHeQ4WOOZReSlwmYNK-KxG3kuVCStcKO0NwBWxHJiMhcIMN-yMr5_bV3ODQMfSENRKVdXOMvYKfCFdj&usqp=CAU&ec=45682162"/>
-                <p class="user-name">{{loggedinUser.fullName}} ordered from you</p>
+            <div class="user-container">
+                <img class="user-img" :src="buyer.imgUrl"/>
+                <p class="user-name">{{buyer.fullName}} ordered from you</p>
+                <!-- <p class="user-name">Rani Karavani just ordered from you</p> -->
             </div>
             <button @click="close">x</button>
         </div>
@@ -20,10 +20,17 @@
                 />
             </span>
         </router-link>
-        <div v-if="isMenuOpen" @click="toggleManu" class="screen"></div>
-        <button @click="toggleManu" class="hamburger">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div v-if="isMenuOpen" @click="toggleMenu" class="screen"></div>
+
+        <div class="mobil-container">
+            <button @click="reset" class="bell-btn mobile" v-if="loggedinUser">
+                    <i class="fas fa-bell"></i>
+                    <div :class="{visible: numOfNoticications}" class="msg">{{numOfNoticications}}</div>
+            </button>
+            <button @click="toggleMenu" class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
         <div class="router-header" :class="{openMenu: isMenuOpen}">
             <button @click="reset" class="bell-btn" v-if="loggedinUser">
                 <i class="fas fa-bell"></i>
@@ -102,12 +109,10 @@ export default {
         close() {
             this.msgToSeller = false;
         },
-        toggleManu() {
+        toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
         },
         reset(ev) {
-            const divi = this.$refs.divMsg;
-            console.log(divi.getBoundingClientRect());
             this.msgToSellerX = ev.pageX;
             this.msgToSellerY = ev.pageY;
             this.numOfNoticications = 0;

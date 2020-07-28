@@ -94,11 +94,41 @@
         .exp-details-desc {
             margin-top: 10px;
         }
+        .exp-descs-container {
+            .show-hide-desc-btn {
+                font-size: 13px;
+                border-radius: 13px;
+                padding: 8px 18px;
+                margin: 0;
+                border: none;
+                background-color: #1e72e0;
+                color: white;
+                transition: 0.15s;
+                margin: 14px 0;
+                &:hover {
+                    background-color: #115aba;
+                }
+            }
+        }
     }
     .exp-details-review-list {
         padding-bottom: 10px;
         border-bottom: 1px solid lightgray;
         margin-bottom: 20px;
+        .show-hide-review-btn {
+            font-size: 13px;
+            border-radius: 13px;
+            padding: 8px 18px;
+            margin: 0;
+            border: none;
+            background-color: #1e72e0;
+            color: white;
+            transition: 0.15s;
+            margin: 14px 0;
+            &:hover {
+                background-color: #115aba;
+            }
+        }
     }
     .review-list {
         margin: 0;
@@ -140,6 +170,12 @@
     }
     @include for-wide-layout {
         max-width: 700px;
+        .exp-details-header {
+            margin-inline-start: 15px;
+            .seller-top h4 {
+                font-size: 15px;
+            }
+        }
         .exp-book {
             margin-inline-start: 20px;
         }
@@ -153,15 +189,21 @@
     }
     @include for-normal-layout {
         max-width: 540px;
-
         .exp-details-header {
+            flex-direction: column-reverse;
+            align-items: flex-start;
             .seller-top {
+                flex-direction: row-reverse;
+            }
+            .name-rate {
+                margin-inline-start: 10px;
                 .exp-rate {
                     line-height: 0.7;
-                    width: 80px;
+                    width: unset;
                 }
             }
         }
+
         .img-container {
             height: 500px;
             img:nth-of-type(1) {
@@ -211,13 +253,12 @@
             width: 100%;
             background-color: white;
             height: 72px;
-            border: 0;
             flex-direction: row;
             margin: 0;
-            padding: 10px;
+            padding: 10px 10px 10px 23px;
             border-radius: 0;
             z-index: 10;
-            border-top: 0.8px solid #000000;
+            box-shadow: 0px 1px 5px #000000;
             .exp-book-origPrice {
                 margin-inline-end: 10px;
             }
@@ -230,11 +271,11 @@
     }
     @include for-narrow-layout {
         .exp-details-header {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            .seller-top {
-                flex-direction: row-reverse;
-            }
+            // flex-direction: column-reverse;
+            // align-items: flex-start;
+            // .seller-top {
+            //     flex-direction: row-reverse;
+            // }
             .exp-title-container {
                 .exp-details-title {
                     font-size: 20px;
@@ -274,8 +315,10 @@
             width: 100%;
             margin: 20px 0;
         }
-        .exp-details-guide-info {
-            margin: 0;
+        .exp-details-guide-container {
+            .exp-details-guide-info {
+                margin: 0;
+            }
         }
     }
 }

@@ -57,20 +57,20 @@
       </table>
     </div>
 
-    <bar-chart
-      class="chart"
-      v-if="loaded"
-      :cData="cData"
-      :cLabels="cLabels"
-      :width="300"
-      :height="400"
-    />
-    <button
-      type="button"
-      @click="hasHistory() ? $router.go(-1) : $router.push('/')"
-      class="back-btn"
-    >&laquo; Back</button>
-  </section>
+        <bar-chart
+            class="chart"
+            v-if="loaded"
+            :cData="cData"
+            :cLabels="cLabels"
+            :width="300"
+            :height="350"
+        />
+        <button
+            type="button"
+            @click="hasHistory() ? $router.go(-1) : $router.push('/')"
+            class="back-btn"
+        >&laquo; Back</button>
+    </section>
 </template>
 
 
@@ -180,3 +180,4 @@ export default {
 };
 </script>
     
+  
