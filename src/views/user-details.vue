@@ -62,6 +62,7 @@
             v-if="loaded"
             :cData="cData"
             :cLabels="cLabels"
+            :expCapacity="expCapacity"
             :width="300"
             :height="350"
         />
@@ -139,7 +140,7 @@ export default {
         const expsInOrder = this.exps.sort((a, b) => {
           return new Date(a.date) - new Date(b.date);
         });
-
+        this.expCapacity = this.exps[0].capacity;
         const data = expsInOrder.map((exp) => {
           const tickets = exp.participants.reduce((acc, participant) => {
             return acc + participant.numOfTickets;

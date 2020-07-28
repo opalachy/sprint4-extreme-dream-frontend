@@ -2,7 +2,7 @@
 import { Bar } from 'vue-chartjs'
 
 export default {
-    props:['cData', 'cLabels'],
+    props:['cData', 'cLabels' , 'expCapacity'],
   extends: Bar,
   data: () => ({
     chartdata: {
@@ -45,7 +45,7 @@ export default {
   mounted() {
       this.chartdata.labels = this.cLabels
       this.chartdata.datasets[0].data = this.cData
-      this.options.scales.yAxes[0].ticks.max = Math.max.apply(null, this.cData)
+      this.options.scales.yAxes[0].ticks.max = this.expCapacity
       this.renderChart(this.chartdata, this.options);
   },
 };
